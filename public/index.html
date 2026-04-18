@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#FF6B6B" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>¡Lee Conmigo!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- Header -->
+    <header id="app-header">
+      <div class="header-left">
+        <button id="back-btn" class="icon-btn hidden" aria-label="Volver">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div id="header-logo" class="logo-wrap">
+          <span class="logo-icon">📖</span>
+          <span class="logo-text">¡Lee Conmigo!</span>
+        </div>
+        <h2 id="page-title" class="page-title hidden"></h2>
+      </div>
+      <div class="header-right">
+        <div class="age-toggle" id="age-toggle">
+          <button class="age-btn active" data-age="5-7">5–7</button>
+          <button class="age-btn" data-age="8-10">8–10</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main id="main-content">
+
+      <!-- HOME VIEW -->
+      <div id="view-home" class="view active">
+        <div class="home-hero">
+          <div class="hero-bubbles">
+            <span class="bubble b1">🦁</span>
+            <span class="bubble b2">🌿</span>
+            <span class="bubble b3">🎵</span>
+            <span class="bubble b4">🌍</span>
+            <span class="bubble b5">💃</span>
+            <span class="bubble b6">⭐</span>
+          </div>
+          <h2 class="hero-title">¡Hola, lector!</h2>
+          <p class="hero-sub">Elige una categoría y empieza a leer</p>
+        </div>
+
+        <div class="categories-grid" id="categories-grid">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="home-create-banner">
+          <button class="create-banner-btn" id="home-create-btn">
+            <span class="create-banner-icon">✨</span>
+            <div class="create-banner-text">
+              <strong>¡Crea tu propia historia!</strong>
+              <span>Escribe sobre lo que quieras</span>
+            </div>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STORIES VIEW -->
+      <div id="view-stories" class="view">
+        <div class="stories-header">
+          <h2 id="stories-category-title" class="section-title"></h2>
+          <div class="filter-tabs" id="filter-tabs">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+        <div class="stories-grid" id="stories-grid">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- READER VIEW -->
+      <div id="view-reader" class="view">
+        <div class="reader-hero" id="reader-hero">
+          <div class="reader-emoji" id="reader-emoji"></div>
+          <h2 class="reader-title" id="reader-title"></h2>
+          <div class="reader-meta" id="reader-meta"></div>
+        </div>
+
+        <div class="reader-controls">
+          <button class="ctrl-btn" id="ctrl-play-all" title="Escuchar todo">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>Escuchar</span>
+          </button>
+          <button class="ctrl-btn" id="ctrl-stop" title="Parar">
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            <span>Parar</span>
+          </button>
+          <button class="ctrl-btn" id="ctrl-slow" title="Lento">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Lento</span>
+          </button>
+        </div>
+
+        <div class="reader-tip">
+          <span>💡</span> Toca una palabra para escucharla
+        </div>
+
+        <div class="story-paragraphs" id="story-paragraphs">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="reader-footer">
+          <button class="fun-btn" id="read-again-btn">
+            🔄 Leer otra vez
+          </button>
+        </div>
+      </div>
+
+      <!-- CREATE VIEW -->
+      <div id="view-create" class="view">
+        <div class="create-hero">
+          <div class="create-hero-emoji">✨</div>
+          <h2 class="create-title">¡Tu historia!</h2>
+          <p class="create-sub">Cuéntame de qué quieres que trate tu historia</p>
+        </div>
+
+        <div class="create-form" id="create-form">
+          <div class="prompt-ideas">
+            <p class="ideas-label">Ideas:</p>
+            <div class="ideas-chips" id="ideas-chips">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <div class="prompt-input-wrap">
+            <textarea
+              id="story-prompt"
+              class="prompt-input"
+              placeholder="Por ejemplo: un elefante que viaja a Madrid..."
+              maxlength="200"
+              rows="3"
+            ></textarea>
+            <div class="char-count"><span id="char-count">0</span>/200</div>
+          </div>
+
+          <button class="generate-btn" id="generate-btn">
+            <span class="generate-icon">🪄</span>
+            ¡Crear mi historia!
+          </button>
+        </div>
+
+        <div class="loading-state hidden" id="loading-state">
+          <div class="loading-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <p class="loading-text">Escribiendo tu historia...</p>
+          <div class="loading-emojis">✏️ 📖 ✨</div>
+        </div>
+
+        <div class="error-state hidden" id="error-state">
+          <div class="error-emoji">😕</div>
+          <p class="error-msg" id="error-msg"></p>
+          <button class="fun-btn" id="retry-btn">Intentar de nuevo</button>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bottom navigation -->
+    <nav id="bottom-nav">
+      <button class="nav-btn active" data-view="home">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Inicio</span>
+      </button>
+      <button class="nav-btn" data-view="stories">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V6h10v2z"/></svg>
+        <span>Historias</span>
+      </button>
+      <button class="nav-btn" data-view="create">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+        <span>Crear</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
