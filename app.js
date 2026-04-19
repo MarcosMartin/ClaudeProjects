@@ -248,73 +248,114 @@ const Storage = {
 
 /* ─── SECTION 3: TTS ENGINE ────────────────────────────────── */
 
+// Ordered by quality: neural/online voices first, then enhanced, then standard
+const PREFERRED_ES_VOICES = [
+  'Google español',
+  'Google español de Estados Unidos',
+  'Microsoft Elvira Online (Natural) - Spanish (Spain)',
+  'Microsoft Helena Online (Natural) - Spanish (Spain)',
+  'Microsoft Pablo Online (Natural) - Spanish (Spain)',
+  'Microsoft Elvira Online - Spanish (Spain)',
+  'Microsoft Helena Online - Spanish (Spain)',
+  'Microsoft Elvira - Spanish (Spain)',
+  'Microsoft Helena - Spanish (Spain)',
+  'Mónica (Enhanced)',
+  'Mónica',
+  'Jorge (Enhanced)',
+  'Jorge',
+  'Paulina (Enhanced)',
+  'Paulina',
+];
+
 const TTS = {
   voice: null,
-  utterance: null,
   activeSpans: [],
 
   init() {
     const tryLoad = () => {
       const voices = window.speechSynthesis.getVoices();
       if (!voices.length) return;
+
+      // Try preferred voices by name first
+      for (const name of PREFERRED_ES_VOICES) {
+        const match = voices.find(v => v.name === name);
+        if (match) { this.voice = match; return; }
+      }
+
+      // Fallback: online es-ES voice (online = cloud quality), then any es-ES
       this.voice =
+        voices.find(v => v.lang === 'es-ES' && v.localService === false) ||
         voices.find(v => v.lang === 'es-ES') ||
         voices.find(v => v.lang.startsWith('es')) ||
-        voices.find(v => v.lang.toLowerCase().includes('es')) ||
         null;
     };
     tryLoad();
     window.speechSynthesis.addEventListener('voiceschanged', tryLoad);
   },
 
+  _utt(text, rate) {
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'es-ES';
+    utt.rate = rate;
+    utt.pitch = 1.0;
+    utt.volume = 1.0;
+    if (this.voice) utt.voice = this.voice;
+    return utt;
+  },
+
   speakWord(word) {
     window.speechSynthesis.cancel();
-    const utt = new SpeechSynthesisUtterance(word);
-    utt.lang = 'es-ES';
-    utt.rate = 0.85;
-    if (this.voice) utt.voice = this.voice;
-    window.speechSynthesis.speak(utt);
+    window.speechSynthesis.speak(this._utt(word, 0.9));
   },
 
   readPage(text, spans) {
     window.speechSynthesis.cancel();
     this.activeSpans = spans || [];
 
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = 'es-ES';
-    utt.rate = 0.8;
-    if (this.voice) utt.voice = this.voice;
+    // Split into sentences so the engine handles prosody per sentence
+    const sentences = text.match(/[^.!?¡¿]+[.!?]+["»]?/g) || [text];
+    let charOffset = 0;
+    let idx = 0;
 
-    utt.onboundary = (e) => {
-      if (e.name !== 'word') return;
-      this.activeSpans.forEach(s => s.classList.remove('speaking'));
-      const target = this.activeSpans.find(s =>
-        parseInt(s.dataset.start, 10) === e.charIndex
-      );
-      if (target) {
-        target.classList.add('speaking');
-        target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    const speakNext = () => {
+      if (idx >= sentences.length || !state.speaking) {
+        this._finish();
+        return;
       }
+      const sentence = sentences[idx];
+      const offset = charOffset;
+      const utt = this._utt(sentence.trim(), 0.92);
+
+      utt.onboundary = (e) => {
+        if (e.name !== 'word') return;
+        this.activeSpans.forEach(s => s.classList.remove('speaking'));
+        const absIdx = offset + e.charIndex;
+        const target = this.activeSpans.find(s =>
+          parseInt(s.dataset.start, 10) >= absIdx &&
+          parseInt(s.dataset.start, 10) < absIdx + (e.charLength || 20)
+        );
+        if (target) {
+          target.classList.add('speaking');
+          target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+      };
+
+      utt.onend = () => { charOffset += sentence.length; idx++; speakNext(); };
+      utt.onerror = () => this._finish();
+      window.speechSynthesis.speak(utt);
     };
 
-    utt.onend = () => {
-      this.activeSpans.forEach(s => s.classList.remove('speaking'));
-      state.speaking = false;
-      UI.updateReadButton(false);
-      TTS.hideTTSBar();
-    };
-
-    utt.onerror = () => {
-      state.speaking = false;
-      UI.updateReadButton(false);
-      TTS.hideTTSBar();
-    };
-
-    this.utterance = utt;
     state.speaking = true;
     UI.updateReadButton(true);
     this.showTTSBar(text.slice(0, 60) + (text.length > 60 ? '…' : ''));
-    window.speechSynthesis.speak(utt);
+    speakNext();
+  },
+
+  _finish() {
+    this.activeSpans.forEach(s => s.classList.remove('speaking'));
+    state.speaking = false;
+    UI.updateReadButton(false);
+    TTS.hideTTSBar();
   },
 
   stop() {
