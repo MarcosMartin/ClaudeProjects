@@ -596,10 +596,12 @@ const TTS = {
     this.showTTSBar(text.slice(0, 60) + (text.length > 60 ? '…' : ''));
 
     if (state.ttsProvider === 'google' && state.googleApiKey) {
-      try { await this._googlePage(text, spans); return; } catch(e) { console.warn('Google TTS failed, falling back:', e); }
+      try { await this._googlePage(text, spans); return; }
+      catch(e) { console.error('Google TTS error:', e); UI.showTTSError(`Google TTS: ${e.message}`); }
     }
     if (state.ttsProvider === 'azure' && state.azureApiKey) {
-      try { await this._azurePage(text); return; } catch(e) { console.warn('Azure TTS failed, falling back:', e); }
+      try { await this._azurePage(text); return; }
+      catch(e) { console.error('Azure TTS error:', e); UI.showTTSError(`Azure TTS: ${e.message}`); }
     }
     this._webPage(text, spans);
   },
@@ -627,16 +629,18 @@ const TTS = {
       wordData.push({ charIdx: ci, mark: `w${wordData.length}` });
       ci += tok.length;
     });
+
+    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const ssmlBody = (() => {
-      let out = ''; let wi = 0; let pos = 0;
+      let out = ''; let wi = 0;
       words.forEach(tok => {
-        if (/^\s+$/.test(tok)) { out += tok; pos += tok.length; return; }
-        out += `<mark name="w${wi}"/>${tok}`; wi++; pos += tok.length;
+        if (/^\s+$/.test(tok)) { out += tok; return; }
+        out += `<mark name="w${wi}"/>${esc(tok)}`; wi++;
       });
       return out;
     })();
-    const rate = state.ttsRate;
-    const ssml = `<speak><prosody rate="${rate}">${ssmlBody}</prosody></speak>`;
+    // Speed goes in audioConfig.speakingRate, NOT in SSML <prosody>
+    const ssml = `<speak>${ssmlBody}</speak>`;
 
     const resp = await fetch(
       `https://texttospeech.googleapis.com/v1/text:synthesize?key=${state.googleApiKey}`,
@@ -644,12 +648,14 @@ const TTS = {
         body: JSON.stringify({
           input: { ssml },
           voice: { languageCode: 'es-ES', name: 'es-ES-Neural2-A' },
-          audioConfig: { audioEncoding: 'MP3' },
+          audioConfig: { audioEncoding: 'MP3', speakingRate: state.ttsRate },
           enableTimePointing: ['SSML_MARK']
         }) }
     );
     if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || 'Google TTS error'); }
     const data = await resp.json();
+    if (!data.audioContent) throw new Error('No audioContent in response');
+
     const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
 
     if (data.timepoints && spans) {
@@ -684,6 +690,7 @@ const TTS = {
     );
     if (!resp.ok) throw new Error('Google TTS error');
     const data = await resp.json();
+    if (!data.audioContent) throw new Error('No audioContent');
     return new Audio(`data:audio/mp3;base64,${data.audioContent}`);
   },
 
@@ -748,7 +755,10 @@ const TTS = {
     return utt;
   },
 
-  _playAudio(audio) { this._audio = audio; audio.play(); },
+  _playAudio(audio) {
+    this._audio = audio;
+    audio.play().catch(e => { console.error('Audio play() rejected:', e); this._finish(); });
+  },
 
   _finish() {
     this._timers.forEach(t => clearTimeout(t)); this._timers = [];
@@ -887,6 +897,14 @@ const UI = {
     btn.classList.toggle('is-reading', isReading);
     icon.textContent = isReading ? '⏹' : '🔊';
     label.textContent = isReading ? 'Parar' : 'Leer';
+  },
+
+  showTTSError(msg) {
+    const bar = document.getElementById('tts-bar');
+    const barText = document.getElementById('tts-bar-text');
+    barText.textContent = `⚠️ ${msg} — usando navegador`;
+    bar.classList.remove('hidden');
+    setTimeout(() => bar.classList.add('hidden'), 5000);
   },
 
   showImportMessage(text, isError) {
