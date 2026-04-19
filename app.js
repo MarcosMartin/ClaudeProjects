@@ -675,7 +675,7 @@ const TTS = {
     if (input.enableTimePointing) body.enableTimePointing = ['SSML_MARK'];
 
     const resp = await fetch(
-      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${state.googleApiKey}`,
+      `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${state.googleApiKey}`,
       { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
     );
     if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `HTTP ${resp.status}`); }
