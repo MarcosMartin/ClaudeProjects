@@ -18,25 +18,37 @@ const BUILTIN_STORIES = [
     pages: [
       {
         pageNum: 1,
-        text: 'Luna era una zorrita de pelo rojo y ojos brillantes. Vivía cerca de un gran bosque lleno de árboles altos. Un día, Luna vio un camino que nunca había visto antes. "¡Voy a explorar!", dijo Luna con alegría.',
+        text: 'Luna era una zorrita de pelo rojo y ojos brillantes. Vivía cerca de un gran bosque lleno de árboles altísimos. Un día, Luna vio un camino entre los árboles que nunca había visto antes. Las hojas brillaban con la luz del sol. "¡Voy a explorar!", dijo Luna con alegría, y se adentró en el bosque dando saltitos.',
         emoji: '🦊',
         bgColor: '#e8f5e9'
       },
       {
         pageNum: 2,
-        text: 'En el bosque, Luna encontró a Pino, un erizo muy pequeño. Pino estaba triste porque no podía cruzar un río cristalino. "Yo te ayudo", dijo Luna. Luna buscó unas piedras grandes y las puso en el agua para hacer un puente.',
+        text: 'En el bosque, Luna encontró a Pino, un erizo muy pequeño sentado junto a un río cristalino. Pino estaba triste porque no podía cruzar al otro lado. El agua corría rápida y fría. "Yo te ayudo", dijo Luna con una gran sonrisa. Buscó unas piedras grandes y planas, y las fue colocando una a una en el agua para hacer un puente.',
         emoji: '🦔🌊',
         bgColor: '#e3f2fd'
       },
       {
         pageNum: 3,
-        text: 'Juntos cruzaron el río. Al otro lado había un árbol enorme lleno de moras dulces y jugosas. "¡Gracias, Luna!", dijo Pino. Los dos amigos comieron moras hasta que sus barriguitas estuvieron llenas y contentas.',
+        text: 'Juntos cruzaron el río, saltando de piedra en piedra. Al otro lado había un árbol enorme cubierto de moras dulces y jugosas. "¡Gracias, Luna!", dijo Pino con los ojos brillantes. Los dos amigos se pusieron a comer moras hasta que sus barriguitas estuvieron bien llenas. Las moras eran oscuras, dulces y un poco ácidas, las mejores que habían probado nunca.',
         emoji: '🫐🌳',
         bgColor: '#f3e5f5'
       },
       {
         pageNum: 4,
-        text: 'Cuando el sol empezó a bajar, Luna y Pino volvieron a casa juntos. Luna aprendió que ayudar a los demás hace que el corazón se llene de alegría. Desde ese día, Luna y Pino fueron los mejores amigos del bosque.',
+        text: 'De repente, oyeron un sonido triste entre los arbustos. Era una familia de conejos cuya madriguera se había llenado de agua con la lluvia. Los conejitos temblaban de frío. Luna y Pino se miraron. "¡Vamos a ayudarles!", dijeron los dos a la vez.',
+        emoji: '🐰🌧️',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 5,
+        text: 'Luna llamó a todos los animales del bosque: los pájaros, las ardillas y los ratones. Entre todos cavaron una nueva madriguera seca y cálida entre las raíces del gran árbol. Los conejos entraron felices. "¡Gracias a todos!", dijo la mamá coneja con lágrimas de alegría.',
+        emoji: '🐦🐿️🤝',
+        bgColor: '#f1f8e9'
+      },
+      {
+        pageNum: 6,
+        text: 'Cuando el sol empezó a bajar, todo el bosque brillaba con una luz dorada. Luna y Pino volvieron a casa juntos, cansados pero muy felices. Luna había aprendido algo importante: ayudar a los demás llena el corazón de alegría, y cuando todos trabajan juntos, nada es imposible. Desde ese día, Luna y Pino fueron los mejores amigos del bosque.',
         emoji: '🌅🦊🦔',
         bgColor: '#fff8e1'
       }
@@ -46,7 +58,8 @@ const BUILTIN_STORIES = [
       { word: 'bosque', emoji: '🌲', hint: 'Un lugar con muchos árboles' },
       { word: 'erizo', emoji: '🦔', hint: 'Un animalito con púas en la espalda' },
       { word: 'cristalino', emoji: '💧', hint: 'Muy limpio y transparente, como el agua clara' },
-      { word: 'moras', emoji: '🫐', hint: 'Frutas pequeñas y oscuras que crecen en los árboles' }
+      { word: 'moras', emoji: '🫐', hint: 'Frutas pequeñas y oscuras que crecen en los árboles' },
+      { word: 'madriguera', emoji: '🕳️', hint: 'La casa que cavan los conejos bajo la tierra' }
     ]
   },
 
@@ -63,35 +76,48 @@ const BUILTIN_STORIES = [
     pages: [
       {
         pageNum: 1,
-        text: 'Sara y su abuela Lola viajaron en tren por España. Por la ventana veían campos de girasoles amarillos y pueblos blancos. "Abuela, ¿a dónde vamos primero?", preguntó Sara. "A Valencia, donde nacen los mejores naranjos del mundo", respondió la abuela con una sonrisa.',
+        text: 'Sara y su abuela Lola subieron al tren una mañana de primavera. Por la ventana veían campos de girasoles amarillos, olivos plateados y pueblos blancos que brillaban bajo el sol. "Abuela, ¿a dónde vamos primero?", preguntó Sara emocionada. "A Valencia, donde nacen los mejores naranjos del mundo", respondió la abuela con una sonrisa llena de cariño.',
         emoji: '🚂🌻',
         bgColor: '#fff8e1'
       },
       {
         pageNum: 2,
-        text: 'En Valencia, Sara probó el zumo de naranja más rico de su vida. Los naranjos llenaban las calles con un olor dulce y fresco. La abuela Lola le enseñó a Sara cómo se recogen las naranjas con cuidado para no dañar las ramas.',
+        text: 'En Valencia, las calles olían a naranja desde primera hora de la mañana. Una señora muy amable les ofreció a Sara y a la abuela un vaso de zumo recién exprimido. Era el zumo más rico que Sara había probado en su vida: dulce, fresco y lleno de color. La abuela Lola le enseñó cómo se recogen las naranjas con mucho cuidado para no dañar las ramas del árbol.',
         emoji: '🍊🌳',
         bgColor: '#fff3e0'
       },
       {
         pageNum: 3,
-        text: 'Luego viajaron a Sevilla. Allí vieron a una bailaora de flamenco con un vestido rojo lleno de lunares. Sus pies golpeaban el suelo: ¡tac, tac, tac! "¡Qué bonito!", exclamó Sara, aplaudiendo con fuerza.',
+        text: 'Luego el tren las llevó hasta Sevilla. En una plaza llena de flores, vieron a una bailaora de flamenco con un vestido rojo lleno de lunares blancos. Sus pies golpeaban el suelo con fuerza: ¡tac, tac, tac! Las palmas sonaban como truenos. "¡Qué bonito!", exclamó Sara, y ella también empezó a aplaudir al ritmo de la música.',
         emoji: '💃🌹',
         bgColor: '#fce4ec'
       },
       {
         pageNum: 4,
-        text: 'Al final del viaje, Sara y la abuela Lola se sentaron en una colina a contemplar la sierra. El cielo era de color naranja y rosa. Sara tomó la mano de su abuela y dijo: "Gracias, abuela. Quiero conocer todo España contigo." La abuela la abrazó muy fuerte.',
-        emoji: '⛰️🌄',
+        text: 'Al día siguiente visitaron un mercado en Granada. Los puestos estaban llenos de frutas, verduras, frutos secos y especias de todos los colores. Un vendedor muy simpático le regaló a Sara un higo seco. "Es de nuestra tierra", dijo con orgullo. Sara lo probó y le pareció delicioso: dulce como el caramelo.',
+        emoji: '🏪🍇',
         bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 5,
+        text: 'En el camino de vuelta, el tren pasó por las montañas de la sierra. Las cimas estaban cubiertas de nieve aunque abajo hacía calor. Sara y la abuela Lola se sentaron en silencio a contemplar el paisaje. El cielo era de color naranja y rosa, y las montañas parecían pintadas.',
+        emoji: '⛰️🌄',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 6,
+        text: 'En el tren de vuelta a casa, Sara sacó su cuaderno y dibujó todo lo que había visto: los naranjos, la bailaora, el mercado y la sierra. Cuando terminó, le enseñó los dibujos a su abuela. "Algún día te llevaré a ver el resto de España", dijo la abuela. Sara sonrió y se quedó dormida con la cabeza apoyada en su hombro.',
+        emoji: '✏️📒',
+        bgColor: '#e0f7fa'
       }
     ],
     vocabulary: [
       { word: 'naranjos', emoji: '🍊', hint: 'Árboles que dan naranjas' },
-      { word: 'zumo', emoji: '🥤', hint: 'El líquido que se saca de una fruta' },
+      { word: 'zumo', emoji: '🥤', hint: 'El líquido que se saca de una fruta exprimiéndola' },
       { word: 'flamenco', emoji: '💃', hint: 'Un baile muy famoso de España con palmas y zapateado' },
-      { word: 'sierra', emoji: '⛰️', hint: 'Una fila de montañas con picos altos' },
-      { word: 'contemplar', emoji: '👀', hint: 'Mirar algo con mucha atención y calma' }
+      { word: 'sierra', emoji: '⛰️', hint: 'Una cadena de montañas con picos altos' },
+      { word: 'contemplar', emoji: '👀', hint: 'Mirar algo con mucha atención y calma' },
+      { word: 'higo', emoji: '🍈', hint: 'Una fruta dulce de color morado o verde por dentro' }
     ]
   },
 
@@ -108,35 +134,48 @@ const BUILTIN_STORIES = [
     pages: [
       {
         pageNum: 1,
-        text: 'Mateo era un ratón que soñaba con tocar la trompeta. Su amiga Gala, una rana verde, tocaba la batería. Y Bruno, un oso grande y amable, tocaba la guitarra. Los tres querían formar una banda de música, pero nunca habían tocado juntos.',
+        text: 'Mateo era un ratón que soñaba con tocar la trompeta desde que era muy pequeño. Su amiga Gala, una rana verde y saltarina, tocaba la batería con mucha energía. Y Bruno, un oso grande y tranquilo, tocaba la guitarra con ternura. Los tres querían formar una banda de música, pero nunca habían tocado juntos ni un solo día.',
         emoji: '🐭🐸🐻',
         bgColor: '#f3e5f5'
       },
       {
         pageNum: 2,
-        text: 'El primer ensayo fue un desastre. Mateo tocaba muy rápido. Gala golpeaba los platillos demasiado fuerte. Bruno se equivocaba con los acordes. La música sonaba desafinada y los tres se miraron sin saber qué hacer.',
+        text: 'El primer ensayo fue un auténtico desastre. Mateo tocaba la trompeta demasiado rápido. Gala golpeaba los platillos con tanta fuerza que nadie podía escuchar nada más. Bruno se equivocaba con los acordes y paraba a cada momento. La música sonaba tan desafinada que un pájaro que pasaba por allí salió volando asustado.',
         emoji: '🎺🥁🎸',
         bgColor: '#ede7f6'
       },
       {
         pageNum: 3,
-        text: 'Gala tuvo una idea. "Tenemos que escucharnos los unos a los otros", dijo. Empezaron de nuevo, pero esta vez muy despacio. Mateo esperó a Gala. Gala esperó a Bruno. Poco a poco, la música empezó a sonar afinada y bonita.',
+        text: 'Los tres se sentaron en el suelo sin saber qué hacer. Entonces Gala tuvo una idea. "El problema es que cada uno toca a su aire. Tenemos que escucharnos los unos a los otros." Empezaron de nuevo, pero esta vez muy despacio. Mateo esperó a Gala. Gala esperó a Bruno. Poco a poco, las notas encajaron y la música empezó a sonar afinada y bonita.',
         emoji: '👂🎶',
         bgColor: '#e8eaf6'
       },
       {
         pageNum: 4,
-        text: 'El día del concierto, el parque estaba lleno de animales. Mateo, Gala y Bruno tocaron juntos con mucha paciencia y amor. El público aplaudió y bailó. Mateo aprendió que la música más bonita nace cuando todos se escuchan y se respetan.',
-        emoji: '🎉🎵🌟',
+        text: 'Practicaron cada tarde durante dos semanas. Hubo días en que todo salía bien y días en que todo salía mal. Pero ninguno se rindió. Mateo aprendió a llevar el ritmo. Gala aprendió a tocar más suave. Bruno memorizó todos los acordes. La música que tocaban juntos era cada vez más bonita.',
+        emoji: '📅🎼',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 5,
+        text: 'La noche antes del concierto, Mateo no podía dormir. Tenía mariposas en el estómago. "¿Y si me equivoco delante de todos?", pensaba. Gala y Bruno fueron a su casa. "Todos cometemos errores", dijo Gala. "Pero lo importante es disfrutar juntos", añadió Bruno. Los tres calentaron tocando su canción favorita muy bajito, y Mateo se tranquilizó.',
+        emoji: '🌙😟🤗',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 6,
+        text: 'El día del concierto, el parque estaba lleno de animales de todas partes. Mateo, Gala y Bruno tocaron con todo su corazón. El público aplaudió, bailó y pidió más. Al terminar, un pequeño erizo se acercó tímidamente. "¿Puedo aprender a tocar con vosotros?" Los tres se miraron y sonrieron. "¡Claro que sí!"',
+        emoji: '🎉🎵🦔',
         bgColor: '#e0f7fa'
       }
     ],
     vocabulary: [
       { word: 'ensayo', emoji: '🎼', hint: 'Practicar algo muchas veces para hacerlo bien' },
       { word: 'desafinada', emoji: '😬', hint: 'Música que no suena bien porque las notas no están en su sitio' },
-      { word: 'afinada', emoji: '🎵', hint: 'Música que suena perfecta y bonita' },
       { word: 'acordes', emoji: '🎸', hint: 'Varias notas de guitarra que suenan a la vez' },
-      { word: 'paciencia', emoji: '⏳', hint: 'Esperar con calma sin ponerse nervioso' }
+      { word: 'paciencia', emoji: '⏳', hint: 'Esperar con calma sin ponerse nervioso' },
+      { word: 'ritmo', emoji: '🥁', hint: 'El pulso regular que marca el tiempo en la música' },
+      { word: 'concierto', emoji: '🎤', hint: 'Una actuación musical delante de un público' }
     ]
   },
 
@@ -153,27 +192,39 @@ const BUILTIN_STORIES = [
     pages: [
       {
         pageNum: 1,
-        text: 'Noa vivía con su abuelo en una casa con un jardín grande. El abuelo le dio a Noa una bolsa de semillas. "Estas semillas son tuyas", dijo el abuelo. "Si las cuidas bien, te darán algo maravilloso." Noa miró las semillas con curiosidad.',
+        text: 'Noa vivía con su abuelo en una casa con un jardín grande y algo descuidado. Un sábado por la mañana, el abuelo sacó una bolsa de tela llena de semillas de diferentes formas y tamaños. "Estas semillas son tuyas", dijo con voz suave. "Si las cuidas cada día, te darán algo maravilloso." Noa abrió la bolsa y olió las semillas: olían a tierra y a futuro.',
         emoji: '🌱👴',
         bgColor: '#f1f8e9'
       },
       {
         pageNum: 2,
-        text: 'Cada mañana, Noa regaba las semillas con agua fresca. Cada tarde, quitaba las malas hierbas con cuidado. Pasaron muchos días y Noa empezó a ver pequeños brotes verdes asomar por la tierra. "¡Están creciendo!", gritó Noa de alegría.',
+        text: 'Noa preparó la tierra con una palita, haciendo pequeños hoyos. Metió una semilla en cada hoyo y los tapó con cuidado. Cada mañana antes del colegio, Noa regaba las semillas con una regadera de color verde. Cada tarde, quitaba las malas hierbas que intentaban robar el agua. Los días pasaban y la tierra parecía dormida.',
         emoji: '🚿🌿',
         bgColor: '#e8f5e9'
       },
       {
         pageNum: 3,
-        text: 'Al cabo de unas semanas, el jardín estaba lleno de tomates rojos, lechugas verdes y girasoles amarillos. Era la cosecha más bonita del barrio. Los vecinos miraban el jardín de Noa con admiración. "¡Qué jardín tan hermoso!"',
-        emoji: '🍅🌻🥬',
+        text: 'Una mañana, Noa salió al jardín y vio algo que le quitó el aliento: decenas de pequeños brotes verdes asomaban por la tierra. Eran finísimos, casi transparentes, pero estaban ahí. "¡Abuelo, abuelo, están creciendo!", gritó Noa corriendo hacia la casa. El abuelo salió y sonrió orgulloso. "Ya sabía yo que lo conseguirías."',
+        emoji: '🌱✨',
         bgColor: '#f9fbe7'
       },
       {
         pageNum: 4,
-        text: 'Noa recogió las verduras y las repartió entre todos los vecinos. "Eres muy generosa", dijo el abuelo con orgullo. Noa sonrió. Había aprendido que cuidar las cosas con amor y constancia hace que crezcan, igual que las plantas, igual que la amistad.',
-        emoji: '🤝🌸',
+        text: 'Semanas después, el jardín era irreconocible. Había tomates rojos y redondos, lechugas de hojas rizadas, pepinos largos y girasoles altísimos que miraban al sol. Era la cosecha más bonita del barrio. Los vecinos se asomaban por la valla y exclamaban: "¡Qué jardín tan hermoso, Noa!"',
+        emoji: '🍅🌻🥬',
+        bgColor: '#f1f8e9'
+      },
+      {
+        pageNum: 5,
+        text: 'Noa recogió todas las verduras con cuidado y las metió en cestas. Luego fue llamando a la puerta de cada vecino para repartirlas. La señora del primero recibió tomates. El señor del tercero recibió lechugas. La familia del final de la calle recibió pepinos. "Eres muy generosa", dijo el abuelo con los ojos brillantes de orgullo.',
+        emoji: '🧺🏡',
         bgColor: '#fff9c4'
+      },
+      {
+        pageNum: 6,
+        text: 'Antes de que terminara el otoño, Noa guardó algunas semillas de cada planta en sobrecitos de papel con dibujos pintados a mano. Los repartió entre todos los vecinos para que pudieran tener su propio jardín en primavera. Noa aprendió que cuidar las cosas con constancia y compartir los frutos con los demás es la mejor forma de hacer crecer la alegría.',
+        emoji: '🌸💌',
+        bgColor: '#e8f5e9'
       }
     ],
     vocabulary: [
@@ -181,7 +232,240 @@ const BUILTIN_STORIES = [
       { word: 'brotes', emoji: '🌿', hint: 'Los primeros tallitos verdes que salen de la tierra' },
       { word: 'cosecha', emoji: '🧺', hint: 'Recoger los frutos y verduras que han crecido en el jardín' },
       { word: 'generosa', emoji: '🤝', hint: 'Una persona que comparte lo que tiene con los demás' },
-      { word: 'constancia', emoji: '⭐', hint: 'Seguir haciendo algo cada día sin rendirse' }
+      { word: 'constancia', emoji: '⭐', hint: 'Seguir haciendo algo cada día sin rendirse' },
+      { word: 'sobrecito', emoji: '✉️', hint: 'Un sobre pequeño de papel para guardar cosas' }
+    ]
+  },
+
+  {
+    id: 'colores-del-mercado',
+    title: 'Los Colores del Mercado',
+    theme: 'culture',
+    difficulty: 'beginner',
+    ageMin: 5,
+    ageMax: 8,
+    coverEmoji: '🏪🎨',
+    coverColor: '#FF7043',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Alma tenía seis años y vivía en un pueblo de Andalucía. Cada sábado por la mañana, su abuela Concha la llevaba al mercado del pueblo. Era el plan favorito de Alma. Desde lejos ya se veían los colores de las frutas y las verduras, y se olía el aroma de las especias y las flores recién cortadas.',
+        emoji: '🏪🌈',
+        bgColor: '#fff3e0'
+      },
+      {
+        pageNum: 2,
+        text: 'El primer puesto era el de las frutas. Había melones rayados, sandías enormes, cerezas brillantes y melocotones de color dorado. El frutero, un señor con bigote y delantal verde, le ofreció a Alma un trozo de melocotón. Alma lo probó y cerró los ojos de lo bueno que estaba. "Es de aquí mismo, de la huerta de al lado", dijo el frutero con orgullo.',
+        emoji: '🍑🍒🍉',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 3,
+        text: 'Más adelante estaba el puesto de especias. Había montañitas de polvos de colores: amarillo, rojo, naranja, verde. "¿Qué es eso, abuela?" preguntó Alma señalando una montaña amarilla. "Azafrán", respondió la abuela Concha. "Es el oro de España. Con él hacemos la paella." Alma metió la nariz y olió: era un olor fuerte, extraño y maravilloso.',
+        emoji: '🌶️🧡',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 4,
+        text: 'Luego llegaron al puesto de las flores. Había ramos de lavanda morada, claveles rojos y girasoles amarillos tan grandes como la cara de Alma. Una señora estaba trenzando flores para hacer una corona. "¿Puedo aprender?", preguntó Alma. La señora le enseñó a entrelazar los tallos. Alma hizo su primera corona de lavanda y se la puso en la cabeza.',
+        emoji: '💐👑',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 5,
+        text: 'En el centro del mercado había una pequeña plaza donde un músico tocaba la guitarra. La gente paraba a escuchar. Algunos niños bailaban. Alma también bailó, un poco tímida al principio, pero luego con mucha alegría. La abuela Concha aplaudía y reía. Ese sonido era la música del mercado.',
+        emoji: '🎸💃',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 6,
+        text: 'De vuelta a casa, Alma llevaba una cesta con melocotones, una ramita de lavanda y un sobre de azafrán. La abuela Concha le prometió que esa tarde harían una paella juntas en casa. Alma había aprendido que el mercado no era solo un sitio para comprar cosas: era un lugar donde las personas se encontraban, compartían y se alegraban juntas.',
+        emoji: '🧺🏡',
+        bgColor: '#e8f5e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'mercado', emoji: '🏪', hint: 'Un lugar donde la gente vende y compra productos frescos' },
+      { word: 'azafrán', emoji: '🌼', hint: 'Una especia amarilla muy especial que se usa para cocinar' },
+      { word: 'paella', emoji: '🥘', hint: 'Un plato muy famoso de España que se hace en una sartén grande' },
+      { word: 'lavanda', emoji: '💜', hint: 'Una planta de flores moradas con un olor muy agradable' },
+      { word: 'huerta', emoji: '🌱', hint: 'Un terreno donde se cultivan frutas y verduras' },
+      { word: 'especias', emoji: '🌶️', hint: 'Polvos o semillas que se usan para dar sabor a la comida' }
+    ]
+  },
+
+  {
+    id: 'delfin-azul',
+    title: 'El Delfín Azul',
+    theme: 'animals',
+    difficulty: 'beginner',
+    ageMin: 5,
+    ageMax: 7,
+    coverEmoji: '🐬🌊',
+    coverColor: '#0288D1',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Nico tenía siete años y vivía en un pueblo de la costa mediterránea. Cada verano, Nico y su padre salían muy temprano en una barca de madera a ver el mar. Un día, en medio del agua azul y tranquila, vieron algo saltar fuera del agua: era un delfín. Nico se quedó con la boca abierta de la emoción.',
+        emoji: '🐬🌅',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 2,
+        text: 'El delfín se acercó a la barca sin miedo. Tenía los ojos brillantes y la piel lisa y suave de color gris azulado. Nico se tumbó en la proa y estiró la mano. El delfín se dejó rozar con la punta de los dedos. Era cálido y suave. "Le llamaré Rayo", dijo Nico en voz baja para no asustarlo.',
+        emoji: '🤚🐬',
+        bgColor: '#e1f5fe'
+      },
+      {
+        pageNum: 3,
+        text: 'Rayo empezó a nadar alrededor de la barca, dando saltos y haciendo piruetas en el aire. Nico aplaudía y reía. Pero de repente Rayo paró y emitió un sonido agudo. Señalaba con el morro hacia algo que flotaba en el agua: era una bolsa de plástico enredada en su aleta.',
+        emoji: '😟🛍️',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 4,
+        text: 'El padre de Nico sacó la bolsa de plástico del agua con cuidado. La desenredó del aleta de Rayo sin hacerle daño. "Las bolsas de plástico son muy peligrosas para los animales del mar", explicó su padre. Nico miró la bolsa y luego miró el mar. Quería que el mar estuviera siempre limpio y lleno de vida.',
+        emoji: '♻️🌊',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 5,
+        text: 'Nico y su padre recogieron todas las bolsas y los trozos de plástico que encontraron flotando cerca. Las metieron en un saco grande que llevaban en la barca. Rayo los miraba nadar en círculos, como si estuviera ayudando a buscar más basura. Cuando terminaron, el agua estaba más limpia y azul que nunca.',
+        emoji: '🧹🌊✨',
+        bgColor: '#e0f7fa'
+      },
+      {
+        pageNum: 6,
+        text: 'Al volver a la orilla, Rayo los acompañó hasta la playa dando un último salto en el aire, como diciendo adiós. Nico agitó la mano. De vuelta en casa, Nico pintó un dibujo de Rayo y lo colgó en su habitación. Había aprendido que los animales del mar necesitan nuestra ayuda para vivir felices, y que un pequeño gesto puede cambiarlo todo.',
+        emoji: '🎨🐬💙',
+        bgColor: '#e3f2fd'
+      }
+    ],
+    vocabulary: [
+      { word: 'delfín', emoji: '🐬', hint: 'Un animal marino muy inteligente y juguetón' },
+      { word: 'mediterráneo', emoji: '🌊', hint: 'El mar que baña las costas de España, Italia y Grecia' },
+      { word: 'aleta', emoji: '🐟', hint: 'La parte del cuerpo que usan los peces y delfines para nadar' },
+      { word: 'pirueta', emoji: '🌀', hint: 'Un salto o giro acrobático en el aire' },
+      { word: 'proa', emoji: '⛵', hint: 'La parte delantera de una barca o barco' },
+      { word: 'reciclar', emoji: '♻️', hint: 'Reutilizar materiales para no contaminar el medio ambiente' }
+    ]
+  },
+
+  {
+    id: 'mia-biblioteca',
+    title: 'Mía y la Biblioteca Mágica',
+    theme: 'friendship',
+    difficulty: 'intermediate',
+    ageMin: 6,
+    ageMax: 9,
+    coverEmoji: '📚💛',
+    coverColor: '#F9A825',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Mía era una niña muy tímida a la que le encantaba leer. En el recreo, mientras los demás jugaban en el patio, ella iba a la biblioteca y se sentaba siempre en el mismo rincón, detrás de la estantería de los cuentos de animales. Allí se sentía segura y tranquila, rodeada de historias.',
+        emoji: '📚🌟',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 2,
+        text: 'Un día de octubre llegó al colegio un niño nuevo llamado Tomás. Era alto, llevaba gafas redondas y una mochila con un cohete dibujado. En el recreo, Tomás miró el patio, luego miró la puerta de la biblioteca, y entró. Se sentó justo en el rincón de Mía. Mía lo miró sin decir nada.',
+        emoji: '👦🎒',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 3,
+        text: '"¿Puedo sentarme aquí?", preguntó Tomás en voz baja. Mía asintió. Tomás sacó un libro enorme sobre planetas y estrellas. Mía lo miró de reojo. "¿Te gustan el espacio?", preguntó al fin, sorprendiéndose a sí misma. "Es lo que más me gusta del mundo", respondió Tomás con una gran sonrisa.',
+        emoji: '🌙⭐',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 4,
+        text: 'A partir de ese día, Mía y Tomás se encontraban cada recreo en la biblioteca. Ella le prestaba cuentos de animales. Él le contaba cosas sobre las constelaciones. Un día, Tomás señaló un libro sobre animales del océano. "¿Y si leemos este juntos?", propuso. Y así lo hicieron, leyendo en voz alta, cada uno una página.',
+        emoji: '📖👫',
+        bgColor: '#e0f7fa'
+      },
+      {
+        pageNum: 5,
+        text: 'La bibliotecaria, la señorita Amparo, se fijó en los dos amigos. Un día les propuso algo especial: "¿Queréis preparar una presentación para contarle a la clase vuestro libro favorito?" Mía sintió un miedo enorme en el estómago. Pero Tomás dijo: "¡Lo haremos juntos!" Y eso lo cambió todo.',
+        emoji: '👩‍🏫💡',
+        bgColor: '#f1f8e9'
+      },
+      {
+        pageNum: 6,
+        text: 'El día de la presentación, Mía y Tomás se pusieron de pie delante de la clase. Mía habló sobre los delfines. Tomás habló sobre las estrellas de mar. Sus compañeros escucharon fascinados. Al terminar, todos aplaudieron. Mía se dio cuenta de que cuando tienes a un buen amigo a tu lado, el miedo se hace pequeño y las cosas imposibles se vuelven posibles.',
+        emoji: '🎤👏💛',
+        bgColor: '#fff9c4'
+      }
+    ],
+    vocabulary: [
+      { word: 'tímida', emoji: '🙈', hint: 'Una persona que se pone nerviosa cuando tiene que hablar con otros' },
+      { word: 'biblioteca', emoji: '📚', hint: 'Un lugar lleno de libros donde puedes leer y aprender' },
+      { word: 'constelación', emoji: '✨', hint: 'Un grupo de estrellas que forman una figura en el cielo' },
+      { word: 'presentación', emoji: '🎤', hint: 'Explicar algo delante de otras personas' },
+      { word: 'estantería', emoji: '📐', hint: 'Un mueble con baldas para poner libros u objetos' },
+      { word: 'fascinados', emoji: '😮', hint: 'Muy interesados y sorprendidos por algo' }
+    ]
+  },
+
+  {
+    id: 'camino-de-carlos',
+    title: 'El Camino de Carlos',
+    theme: 'values',
+    difficulty: 'intermediate',
+    ageMin: 7,
+    ageMax: 10,
+    coverEmoji: '🥾⛰️',
+    coverColor: '#6D4C41',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Carlos tenía ocho años y no era muy aficionado al deporte. Prefería quedarse en casa leyendo o dibujando. Pero un fin de semana, su abuelo Pepe le propuso algo diferente: "¿Qué te parece si hacemos juntos el Camino de la Sierra? Solo dos días, tú y yo." Carlos dudó, pero la cara emocionada del abuelo le hizo decir que sí.',
+        emoji: '🥾🧔',
+        bgColor: '#efebe9'
+      },
+      {
+        pageNum: 2,
+        text: 'El primer día amanecieron con el cielo naranja. Carlos llevaba una mochila con agua, fruta y un cuaderno para dibujar. El camino empezó entre pinos y encinas. Al principio todo era fácil y bonito. Pero después de una hora, Carlos empezó a sentir las piernas pesadas. "¿Cuánto falta, abuelo?" El abuelo sonrió. "Lo mejor está por llegar."',
+        emoji: '🌄🌲',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 3,
+        text: 'La cuesta se hizo más empinada. Carlos tropezó y se cayó. Tenía un poco de tierra en las rodillas y le dolían los pies. Quería rendirse. "No puedo más", dijo con voz triste. El abuelo Pepe se sentó a su lado en una roca. "¿Ves ese pino grande de allá arriba?" Carlos asintió. "No pienses en toda la cuesta. Solo llega hasta ese pino." Carlos respiró hondo y siguió.',
+        emoji: '😤🌲',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 4,
+        text: 'El truco del abuelo funcionó. De pino en pino, de roca en roca, Carlos fue subiendo sin darse cuenta. Por el camino vio un lagarto tomando el sol, un nido de pájaros entre las ramas y una mariposa enorme de alas naranjas. Sacó el cuaderno y lo dibujó todo. Caminar era mucho más interesante de lo que pensaba.',
+        emoji: '🦎🦋📒',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 5,
+        text: 'Al llegar a la cima, Carlos se quedó sin palabras. Ante ellos se extendía un paisaje enorme: valles verdes, pueblos blancos y un río que brillaba como un hilo de plata. El abuelo Pepe puso la mano en el hombro de Carlos. "¿Ves? Aquí está lo que te prometí." Carlos respiró el aire frío de la montaña y sintió que podía con todo.',
+        emoji: '⛰️🌅',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 6,
+        text: 'De vuelta en casa, Carlos pegó sus dibujos del camino en la pared de su habitación. Luego escribió en su cuaderno: "Hoy aprendí que cuando algo es difícil, no hay que mirar hasta el final. Solo hay que llegar al próximo pino." El abuelo Pepe leyó esas palabras y le dio un abrazo muy fuerte. Ya estaban planeando el siguiente camino.',
+        emoji: '📒💪🌟',
+        bgColor: '#fff9c4'
+      }
+    ],
+    vocabulary: [
+      { word: 'empinada', emoji: '⛰️', hint: 'Una cuesta muy inclinada y difícil de subir' },
+      { word: 'encinas', emoji: '🌳', hint: 'Árboles típicos de España con bellotas' },
+      { word: 'cima', emoji: '🏔️', hint: 'El punto más alto de una montaña' },
+      { word: 'esfuerzo', emoji: '💪', hint: 'Trabajar duro para conseguir algo difícil' },
+      { word: 'paisaje', emoji: '🌄', hint: 'Todo lo que se ve cuando miras a lo lejos en la naturaleza' },
+      { word: 'rendirse', emoji: '🏳️', hint: 'Parar de intentarlo porque algo es muy difícil' }
     ]
   }
 ];
@@ -198,9 +482,14 @@ const state = {
   currentStory: null,
   currentPage: 0,
   speaking: false,
-  fontSize: 'medium',         // small | medium | large | xlarge
+  fontSize: 'medium',
   activeFilter: 'all',
-  customStories: [],           // imported + generated stories
+  customStories: [],
+  ttsRate: 1.0,               // 0.5 | 0.75 | 1.0
+  ttsProvider: '',            // '' | 'google' | 'azure'
+  googleApiKey: '',
+  azureApiKey: '',
+  azureRegion: 'westeurope',
   customizerSelections: {
     name: '',
     companion: '',
@@ -248,7 +537,6 @@ const Storage = {
 
 /* ─── SECTION 3: TTS ENGINE ────────────────────────────────── */
 
-// Ordered by quality: neural/online voices first, then enhanced, then standard
 const PREFERRED_ES_VOICES = [
   'Google español',
   'Google español de Estados Unidos',
@@ -259,107 +547,212 @@ const PREFERRED_ES_VOICES = [
   'Microsoft Helena Online - Spanish (Spain)',
   'Microsoft Elvira - Spanish (Spain)',
   'Microsoft Helena - Spanish (Spain)',
-  'Mónica (Enhanced)',
-  'Mónica',
-  'Jorge (Enhanced)',
-  'Jorge',
-  'Paulina (Enhanced)',
-  'Paulina',
+  'Mónica (Enhanced)', 'Mónica',
+  'Jorge (Enhanced)', 'Jorge',
+  'Paulina (Enhanced)', 'Paulina',
 ];
 
 const TTS = {
   voice: null,
   activeSpans: [],
+  _audio: null,
+  _timers: [],
 
   init() {
     const tryLoad = () => {
       const voices = window.speechSynthesis.getVoices();
       if (!voices.length) return;
-
-      // Try preferred voices by name first
       for (const name of PREFERRED_ES_VOICES) {
         const match = voices.find(v => v.name === name);
         if (match) { this.voice = match; return; }
       }
-
-      // Fallback: online es-ES voice (online = cloud quality), then any es-ES
       this.voice =
         voices.find(v => v.lang === 'es-ES' && v.localService === false) ||
         voices.find(v => v.lang === 'es-ES') ||
-        voices.find(v => v.lang.startsWith('es')) ||
-        null;
+        voices.find(v => v.lang.startsWith('es')) || null;
     };
     tryLoad();
     window.speechSynthesis.addEventListener('voiceschanged', tryLoad);
   },
 
-  _utt(text, rate) {
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = 'es-ES';
-    utt.rate = rate;
-    utt.pitch = 1.0;
-    utt.volume = 1.0;
-    if (this.voice) utt.voice = this.voice;
-    return utt;
+  /* ── Public API ── */
+
+  async speakWord(word) {
+    this.stop();
+    if (state.ttsProvider === 'google' && state.googleApiKey) {
+      try { this._playAudio(await this._googleWord(word)); return; } catch(e) { console.warn(e); }
+    }
+    if (state.ttsProvider === 'azure' && state.azureApiKey) {
+      try { this._playAudio(await this._azureAudio(word)); return; } catch(e) { console.warn(e); }
+    }
+    this._webWord(word);
   },
 
-  speakWord(word) {
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(this._utt(word, 0.9));
-  },
-
-  readPage(text, spans) {
-    window.speechSynthesis.cancel();
+  async readPage(text, spans) {
+    this.stop();
     this.activeSpans = spans || [];
-
-    // Split into sentences so the engine handles prosody per sentence
-    const sentences = text.match(/[^.!?¡¿]+[.!?]+["»]?/g) || [text];
-    let charOffset = 0;
-    let idx = 0;
-
-    const speakNext = () => {
-      if (idx >= sentences.length || !state.speaking) {
-        this._finish();
-        return;
-      }
-      const sentence = sentences[idx];
-      const offset = charOffset;
-      const utt = this._utt(sentence.trim(), 0.92);
-
-      utt.onboundary = (e) => {
-        if (e.name !== 'word') return;
-        this.activeSpans.forEach(s => s.classList.remove('speaking'));
-        const absIdx = offset + e.charIndex;
-        const target = this.activeSpans.find(s =>
-          parseInt(s.dataset.start, 10) >= absIdx &&
-          parseInt(s.dataset.start, 10) < absIdx + (e.charLength || 20)
-        );
-        if (target) {
-          target.classList.add('speaking');
-          target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-        }
-      };
-
-      utt.onend = () => { charOffset += sentence.length; idx++; speakNext(); };
-      utt.onerror = () => this._finish();
-      window.speechSynthesis.speak(utt);
-    };
-
     state.speaking = true;
     UI.updateReadButton(true);
     this.showTTSBar(text.slice(0, 60) + (text.length > 60 ? '…' : ''));
-    speakNext();
-  },
 
-  _finish() {
-    this.activeSpans.forEach(s => s.classList.remove('speaking'));
-    state.speaking = false;
-    UI.updateReadButton(false);
-    TTS.hideTTSBar();
+    if (state.ttsProvider === 'google' && state.googleApiKey) {
+      try { await this._googlePage(text, spans); return; } catch(e) { console.warn('Google TTS failed, falling back:', e); }
+    }
+    if (state.ttsProvider === 'azure' && state.azureApiKey) {
+      try { await this._azurePage(text); return; } catch(e) { console.warn('Azure TTS failed, falling back:', e); }
+    }
+    this._webPage(text, spans);
   },
 
   stop() {
     window.speechSynthesis.cancel();
+    if (this._audio) { this._audio.pause(); this._audio = null; }
+    this._timers.forEach(t => clearTimeout(t));
+    this._timers = [];
+    this.activeSpans.forEach(s => s.classList.remove('speaking'));
+    this.activeSpans = [];
+    state.speaking = false;
+    UI.updateReadButton(false);
+    this.hideTTSBar();
+  },
+
+  /* ── Google Cloud TTS ── */
+
+  async _googlePage(text, spans) {
+    const words = text.split(/(\s+)/);
+    let ci = 0;
+    const wordData = [];
+    words.forEach(tok => {
+      if (/^\s+$/.test(tok)) { ci += tok.length; return; }
+      wordData.push({ charIdx: ci, mark: `w${wordData.length}` });
+      ci += tok.length;
+    });
+    const ssmlBody = (() => {
+      let out = ''; let wi = 0; let pos = 0;
+      words.forEach(tok => {
+        if (/^\s+$/.test(tok)) { out += tok; pos += tok.length; return; }
+        out += `<mark name="w${wi}"/>${tok}`; wi++; pos += tok.length;
+      });
+      return out;
+    })();
+    const rate = state.ttsRate;
+    const ssml = `<speak><prosody rate="${rate}">${ssmlBody}</prosody></speak>`;
+
+    const resp = await fetch(
+      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${state.googleApiKey}`,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          input: { ssml },
+          voice: { languageCode: 'es-ES', name: 'es-ES-Neural2-A' },
+          audioConfig: { audioEncoding: 'MP3' },
+          enableTimePointing: ['SSML_MARK']
+        }) }
+    );
+    if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || 'Google TTS error'); }
+    const data = await resp.json();
+    const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+
+    if (data.timepoints && spans) {
+      data.timepoints.forEach(tp => {
+        const wi = parseInt(tp.markName.slice(1));
+        const wd = wordData[wi];
+        if (!wd) return;
+        const span = spans.find(s => Math.abs(parseInt(s.dataset.start) - wd.charIdx) <= 1);
+        if (!span) return;
+        this._timers.push(setTimeout(() => {
+          if (!state.speaking) return;
+          spans.forEach(s => s.classList.remove('speaking'));
+          span.classList.add('speaking');
+          span.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }, tp.timeSeconds * 1000));
+      });
+    }
+    audio.onended = () => this._finish();
+    audio.onerror = () => this._finish();
+    this._playAudio(audio);
+  },
+
+  async _googleWord(word) {
+    const resp = await fetch(
+      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${state.googleApiKey}`,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          input: { text: word },
+          voice: { languageCode: 'es-ES', name: 'es-ES-Neural2-A' },
+          audioConfig: { audioEncoding: 'MP3', speakingRate: state.ttsRate }
+        }) }
+    );
+    if (!resp.ok) throw new Error('Google TTS error');
+    const data = await resp.json();
+    return new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+  },
+
+  /* ── Azure Neural TTS ── */
+
+  async _azurePage(text) {
+    const audio = await this._azureAudio(text);
+    audio.onended = () => this._finish();
+    audio.onerror = () => this._finish();
+    this._playAudio(audio);
+  },
+
+  async _azureAudio(text) {
+    const safe = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const ssml = `<speak version='1.0' xml:lang='es-ES'><voice name='es-ES-ElviraNeural'><prosody rate="${state.ttsRate}">${safe}</prosody></voice></speak>`;
+    const resp = await fetch(
+      `https://${state.azureRegion}.tts.speech.microsoft.com/cognitiveservices/v1`,
+      { method: 'POST',
+        headers: { 'Ocp-Apim-Subscription-Key': state.azureApiKey,
+                   'Content-Type': 'application/ssml+xml',
+                   'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3' },
+        body: ssml }
+    );
+    if (!resp.ok) throw new Error('Azure TTS error');
+    return new Audio(URL.createObjectURL(await resp.blob()));
+  },
+
+  /* ── Web Speech API fallback ── */
+
+  _webWord(word) {
+    const utt = this._utt(word, state.ttsRate * 0.9);
+    window.speechSynthesis.speak(utt);
+  },
+
+  _webPage(text, spans) {
+    const sentences = text.match(/[^.!?¡¿]+[.!?]+["»]?/g) || [text];
+    let charOffset = 0, idx = 0;
+    const next = () => {
+      if (idx >= sentences.length || !state.speaking) { this._finish(); return; }
+      const s = sentences[idx], offset = charOffset;
+      const utt = this._utt(s.trim(), state.ttsRate * 0.92);
+      utt.onboundary = (e) => {
+        if (e.name !== 'word') return;
+        spans.forEach(s => s.classList.remove('speaking'));
+        const ai = offset + e.charIndex;
+        const t = spans.find(sp => parseInt(sp.dataset.start) >= ai && parseInt(sp.dataset.start) < ai + (e.charLength || 20));
+        if (t) { t.classList.add('speaking'); t.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+      };
+      utt.onend = () => { charOffset += s.length; idx++; next(); };
+      utt.onerror = () => this._finish();
+      window.speechSynthesis.speak(utt);
+    };
+    next();
+  },
+
+  /* ── Helpers ── */
+
+  _utt(text, rate) {
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'es-ES'; utt.rate = Math.max(0.1, rate); utt.pitch = 1.0; utt.volume = 1.0;
+    if (this.voice) utt.voice = this.voice;
+    return utt;
+  },
+
+  _playAudio(audio) { this._audio = audio; audio.play(); },
+
+  _finish() {
+    this._timers.forEach(t => clearTimeout(t)); this._timers = [];
+    this._audio = null;
     this.activeSpans.forEach(s => s.classList.remove('speaking'));
     this.activeSpans = [];
     state.speaking = false;
@@ -368,15 +761,10 @@ const TTS = {
   },
 
   showTTSBar(text) {
-    const bar = document.getElementById('tts-bar');
-    const barText = document.getElementById('tts-bar-text');
-    barText.textContent = text;
-    bar.classList.remove('hidden');
+    document.getElementById('tts-bar-text').textContent = text;
+    document.getElementById('tts-bar').classList.remove('hidden');
   },
-
-  hideTTSBar() {
-    document.getElementById('tts-bar').classList.add('hidden');
-  }
+  hideTTSBar() { document.getElementById('tts-bar').classList.add('hidden'); }
 };
 
 /* ─── SECTION 4: STORY MANAGER ─────────────────────────────── */
@@ -1024,26 +1412,93 @@ function attachEventListeners() {
       setTimeout(() => { btn.textContent = '📋 Copiar esquema JSON'; }, 2000);
     }).catch(() => {});
   });
+
+  // Speed control buttons
+  document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.ttsRate = parseFloat(btn.dataset.rate);
+      Storage.saveSettings(_currentSettings());
+    });
+  });
+
+  // TTS provider selector
+  document.getElementById('tts-provider').addEventListener('change', e => {
+    const v = e.target.value;
+    document.getElementById('google-key-row').classList.toggle('hidden', v !== 'google');
+    document.getElementById('azure-key-row').classList.toggle('hidden', v !== 'azure');
+  });
+
+  // Save TTS API key
+  document.getElementById('btn-save-tts-key').addEventListener('click', () => {
+    const provider = document.getElementById('tts-provider').value;
+    const gKey = document.getElementById('google-api-key').value.trim();
+    const aKey = document.getElementById('azure-api-key').value.trim();
+    const aRegion = document.getElementById('azure-region').value.trim() || 'westeurope';
+    state.ttsProvider = provider;
+    state.googleApiKey = gKey;
+    state.azureApiKey = aKey;
+    state.azureRegion = aRegion;
+    Storage.saveSettings(_currentSettings());
+    const status = document.getElementById('tts-key-status');
+    status.className = 'tts-key-status ok';
+    status.textContent = provider
+      ? `✅ Configuración guardada (${provider === 'google' ? 'Google Cloud' : 'Azure'})`
+      : '✅ Usando el motor del navegador';
+    status.classList.remove('hidden');
+    setTimeout(() => status.classList.add('hidden'), 3000);
+  });
+}
+
+function _currentSettings() {
+  return {
+    fontSize: state.fontSize,
+    ttsRate: state.ttsRate,
+    ttsProvider: state.ttsProvider,
+    googleApiKey: state.googleApiKey,
+    azureApiKey: state.azureApiKey,
+    azureRegion: state.azureRegion
+  };
 }
 
 /* ─── SECTION 10: INIT ─────────────────────────────────────── */
 
 function init() {
-  // Load persisted data
   state.customStories = Storage.loadStories();
-  const settings = Storage.loadSettings();
-  if (settings.fontSize) state.fontSize = settings.fontSize;
+  const s = Storage.loadSettings();
+  if (s.fontSize)    state.fontSize    = s.fontSize;
+  if (s.ttsRate)     state.ttsRate     = s.ttsRate;
+  if (s.ttsProvider) state.ttsProvider = s.ttsProvider;
+  if (s.googleApiKey) state.googleApiKey = s.googleApiKey;
+  if (s.azureApiKey)  state.azureApiKey  = s.azureApiKey;
+  if (s.azureRegion)  state.azureRegion  = s.azureRegion;
 
   // Apply saved font size
   const pageText = document.getElementById('page-text');
   if (pageText) pageText.className = `font-${state.fontSize}`;
 
-  // Boot subsystems
+  // Apply saved speed button state
+  document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.classList.toggle('active', parseFloat(btn.dataset.rate) === state.ttsRate);
+  });
+
+  // Apply saved TTS provider UI
+  if (state.ttsProvider) {
+    const sel = document.getElementById('tts-provider');
+    if (sel) {
+      sel.value = state.ttsProvider;
+      document.getElementById('google-key-row').classList.toggle('hidden', state.ttsProvider !== 'google');
+      document.getElementById('azure-key-row').classList.toggle('hidden', state.ttsProvider !== 'azure');
+    }
+    if (state.googleApiKey) document.getElementById('google-api-key').value = state.googleApiKey;
+    if (state.azureApiKey)  document.getElementById('azure-api-key').value  = state.azureApiKey;
+    if (state.azureRegion)  document.getElementById('azure-region').value   = state.azureRegion;
+  }
+
   TTS.init();
   Importer.initPromptTemplates();
   attachEventListeners();
-
-  // Render initial view
   UI.renderLibrary();
   UI.showView('library');
 }
