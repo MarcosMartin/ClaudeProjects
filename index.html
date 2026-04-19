@@ -79,6 +79,13 @@
           <button id="btn-next" class="reader-btn" aria-label="Siguiente página">&#9654;</button>
         </div>
 
+        <div id="speed-control" class="speed-control">
+          <span class="speed-label">Velocidad:</span>
+          <button class="speed-btn" data-rate="0.5" aria-label="Muy lento">🐌 Muy lento</button>
+          <button class="speed-btn" data-rate="0.75" aria-label="Lento">🐢 Lento</button>
+          <button class="speed-btn active" data-rate="1.0" aria-label="Normal">🐇 Normal</button>
+        </div>
+
         <div id="tts-hint" class="tts-hint">
           <span>💡</span> Toca cualquier palabra para escucharla
         </div>
@@ -214,6 +221,33 @@
         </div>
 
         <div id="import-message" class="import-message hidden"></div>
+
+        <div class="import-card" id="tts-settings-card">
+          <h3>🎤 Audio de alta calidad</h3>
+          <p class="guide-text">Conecta con Google Cloud o Azure para voces más naturales (gratuito hasta cierto límite). La clave se guarda solo en tu dispositivo.</p>
+          <div class="tts-provider-row">
+            <label for="tts-provider">Proveedor:</label>
+            <select id="tts-provider">
+              <option value="">Navegador (sin clave)</option>
+              <option value="google">Google Cloud TTS — 1 millón chars/mes gratis</option>
+              <option value="azure">Azure Neural TTS — 500 000 chars/mes gratis</option>
+            </select>
+          </div>
+          <div id="google-key-row" class="api-key-row hidden">
+            <label for="google-api-key">Clave API de Google:</label>
+            <input type="password" id="google-api-key" placeholder="AIza...">
+            <p class="guide-text">Obtén tu clave en <strong>console.cloud.google.com</strong> → APIs → Text-to-Speech API → Credenciales</p>
+          </div>
+          <div id="azure-key-row" class="api-key-row hidden">
+            <label for="azure-api-key">Clave de Azure:</label>
+            <input type="password" id="azure-api-key" placeholder="Clave de suscripción...">
+            <label for="azure-region">Región:</label>
+            <input type="text" id="azure-region" placeholder="westeurope" value="westeurope">
+            <p class="guide-text">Obtén tu clave en <strong>portal.azure.com</strong> → Cognitive Services → Speech</p>
+          </div>
+          <button id="btn-save-tts-key" class="btn-primary">💾 Guardar configuración</button>
+          <div id="tts-key-status" class="tts-key-status hidden"></div>
+        </div>
 
         <div class="import-card" id="my-stories-section">
           <h3>📚 Mis Cuentos Importados</h3>
