@@ -627,61 +627,26 @@ const TTS = {
   /* ── Google Cloud TTS ── */
 
   async _googlePage(text, spans) {
-    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const words = text.split(/(\s+)/);
-    let ci = 0;
-    const wordData = [];
-    let ssmlBody = '', wi = 0;
-    words.forEach(tok => {
-      if (/^\s+$/.test(tok)) { ssmlBody += tok; ci += tok.length; return; }
-      wordData.push({ charIdx: ci });
-      ssmlBody += `<mark name="w${wi}"/>${esc(tok)}`; wi++; ci += tok.length;
-    });
-
-    const data = await this._googleB64({
-      ssml: `<speak>${ssmlBody}</speak>`,
-      enableTimePointing: true
-    });
-
-    // Schedule word highlights using precise API timepoints
-    if (data.timepoints && spans) {
-      data.timepoints.forEach(tp => {
-        const idx = parseInt(tp.markName.slice(1));
-        const wd = wordData[idx];
-        if (!wd) return;
-        const span = spans.find(s => Math.abs(parseInt(s.dataset.start) - wd.charIdx) <= 1);
-        if (!span) return;
-        this._timers.push(setTimeout(() => {
-          if (!state.speaking) return;
-          spans.forEach(s => s.classList.remove('speaking'));
-          span.classList.add('speaking');
-          span.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-        }, tp.timeSeconds * 1000));
-      });
-    }
-
-    await this._playB64(data.audioContent);
+    const b64 = await this._googleB64({ text });
+    await this._playB64(b64);
     this._finish();
   },
 
-  // Returns { audioContent, timepoints? } or just the base64 string
   async _googleB64(input) {
     const body = {
+      input: { text: input.text },
       voice: { languageCode: 'es-ES', name: 'es-ES-Neural2-A' },
       audioConfig: { audioEncoding: 'MP3', speakingRate: state.ttsRate }
     };
-    if (input.text)   body.input = { text: input.text };
-    if (input.ssml)   body.input = { ssml: input.ssml };
-    if (input.enableTimePointing) body.enableTimePointing = ['SSML_MARK'];
 
     const resp = await fetch(
-      `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${state.googleApiKey}`,
+      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${state.googleApiKey}`,
       { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
     );
     if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `HTTP ${resp.status}`); }
     const data = await resp.json();
     if (!data.audioContent) throw new Error('Google TTS: respuesta sin audio');
-    return input.enableTimePointing ? data : data.audioContent;
+    return data.audioContent;
   },
 
   /* ── Azure Neural TTS ── */
