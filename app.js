@@ -326,7 +326,7 @@ const BUILTIN_STORIES = [
       },
       {
         pageNum: 4,
-        text: 'El padre de Nico sacó la bolsa de plástico del agua con cuidado. La desenredó del aleta de Rayo sin hacerle daño. "Las bolsas de plástico son muy peligrosas para los animales del mar", explicó su padre. Nico miró la bolsa y luego miró el mar. Quería que el mar estuviera siempre limpio y lleno de vida.',
+        text: 'El padre de Nico sacó la bolsa de plástico del agua con cuidado. La desenredó de la aleta de Rayo sin hacerle daño. "Las bolsas de plástico son muy peligrosas para los animales del mar", explicó su padre. Nico miró la bolsa y luego miró el mar. Quería que el mar estuviera siempre limpio y lleno de vida.',
         emoji: '♻️🌊',
         bgColor: '#e8f5e9'
       },
@@ -378,7 +378,7 @@ const BUILTIN_STORIES = [
       },
       {
         pageNum: 3,
-        text: '"¿Puedo sentarme aquí?", preguntó Tomás en voz baja. Mía asintió. Tomás sacó un libro enorme sobre planetas y estrellas. Mía lo miró de reojo. "¿Te gustan el espacio?", preguntó al fin, sorprendiéndose a sí misma. "Es lo que más me gusta del mundo", respondió Tomás con una gran sonrisa.',
+        text: '"¿Puedo sentarme aquí?", preguntó Tomás en voz baja. Mía asintió. Tomás sacó un libro enorme sobre planetas y estrellas. Mía lo miró de reojo. "¿Te gusta el espacio?", preguntó al fin, sorprendiéndose a sí misma. "Es lo que más me gusta del mundo", respondió Tomás con una gran sonrisa.',
         emoji: '🌙⭐',
         bgColor: '#e8eaf6'
       },
@@ -555,8 +555,9 @@ const PREFERRED_ES_VOICES = [
 const TTS = {
   voice: null,
   activeSpans: [],
-  _audio: null,
   _timers: [],
+  _ctx: null,       // AudioContext — stays unlocked after first user gesture
+  _source: null,    // AudioBufferSourceNode currently playing
 
   init() {
     const tryLoad = () => {
@@ -579,13 +580,17 @@ const TTS = {
 
   async speakWord(word) {
     this.stop();
+    // Create AudioContext synchronously inside this gesture call
+    this._ensureCtx();
     if (state.ttsProvider === 'google' && state.googleApiKey) {
-      try { this._playAudio(await this._googleWord(word)); return; } catch(e) { console.warn(e); }
+      try { await this._playB64(await this._googleB64({ text: word })); return; }
+      catch(e) { console.warn('Google word TTS:', e.message); }
     }
     if (state.ttsProvider === 'azure' && state.azureApiKey) {
-      try { this._playAudio(await this._azureAudio(word)); return; } catch(e) { console.warn(e); }
+      try { await this._playB64(await this._azureB64(word)); return; }
+      catch(e) { console.warn('Azure word TTS:', e.message); }
     }
-    this._webWord(word);
+    this._webSpeak(word, null);
   },
 
   async readPage(text, spans) {
@@ -594,23 +599,24 @@ const TTS = {
     state.speaking = true;
     UI.updateReadButton(true);
     this.showTTSBar(text.slice(0, 60) + (text.length > 60 ? '…' : ''));
+    // Create AudioContext synchronously while still inside the click handler
+    this._ensureCtx();
 
     if (state.ttsProvider === 'google' && state.googleApiKey) {
       try { await this._googlePage(text, spans); return; }
-      catch(e) { console.error('Google TTS error:', e); UI.showTTSError(`Google TTS: ${e.message}`); }
+      catch(e) { console.error('Google TTS:', e.message); UI.showTTSError(e.message); }
     }
     if (state.ttsProvider === 'azure' && state.azureApiKey) {
       try { await this._azurePage(text); return; }
-      catch(e) { console.error('Azure TTS error:', e); UI.showTTSError(`Azure TTS: ${e.message}`); }
+      catch(e) { console.error('Azure TTS:', e.message); UI.showTTSError(e.message); }
     }
-    this._webPage(text, spans);
+    this._webSpeak(text, spans);
   },
 
   stop() {
     window.speechSynthesis.cancel();
-    if (this._audio) { this._audio.pause(); this._audio = null; }
-    this._timers.forEach(t => clearTimeout(t));
-    this._timers = [];
+    if (this._source) { try { this._source.stop(); } catch(e) {} this._source = null; }
+    this._timers.forEach(t => clearTimeout(t)); this._timers = [];
     this.activeSpans.forEach(s => s.classList.remove('speaking'));
     this.activeSpans = [];
     state.speaking = false;
@@ -621,47 +627,27 @@ const TTS = {
   /* ── Google Cloud TTS ── */
 
   async _googlePage(text, spans) {
+    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const words = text.split(/(\s+)/);
     let ci = 0;
     const wordData = [];
+    let ssmlBody = '', wi = 0;
     words.forEach(tok => {
-      if (/^\s+$/.test(tok)) { ci += tok.length; return; }
-      wordData.push({ charIdx: ci, mark: `w${wordData.length}` });
-      ci += tok.length;
+      if (/^\s+$/.test(tok)) { ssmlBody += tok; ci += tok.length; return; }
+      wordData.push({ charIdx: ci });
+      ssmlBody += `<mark name="w${wi}"/>${esc(tok)}`; wi++; ci += tok.length;
     });
 
-    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const ssmlBody = (() => {
-      let out = ''; let wi = 0;
-      words.forEach(tok => {
-        if (/^\s+$/.test(tok)) { out += tok; return; }
-        out += `<mark name="w${wi}"/>${esc(tok)}`; wi++;
-      });
-      return out;
-    })();
-    // Speed goes in audioConfig.speakingRate, NOT in SSML <prosody>
-    const ssml = `<speak>${ssmlBody}</speak>`;
+    const data = await this._googleB64({
+      ssml: `<speak>${ssmlBody}</speak>`,
+      enableTimePointing: true
+    });
 
-    const resp = await fetch(
-      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${state.googleApiKey}`,
-      { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          input: { ssml },
-          voice: { languageCode: 'es-ES', name: 'es-ES-Neural2-A' },
-          audioConfig: { audioEncoding: 'MP3', speakingRate: state.ttsRate },
-          enableTimePointing: ['SSML_MARK']
-        }) }
-    );
-    if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || 'Google TTS error'); }
-    const data = await resp.json();
-    if (!data.audioContent) throw new Error('No audioContent in response');
-
-    const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
-
+    // Schedule word highlights using precise API timepoints
     if (data.timepoints && spans) {
       data.timepoints.forEach(tp => {
-        const wi = parseInt(tp.markName.slice(1));
-        const wd = wordData[wi];
+        const idx = parseInt(tp.markName.slice(1));
+        const wd = wordData[idx];
         if (!wd) return;
         const span = spans.find(s => Math.abs(parseInt(s.dataset.start) - wd.charIdx) <= 1);
         if (!span) return;
@@ -673,39 +659,41 @@ const TTS = {
         }, tp.timeSeconds * 1000));
       });
     }
-    audio.onended = () => this._finish();
-    audio.onerror = () => this._finish();
-    this._playAudio(audio);
+
+    await this._playB64(data.audioContent);
+    this._finish();
   },
 
-  async _googleWord(word) {
+  // Returns { audioContent, timepoints? } or just the base64 string
+  async _googleB64(input) {
+    const body = {
+      voice: { languageCode: 'es-ES', name: 'es-ES-Neural2-A' },
+      audioConfig: { audioEncoding: 'MP3', speakingRate: state.ttsRate }
+    };
+    if (input.text)   body.input = { text: input.text };
+    if (input.ssml)   body.input = { ssml: input.ssml };
+    if (input.enableTimePointing) body.enableTimePointing = ['SSML_MARK'];
+
     const resp = await fetch(
       `https://texttospeech.googleapis.com/v1/text:synthesize?key=${state.googleApiKey}`,
-      { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          input: { text: word },
-          voice: { languageCode: 'es-ES', name: 'es-ES-Neural2-A' },
-          audioConfig: { audioEncoding: 'MP3', speakingRate: state.ttsRate }
-        }) }
+      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
     );
-    if (!resp.ok) throw new Error('Google TTS error');
+    if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `HTTP ${resp.status}`); }
     const data = await resp.json();
-    if (!data.audioContent) throw new Error('No audioContent');
-    return new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+    if (!data.audioContent) throw new Error('Google TTS: respuesta sin audio');
+    return input.enableTimePointing ? data : data.audioContent;
   },
 
   /* ── Azure Neural TTS ── */
 
   async _azurePage(text) {
-    const audio = await this._azureAudio(text);
-    audio.onended = () => this._finish();
-    audio.onerror = () => this._finish();
-    this._playAudio(audio);
+    await this._playB64(await this._azureB64(text));
+    this._finish();
   },
 
-  async _azureAudio(text) {
-    const safe = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const ssml = `<speak version='1.0' xml:lang='es-ES'><voice name='es-ES-ElviraNeural'><prosody rate="${state.ttsRate}">${safe}</prosody></voice></speak>`;
+  async _azureB64(text) {
+    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const ssml = `<speak version='1.0' xml:lang='es-ES'><voice name='es-ES-ElviraNeural'><prosody rate="${state.ttsRate}">${esc(text)}</prosody></voice></speak>`;
     const resp = await fetch(
       `https://${state.azureRegion}.tts.speech.microsoft.com/cognitiveservices/v1`,
       { method: 'POST',
@@ -714,55 +702,69 @@ const TTS = {
                    'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3' },
         body: ssml }
     );
-    if (!resp.ok) throw new Error('Azure TTS error');
-    return new Audio(URL.createObjectURL(await resp.blob()));
+    if (!resp.ok) throw new Error(`Azure TTS: HTTP ${resp.status}`);
+    // Convert blob → base64
+    const blob = await resp.blob();
+    return new Promise((res, rej) => {
+      const fr = new FileReader();
+      fr.onload = () => res(fr.result.split(',')[1]);
+      fr.onerror = rej;
+      fr.readAsDataURL(blob);
+    });
+  },
+
+  /* ── AudioContext playback (bypasses autoplay policy) ── */
+
+  _ensureCtx() {
+    if (!this._ctx) this._ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (this._ctx.state === 'suspended') this._ctx.resume();
+  },
+
+  async _playB64(b64) {
+    const raw = atob(b64);
+    const bytes = new Uint8Array(raw.length);
+    for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+    const decoded = await this._ctx.decodeAudioData(bytes.buffer);
+    if (this._source) { try { this._source.stop(); } catch(e) {} }
+    const src = this._ctx.createBufferSource();
+    src.buffer = decoded;
+    src.connect(this._ctx.destination);
+    this._source = src;
+    return new Promise(resolve => { src.onended = resolve; src.start(0); });
   },
 
   /* ── Web Speech API fallback ── */
 
-  _webWord(word) {
-    const utt = this._utt(word, state.ttsRate * 0.9);
-    window.speechSynthesis.speak(utt);
-  },
+  _webSpeak(text, spans) {
+    // 50 ms delay avoids Chrome/Edge bug where speak() after cancel() is ignored
+    setTimeout(() => {
+      if (!state.speaking && spans) return;
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.lang = 'es-ES';
+      utt.rate = Math.max(0.1, state.ttsRate * 0.9);
+      utt.pitch = 1.0; utt.volume = 1.0;
+      if (this.voice) utt.voice = this.voice;
 
-  _webPage(text, spans) {
-    const sentences = text.match(/[^.!?¡¿]+[.!?]+["»]?/g) || [text];
-    let charOffset = 0, idx = 0;
-    const next = () => {
-      if (idx >= sentences.length || !state.speaking) { this._finish(); return; }
-      const s = sentences[idx], offset = charOffset;
-      const utt = this._utt(s.trim(), state.ttsRate * 0.92);
       utt.onboundary = (e) => {
-        if (e.name !== 'word') return;
+        if (e.name !== 'word' || !spans) return;
         spans.forEach(s => s.classList.remove('speaking'));
-        const ai = offset + e.charIndex;
-        const t = spans.find(sp => parseInt(sp.dataset.start) >= ai && parseInt(sp.dataset.start) < ai + (e.charLength || 20));
+        const t = spans.find(sp =>
+          parseInt(sp.dataset.start) >= e.charIndex &&
+          parseInt(sp.dataset.start) < e.charIndex + (e.charLength || 20)
+        );
         if (t) { t.classList.add('speaking'); t.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
       };
-      utt.onend = () => { charOffset += s.length; idx++; next(); };
-      utt.onerror = () => this._finish();
+      utt.onend = () => this._finish();
+      utt.onerror = (e) => { console.error('Web Speech error:', e.error); this._finish(); };
       window.speechSynthesis.speak(utt);
-    };
-    next();
+    }, 50);
   },
 
-  /* ── Helpers ── */
-
-  _utt(text, rate) {
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = 'es-ES'; utt.rate = Math.max(0.1, rate); utt.pitch = 1.0; utt.volume = 1.0;
-    if (this.voice) utt.voice = this.voice;
-    return utt;
-  },
-
-  _playAudio(audio) {
-    this._audio = audio;
-    audio.play().catch(e => { console.error('Audio play() rejected:', e); this._finish(); });
-  },
+  /* ── Shared helpers ── */
 
   _finish() {
+    if (this._source) { try { this._source.stop(); } catch(e) {} this._source = null; }
     this._timers.forEach(t => clearTimeout(t)); this._timers = [];
-    this._audio = null;
     this.activeSpans.forEach(s => s.classList.remove('speaking'));
     this.activeSpans = [];
     state.speaking = false;
@@ -776,6 +778,7 @@ const TTS = {
   },
   hideTTSBar() { document.getElementById('tts-bar').classList.add('hidden'); }
 };
+
 
 /* ─── SECTION 4: STORY MANAGER ─────────────────────────────── */
 
