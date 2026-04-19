@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Aprende a leer en español con cuentos interactivos para niños">
+  <meta name="theme-color" content="#FF6B6B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>CuentoMágico 📚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="app-header">
+      <button id="btn-back" class="btn-icon hidden" aria-label="Volver atrás">
+        <span>&#8592;</span>
+      </button>
+      <div id="header-title">
+        <span class="logo-text">CuentoMágico</span>
+      </div>
+      <div class="header-actions">
+        <button id="btn-font" class="btn-icon" aria-label="Cambiar tamaño de letra" title="Tamaño de letra">
+          <span>Aa</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ═══ VIEW: LIBRARY ═══ -->
+    <main id="view-library" class="view active">
+      <div class="view-inner">
+        <div class="section-header">
+          <h2 class="section-title">¿Qué cuento quieres leer hoy?</h2>
+          <div class="filter-scroll">
+            <button class="filter-btn active" data-filter="all">✨ Todos</button>
+            <button class="filter-btn" data-filter="nature">🌿 Naturaleza</button>
+            <button class="filter-btn" data-filter="animals">🦊 Animales</button>
+            <button class="filter-btn" data-filter="travel">✈️ Viajes</button>
+            <button class="filter-btn" data-filter="culture">🎨 Cultura</button>
+            <button class="filter-btn" data-filter="music">🎵 Música</button>
+            <button class="filter-btn" data-filter="friendship">💛 Amistad</button>
+            <button class="filter-btn" data-filter="values">⭐ Valores</button>
+          </div>
+        </div>
+        <div id="story-grid" class="story-grid"></div>
+        <div id="no-stories" class="empty-state hidden">
+          <span class="empty-emoji">📭</span>
+          <p>No hay cuentos en esta categoría todavía.</p>
+          <p>¡Importa o crea uno!</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══ VIEW: READER ═══ -->
+    <main id="view-reader" class="view hidden">
+      <div id="reader-container">
+        <div id="reader-top-bar">
+          <h2 id="reader-story-title"></h2>
+          <span id="page-indicator" class="page-badge"></span>
+        </div>
+
+        <div id="page-illustration" role="img" aria-label="Ilustración del cuento"></div>
+
+        <div id="page-text-container">
+          <div id="page-text"></div>
+        </div>
+
+        <div id="reader-controls">
+          <button id="btn-prev" class="reader-btn" aria-label="Página anterior">&#9664;</button>
+          <button id="btn-read-aloud" class="reader-btn btn-read-aloud" aria-label="Leer en voz alta">
+            <span id="read-icon">🔊</span>
+            <span id="read-label">Leer</span>
+          </button>
+          <button id="btn-next" class="reader-btn" aria-label="Siguiente página">&#9654;</button>
+        </div>
+
+        <div id="tts-hint" class="tts-hint">
+          <span>💡</span> Toca cualquier palabra para escucharla
+        </div>
+
+        <div id="vocab-section" class="hidden">
+          <h3 class="vocab-title">📝 Palabras del cuento</h3>
+          <div id="vocab-list" class="vocab-grid"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══ VIEW: CUSTOMIZER ═══ -->
+    <main id="view-customizer" class="view hidden">
+      <div class="view-inner">
+        <div class="section-header">
+          <h2 class="section-title">✨ Crea tu Cuento</h2>
+          <p class="section-subtitle">Elige los ingredientes y ¡la magia hará el resto!</p>
+        </div>
+
+        <div id="customizer-form">
+          <!-- Step 1: Name -->
+          <div class="custom-step" id="step-name">
+            <div class="step-label"><span class="step-num">1</span> ¿Cómo se llama el protagonista?</div>
+            <div class="name-grid">
+              <button class="name-btn" data-name="Luna">🌙 Luna</button>
+              <button class="name-btn" data-name="Mateo">⭐ Mateo</button>
+              <button class="name-btn" data-name="Sofía">🌸 Sofía</button>
+              <button class="name-btn" data-name="Pablo">🎵 Pablo</button>
+              <button class="name-btn" data-name="Noa">🌿 Noa</button>
+              <button class="name-btn" data-name="Leo">🦁 Leo</button>
+              <button class="name-btn" data-name="Maya">🦋 Maya</button>
+              <button class="name-btn" data-name="Nico">🌊 Nico</button>
+            </div>
+            <div class="custom-input-row">
+              <label for="custom-name">O escribe un nombre:</label>
+              <input type="text" id="custom-name" placeholder="Nombre propio..." maxlength="15" autocomplete="off">
+            </div>
+          </div>
+
+          <!-- Step 2: Companion -->
+          <div class="custom-step" id="step-companion">
+            <div class="step-label"><span class="step-num">2</span> ¿Qué amigo acompañará la aventura?</div>
+            <div class="option-grid">
+              <button class="option-btn" data-key="companion" data-value="un zorro" data-emoji="🦊">🦊<br>Zorro</button>
+              <button class="option-btn" data-key="companion" data-value="un conejo" data-emoji="🐰">🐰<br>Conejo</button>
+              <button class="option-btn" data-key="companion" data-value="una tortuga" data-emoji="🐢">🐢<br>Tortuga</button>
+              <button class="option-btn" data-key="companion" data-value="un pájaro" data-emoji="🐦">🐦<br>Pájaro</button>
+              <button class="option-btn" data-key="companion" data-value="un gato" data-emoji="🐱">🐱<br>Gato</button>
+              <button class="option-btn" data-key="companion" data-value="una mariposa" data-emoji="🦋">🦋<br>Mariposa</button>
+              <button class="option-btn" data-key="companion" data-value="un erizo" data-emoji="🦔">🦔<br>Erizo</button>
+              <button class="option-btn" data-key="companion" data-value="un búho" data-emoji="🦉">🦉<br>Búho</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Place -->
+          <div class="custom-step" id="step-place">
+            <div class="step-label"><span class="step-num">3</span> ¿Dónde ocurre la aventura?</div>
+            <div class="option-grid">
+              <button class="option-btn" data-key="place" data-value="el bosque" data-emoji="🌲">🌲<br>Bosque</button>
+              <button class="option-btn" data-key="place" data-value="la playa" data-emoji="🏖️">🏖️<br>Playa</button>
+              <button class="option-btn" data-key="place" data-value="las montañas" data-emoji="⛰️">⛰️<br>Montañas</button>
+              <button class="option-btn" data-key="place" data-value="el jardín" data-emoji="🌻">🌻<br>Jardín</button>
+              <button class="option-btn" data-key="place" data-value="el río" data-emoji="🏞️">🏞️<br>Río</button>
+              <button class="option-btn" data-key="place" data-value="el pueblo" data-emoji="🏡">🏡<br>Pueblo</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Value -->
+          <div class="custom-step" id="step-value">
+            <div class="step-label"><span class="step-num">4</span> ¿Qué valor aprenderá?</div>
+            <div class="option-grid">
+              <button class="option-btn" data-key="value" data-value="que compartir hace feliz a todos" data-emoji="🤝">🤝<br>Compartir</button>
+              <button class="option-btn" data-key="value" data-value="que con esfuerzo todo es posible" data-emoji="💪">💪<br>Esfuerzo</button>
+              <button class="option-btn" data-key="value" data-value="que hay que cuidar la naturaleza" data-emoji="🌍">🌍<br>Naturaleza</button>
+              <button class="option-btn" data-key="value" data-value="que la amistad es el mejor tesoro" data-emoji="💛">💛<br>Amistad</button>
+              <button class="option-btn" data-key="value" data-value="que ser amable cambia el mundo" data-emoji="🌟">🌟<br>Amabilidad</button>
+              <button class="option-btn" data-key="value" data-value="que la curiosidad abre puertas" data-emoji="🔑">🔑<br>Curiosidad</button>
+            </div>
+          </div>
+
+          <div id="customizer-preview" class="hidden">
+            <div class="preview-card">
+              <div id="preview-cover"></div>
+              <div id="preview-info"></div>
+            </div>
+          </div>
+
+          <button id="btn-create-story" class="btn-primary btn-large" disabled>
+            ✨ ¡Crear mi Cuento!
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══ VIEW: IMPORTER ═══ -->
+    <main id="view-importer" class="view hidden">
+      <div class="view-inner">
+        <div class="section-header">
+          <h2 class="section-title">📥 Importar Cuento</h2>
+          <p class="section-subtitle">Añade cuentos generados por inteligencia artificial</p>
+        </div>
+
+        <div class="import-card">
+          <h3>📁 Subir archivo JSON</h3>
+          <div id="drop-zone" class="drop-zone">
+            <span class="drop-icon">📂</span>
+            <p>Arrastra un archivo <strong>.json</strong> aquí</p>
+            <span class="drop-or">o</span>
+            <label class="btn-secondary" for="file-input">Seleccionar archivo</label>
+            <input type="file" id="file-input" accept=".json" hidden>
+          </div>
+        </div>
+
+        <div class="import-card">
+          <h3>📋 Pegar JSON directamente</h3>
+          <textarea id="json-paste" placeholder='Pega aquí el JSON del cuento...'></textarea>
+          <button id="btn-import-json" class="btn-primary">📥 Importar cuento</button>
+        </div>
+
+        <div class="import-card">
+          <h3>🤖 Generar cuentos con IA</h3>
+          <p class="guide-text">Usa este formato para pedirle a una IA que cree cuentos:</p>
+          <div class="prompt-template">
+            <p><strong>Ejemplo de instrucción para la IA:</strong></p>
+            <blockquote id="ai-prompt-template"></blockquote>
+            <button id="btn-copy-prompt" class="btn-secondary">📋 Copiar instrucción</button>
+          </div>
+          <details class="json-schema-details">
+            <summary>Ver formato JSON esperado</summary>
+            <pre id="format-example" class="code-block"></pre>
+            <button id="btn-copy-format" class="btn-secondary">📋 Copiar esquema JSON</button>
+          </details>
+        </div>
+
+        <div id="import-message" class="import-message hidden"></div>
+
+        <div class="import-card" id="my-stories-section">
+          <h3>📚 Mis Cuentos Importados</h3>
+          <div id="imported-stories-list"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══ BOTTOM NAVIGATION ═══ -->
+    <nav id="bottom-nav" aria-label="Navegación principal">
+      <button class="nav-btn active" data-view="library" aria-label="Biblioteca de cuentos">
+        <span class="nav-icon">📚</span>
+        <span class="nav-label">Cuentos</span>
+      </button>
+      <button class="nav-btn" data-view="customizer" aria-label="Crear cuento">
+        <span class="nav-icon">✨</span>
+        <span class="nav-label">Crear</span>
+      </button>
+      <button class="nav-btn" data-view="importer" aria-label="Importar cuento">
+        <span class="nav-icon">📥</span>
+        <span class="nav-label">Importar</span>
+      </button>
+    </nav>
+
+    <!-- ═══ STORY COMPLETE MODAL ═══ -->
+    <div id="modal-complete" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-box">
+        <div class="modal-emoji">🎉</div>
+        <h2>¡Muy bien!</h2>
+        <p>Has terminado de leer</p>
+        <p id="modal-story-title" class="modal-story-name"></p>
+        <div class="modal-stars">⭐⭐⭐</div>
+        <button id="btn-finish-story" class="btn-primary btn-large">📚 Ver más cuentos</button>
+      </div>
+    </div>
+
+    <!-- ═══ TTS SPEAKING INDICATOR ═══ -->
+    <div id="tts-bar" class="tts-bar hidden">
+      <span class="tts-wave">🔊</span>
+      <span id="tts-bar-text"></span>
+      <button id="btn-stop-tts" aria-label="Parar la lectura">✕</button>
+    </div>
+
+  </div><!-- #app -->
+
+  <script src="app.js"></script>
+</body>
+</html>
