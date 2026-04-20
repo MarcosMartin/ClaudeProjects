@@ -470,6 +470,152 @@ const BUILTIN_STORIES = [
   }
 ];
 
+/* ─── SHARED VOCABULARY (fallback for any story word) ─────── */
+
+const SHARED_VOCAB = {
+  // Nature
+  'bosque':      { emoji: '🌲', hint: 'Lugar con muchos árboles donde viven animales' },
+  'árbol':       { emoji: '🌳', hint: 'Planta muy grande con tronco, ramas y hojas' },
+  'árboles':     { emoji: '🌳', hint: 'Plantas muy grandes con tronco, ramas y hojas' },
+  'río':         { emoji: '🏞️', hint: 'Agua que corre entre montañas y llega al mar' },
+  'agua':        { emoji: '💧', hint: 'Líquido transparente que bebemos y llena los ríos' },
+  'sol':         { emoji: '☀️', hint: 'Estrella enorme que nos da luz y calor' },
+  'luna':        { emoji: '🌙', hint: 'Astro redondo que brilla de noche en el cielo' },
+  'flor':        { emoji: '🌸', hint: 'Parte bonita y colorida de las plantas' },
+  'flores':      { emoji: '🌸', hint: 'Partes bonitas y coloridas de las plantas' },
+  'hojas':       { emoji: '🍃', hint: 'Partes verdes y planas que crecen en las ramas' },
+  'hoja':        { emoji: '🍃', hint: 'Parte verde y plana que crece en las ramas' },
+  'piedras':     { emoji: '🪨', hint: 'Trozos de roca que encontramos en el suelo' },
+  'piedra':      { emoji: '🪨', hint: 'Trozo de roca dura que encontramos en el suelo' },
+  'montaña':     { emoji: '⛰️', hint: 'Gran elevación de tierra que sube mucho al cielo' },
+  'montañas':    { emoji: '⛰️', hint: 'Grandes elevaciones de tierra que suben al cielo' },
+  'playa':       { emoji: '🏖️', hint: 'Orilla del mar con arena donde podemos bañarnos' },
+  'mar':         { emoji: '🌊', hint: 'Gran masa de agua salada que cubre la Tierra' },
+  'cielo':       { emoji: '🌤️', hint: 'Espacio azul que vemos arriba durante el día' },
+  'nube':        { emoji: '☁️', hint: 'Masa blanca o gris de agua en el cielo' },
+  'nubes':       { emoji: '☁️', hint: 'Masas blancas o grises de agua en el cielo' },
+  'tierra':      { emoji: '🌍', hint: 'El suelo donde crecen las plantas y vivimos nosotros' },
+  'arena':       { emoji: '🏜️', hint: 'Granos muy pequeños de roca que hay en las playas' },
+  'lluvia':      { emoji: '🌧️', hint: 'Agua que cae del cielo desde las nubes' },
+  'viento':      { emoji: '💨', hint: 'Aire que se mueve y hace mover las hojas' },
+  'camino':      { emoji: '🛤️', hint: 'Sendero o ruta que seguimos para ir a algún lugar' },
+  'jardín':      { emoji: '🌻', hint: 'Lugar con flores, plantas y hierba bien cuidado' },
+  'semilla':     { emoji: '🌱', hint: 'Pequeña bolita de la que nace una planta' },
+  'semillas':    { emoji: '🌱', hint: 'Pequeñas bolitas de las que nacen las plantas' },
+  'raíces':      { emoji: '🌿', hint: 'Partes de la planta que crecen bajo la tierra' },
+  'ramas':       { emoji: '🌿', hint: 'Partes del árbol que salen del tronco' },
+  'hierba':      { emoji: '🌿', hint: 'Plantas pequeñas y verdes que cubren el suelo' },
+  'arbustos':    { emoji: '🌿', hint: 'Plantas más pequeñas que los árboles, con muchas ramas' },
+  // Animals
+  'zorro':       { emoji: '🦊', hint: 'Animal de pelo rojo y cola muy esponjosa' },
+  'zorrita':     { emoji: '🦊', hint: 'Zorro pequeño de pelo rojo y cola esponjosa' },
+  'erizo':       { emoji: '🦔', hint: 'Animalito pequeño con púas en la espalda' },
+  'conejo':      { emoji: '🐰', hint: 'Animal con orejas largas que da saltos' },
+  'conejos':     { emoji: '🐰', hint: 'Animales con orejas largas que dan saltos' },
+  'conejitos':   { emoji: '🐰', hint: 'Conejos muy pequeños y tiernos' },
+  'pájaro':      { emoji: '🐦', hint: 'Animal con alas y plumas que puede volar' },
+  'pájaros':     { emoji: '🐦', hint: 'Animales con alas y plumas que pueden volar' },
+  'mariposa':    { emoji: '🦋', hint: 'Insecto con alas de muchos colores que vuela' },
+  'ardilla':     { emoji: '🐿️', hint: 'Animalito que sube a los árboles y come nueces' },
+  'ardillas':    { emoji: '🐿️', hint: 'Animalitos que suben a los árboles y comen nueces' },
+  'delfín':      { emoji: '🐬', hint: 'Animal marino muy inteligente y juguetón' },
+  'pez':         { emoji: '🐟', hint: 'Animal que vive en el agua y nada con aletas' },
+  'peces':       { emoji: '🐟', hint: 'Animales que viven en el agua y nadan con aletas' },
+  'tortuga':     { emoji: '🐢', hint: 'Animal que lleva su casa en la espalda y va despacio' },
+  'gato':        { emoji: '🐱', hint: 'Animal doméstico que ronronea y le gustan los ratones' },
+  'ratones':     { emoji: '🐭', hint: 'Animalitos pequeños con bigotes y cola larga' },
+  'búho':        { emoji: '🦉', hint: 'Pájaro que duerme de día y caza de noche' },
+  // People & family
+  'abuela':      { emoji: '👵', hint: 'Mamá de tu papá o de tu mamá' },
+  'amiga':       { emoji: '👧', hint: 'Persona con quien te llevas muy bien y juegas' },
+  'amigo':       { emoji: '👦', hint: 'Persona con quien te llevas muy bien y juegas' },
+  'amigos':      { emoji: '👫', hint: 'Personas con quienes nos llevamos muy bien' },
+  'niña':        { emoji: '👧', hint: 'Persona joven del sexo femenino' },
+  'niño':        { emoji: '👦', hint: 'Persona joven del sexo masculino' },
+  'niños':       { emoji: '👧👦', hint: 'Personas jóvenes que aún están creciendo' },
+  // Places
+  'casa':        { emoji: '🏠', hint: 'Lugar donde vivimos y dormimos con nuestra familia' },
+  'pueblo':      { emoji: '🏡', hint: 'Lugar pequeño con pocas casas donde vive poca gente' },
+  'mercado':     { emoji: '🏪', hint: 'Lugar donde la gente vende y compra cosas' },
+  'biblioteca':  { emoji: '📚', hint: 'Lugar lleno de libros donde podemos leer y aprender' },
+  'plaza':       { emoji: '🏛️', hint: 'Espacio abierto en el centro del pueblo o ciudad' },
+  'puente':      { emoji: '🌉', hint: 'Construcción sobre el agua para pasar al otro lado' },
+  'madriguera':  { emoji: '🕳️', hint: 'Casa que cavan los conejos bajo la tierra' },
+  // Food
+  'moras':       { emoji: '🫐', hint: 'Frutas pequeñas y oscuras muy dulces' },
+  'naranja':     { emoji: '🍊', hint: 'Fruta redonda de color naranja llena de vitaminas' },
+  'naranjas':    { emoji: '🍊', hint: 'Frutas redondas de color naranja llenas de vitaminas' },
+  'zumo':        { emoji: '🥤', hint: 'Líquido que sacamos de las frutas exprimiéndolas' },
+  'higo':        { emoji: '🍈', hint: 'Fruta dulce y pequeña de color oscuro' },
+  'frutas':      { emoji: '🍎', hint: 'Alimentos dulces que crecen en los árboles' },
+  'verduras':    { emoji: '🥦', hint: 'Plantas que comemos y nos ayudan a crecer sanos' },
+  // Music
+  'música':      { emoji: '🎵', hint: 'Sonidos bonitos organizados que nos gustan escuchar' },
+  'canción':     { emoji: '🎶', hint: 'Música con palabras que se puede cantar' },
+  'canciones':   { emoji: '🎶', hint: 'Músicas con palabras que se pueden cantar' },
+  'guitarra':    { emoji: '🎸', hint: 'Instrumento musical de cuerda que se toca con los dedos' },
+  'tambor':      { emoji: '🥁', hint: 'Instrumento que se golpea con palos para hacer ritmo' },
+  'flauta':      { emoji: '🎵', hint: 'Instrumento musical largo en el que se sopla' },
+  'concierto':   { emoji: '🎪', hint: 'Espectáculo en el que músicos tocan para el público' },
+  'ritmo':       { emoji: '🎵', hint: 'La medida del tiempo en la música, como un latido' },
+  'melodía':     { emoji: '🎼', hint: 'Conjunto de notas musicales que forman una canción' },
+  // Common adjectives
+  'brillante':   { emoji: '✨', hint: 'Que brilla mucho y da mucha luz' },
+  'brillantes':  { emoji: '✨', hint: 'Que brillan mucho y dan mucha luz' },
+  'cristalino':  { emoji: '💧', hint: 'Muy limpio y transparente, como el agua pura' },
+  'dulce':       { emoji: '🍯', hint: 'Que tiene un sabor rico, como el azúcar o la miel' },
+  'feliz':       { emoji: '😊', hint: 'Que siente alegría y está contento' },
+  'triste':      { emoji: '😢', hint: 'Que tiene pena y ganas de llorar' },
+  'pequeño':     { emoji: '🔹', hint: 'Que tiene poco tamaño, no es grande' },
+  'pequeña':     { emoji: '🔹', hint: 'Que tiene poco tamaño, no es grande' },
+  'grande':      { emoji: '🔷', hint: 'Que tiene mucho tamaño, ocupa mucho espacio' },
+  'rápido':      { emoji: '⚡', hint: 'Que se mueve o hace las cosas muy deprisa' },
+  'lento':       { emoji: '🐢', hint: 'Que se mueve o hace las cosas muy despacio' },
+  'caliente':    { emoji: '🔥', hint: 'Que tiene mucha temperatura, que quema un poco' },
+  'frío':        { emoji: '❄️', hint: 'Que tiene poca temperatura, lo contrario de caliente' },
+  'oscuro':      { emoji: '🌑', hint: 'Lugar donde hay poca o ninguna luz' },
+  'dorada':      { emoji: '🌟', hint: 'De color dorado, como el oro o el sol' },
+  'dorado':      { emoji: '🌟', hint: 'De color dorado, como el oro o el sol' },
+  'jugosas':     { emoji: '💧', hint: 'Que tienen mucho jugo dentro, muy ricas de comer' },
+  'ácidas':      { emoji: '🍋', hint: 'Con un sabor fuerte y un poco agrio, como el limón' },
+  // Common verbs (infinitive and common forms)
+  'explorar':    { emoji: '🔭', hint: 'Ir a descubrir lugares nuevos que no conocemos' },
+  'ayudar':      { emoji: '🤝', hint: 'Hacer algo bueno para que otra persona esté mejor' },
+  'compartir':   { emoji: '🤲', hint: 'Dar una parte de lo nuestro a otra persona' },
+  'aprender':    { emoji: '📖', hint: 'Conocer cosas nuevas que no sabíamos antes' },
+  'crecer':      { emoji: '🌱', hint: 'Hacerse más grande, más alto o más sabio' },
+  'cuidar':      { emoji: '💚', hint: 'Proteger y atender bien a alguien o algo' },
+  'cantar':      { emoji: '🎤', hint: 'Hacer música con la voz' },
+  'bailar':      { emoji: '💃', hint: 'Moverse al ritmo de la música' },
+  'saltar':      { emoji: '🦘', hint: 'Elevarse del suelo con las piernas con fuerza' },
+  'correr':      { emoji: '🏃', hint: 'Moverse muy rápido con las piernas' },
+  'volar':       { emoji: '🦋', hint: 'Moverse por el aire, como los pájaros' },
+  'nadar':       { emoji: '🏊', hint: 'Moverse dentro del agua' },
+  'sembrar':     { emoji: '🌱', hint: 'Poner semillas en la tierra para que nazcan plantas' },
+  // Concepts & values
+  'alegría':     { emoji: '😊', hint: 'Sentimiento muy feliz que nos hace sonreír' },
+  'amistad':     { emoji: '💛', hint: 'El cariño bonito que sentimos por nuestros amigos' },
+  'esfuerzo':    { emoji: '💪', hint: 'Trabajar muy fuerte para conseguir algo difícil' },
+  'corazón':     { emoji: '❤️', hint: 'Órgano que late en nuestro pecho y siente emociones' },
+  'sueño':       { emoji: '💭', hint: 'Lo que pensamos o vemos cuando dormimos; también un deseo' },
+  'sueños':      { emoji: '💭', hint: 'Imágenes que vemos al dormir; también nuestros deseos' },
+  'tesoro':      { emoji: '💎', hint: 'Algo muy valioso e importante para nosotros' },
+  'magia':       { emoji: '✨', hint: 'Poder especial que hace que ocurran cosas increíbles' },
+  'mágico':      { emoji: '✨', hint: 'Que tiene magia o parece imposible pero ocurre' },
+  'mágica':      { emoji: '✨', hint: 'Que tiene magia o parece imposible pero ocurre' },
+  'aventura':    { emoji: '🗺️', hint: 'Viaje emocionante lleno de sorpresas y descubrimientos' },
+  'sorpresa':    { emoji: '🎁', hint: 'Algo inesperado que no sabíamos que iba a pasar' },
+  'especial':    { emoji: '⭐', hint: 'Que es diferente y más importante que los demás' },
+  'importante':  { emoji: '⭐', hint: 'Que tiene mucho valor y no se debe olvidar' },
+  'imposible':   { emoji: '🚫', hint: 'Algo que parece que no se puede hacer o conseguir' },
+  // Objects
+  'libro':       { emoji: '📖', hint: 'Objeto con muchas páginas y palabras para leer' },
+  'libros':      { emoji: '📚', hint: 'Objetos con muchas páginas y palabras para leer' },
+  'mochila':     { emoji: '🎒', hint: 'Bolsa que llevamos en la espalda para guardar cosas' },
+  'paraguas':    { emoji: '☂️', hint: 'Objeto que abrimos para protegernos de la lluvia' },
+  'linterna':    { emoji: '🔦', hint: 'Aparato pequeño que da luz cuando hay oscuridad' },
+};
+
 /* ─── SECTION 2: APP STATE + STORAGE ──────────────────────── */
 
 const STORAGE_KEYS = {
@@ -940,20 +1086,16 @@ const Reader = {
           // Second tap within 300ms → speak meaning
           clearTimeout(tapTimer);
           tapTimer = null;
-          const vocab = (state.currentStory.vocabulary || []).find(
-            v => v.word.toLowerCase() === span.dataset.word.toLowerCase()
-          );
+          const w = span.dataset.word.toLowerCase();
+          const vocab =
+            (state.currentStory.vocabulary || []).find(v => v.word.toLowerCase() === w) ||
+            SHARED_VOCAB[w] && { word: span.dataset.word, ...SHARED_VOCAB[w] };
           if (vocab) {
             TTS.speakWord(vocab.hint);
             showWordTooltip(span, vocab);
           } else {
-            // No vocabulary entry — speak the word and show it in the tooltip
             TTS.speakWord(span.dataset.word);
-            showWordTooltip(span, {
-              word: span.dataset.word,
-              emoji: '🔊',
-              hint: '¡Escucha cómo suena esta palabra!'
-            });
+            showWordTooltip(span, { word: span.dataset.word, emoji: '📖', hint: span.dataset.word });
           }
         } else {
           // First tap — wait to see if double-tap follows
