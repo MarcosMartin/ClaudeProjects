@@ -874,6 +874,51 @@ blockquote {
 #btn-stop-tts:hover { background: rgba(255,255,255,0.35); }
 
 /* ════════════════════════════════════════════
+   WORD MEANING TOOLTIP
+   ════════════════════════════════════════════ */
+.word-tooltip {
+  position: fixed;
+  bottom: calc(var(--nav-h) + 76px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #fff;
+  border: 3px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 88vw;
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  animation: tooltipPop 0.22s ease forwards;
+}
+.word-tooltip.hidden { display: none !important; }
+@keyframes tooltipPop {
+  from { opacity: 0; transform: translateX(-50%) translateY(14px) scale(0.92); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0)    scale(1);    }
+}
+#word-tooltip-emoji {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+#word-tooltip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+#word-tooltip-word {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+#word-tooltip-hint {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* ════════════════════════════════════════════
    HIDDEN UTILITY
    ════════════════════════════════════════════ */
 .hidden { display: none !important; }

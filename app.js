@@ -884,6 +884,22 @@ const UI = {
   }
 };
 
+/* ─── WORD TOOLTIP ─────────────────────────────────────────── */
+
+let _tooltipTimer = null;
+
+function showWordTooltip(span, vocab) {
+  const tooltip = document.getElementById('word-tooltip');
+  document.getElementById('word-tooltip-emoji').textContent = vocab.emoji || '📖';
+  document.getElementById('word-tooltip-word').textContent = vocab.word;
+  document.getElementById('word-tooltip-hint').textContent = vocab.hint;
+
+  tooltip.classList.remove('hidden');
+
+  clearTimeout(_tooltipTimer);
+  _tooltipTimer = setTimeout(() => tooltip.classList.add('hidden'), 5000);
+}
+
 /* ─── SECTION 6: READER ────────────────────────────────────── */
 
 const Reader = {
@@ -915,9 +931,19 @@ const Reader = {
     const container = document.getElementById('page-text');
     container.innerHTML = this.buildWordSpans(page.text);
 
-    // Attach word-click listeners
+    // Attach word listeners: single-click speaks word, double-click speaks meaning
     container.querySelectorAll('.word-span').forEach(span => {
       span.addEventListener('click', () => TTS.speakWord(span.dataset.word));
+      span.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        const vocab = (state.currentStory.vocabulary || []).find(
+          v => v.word.toLowerCase() === span.dataset.word.toLowerCase()
+        );
+        if (vocab) {
+          TTS.speakWord(vocab.hint);
+          showWordTooltip(span, vocab);
+        }
+      });
     });
 
     // Nav buttons
@@ -1273,6 +1299,12 @@ function attachEventListeners() {
   document.getElementById('btn-back').addEventListener('click', () => {
     UI.showView('library');
     UI.renderLibrary();
+  });
+
+  // Dismiss word tooltip on tap
+  document.getElementById('word-tooltip').addEventListener('click', () => {
+    document.getElementById('word-tooltip').classList.add('hidden');
+    clearTimeout(_tooltipTimer);
   });
 
   // Font size toggle (cycles small → medium → large → xlarge → small)
