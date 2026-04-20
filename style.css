@@ -329,6 +329,7 @@ a { color: inherit; text-decoration: none; }
   padding: 1px 2px;
   transition: background var(--transition), color var(--transition);
   position: relative;
+  touch-action: manipulation; /* prevents double-tap zoom on mobile */
 }
 .word-span:hover {
   background: var(--accent);

@@ -931,17 +931,28 @@ const Reader = {
     const container = document.getElementById('page-text');
     container.innerHTML = this.buildWordSpans(page.text);
 
-    // Attach word listeners: single-click speaks word, double-click speaks meaning
+    // Attach word listeners: single-tap speaks word, double-tap speaks meaning
+    // Using click timing instead of dblclick — works on both touch and mouse
     container.querySelectorAll('.word-span').forEach(span => {
-      span.addEventListener('click', () => TTS.speakWord(span.dataset.word));
-      span.addEventListener('dblclick', (e) => {
-        e.preventDefault();
-        const vocab = (state.currentStory.vocabulary || []).find(
-          v => v.word.toLowerCase() === span.dataset.word.toLowerCase()
-        );
-        if (vocab) {
-          TTS.speakWord(vocab.hint);
-          showWordTooltip(span, vocab);
+      let tapTimer = null;
+      span.addEventListener('click', (e) => {
+        if (tapTimer) {
+          // Second tap within 300ms → speak meaning
+          clearTimeout(tapTimer);
+          tapTimer = null;
+          const vocab = (state.currentStory.vocabulary || []).find(
+            v => v.word.toLowerCase() === span.dataset.word.toLowerCase()
+          );
+          if (vocab) {
+            TTS.speakWord(vocab.hint);
+            showWordTooltip(span, vocab);
+          }
+        } else {
+          // First tap — wait to see if double-tap follows
+          tapTimer = setTimeout(() => {
+            tapTimer = null;
+            TTS.speakWord(span.dataset.word);
+          }, 300);
         }
       });
     });
