@@ -467,6 +467,832 @@ const BUILTIN_STORIES = [
       { word: 'paisaje', emoji: '🌄', hint: 'Todo lo que se ve cuando miras a lo lejos en la naturaleza' },
       { word: 'rendirse', emoji: '🏳️', hint: 'Parar de intentarlo porque algo es muy difícil' }
     ]
+  },
+
+  // ── inspired by Luca ──────────────────────────────────────────
+  {
+    id: 'marco-mar-estrellas',
+    title: 'Marco y el Mar de las Estrellas',
+    theme: 'travel',
+    difficulty: 'beginner',
+    ageMin: 6,
+    ageMax: 9,
+    coverEmoji: '🌊⭐',
+    coverColor: '#1565C0',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Marco vivía en un arrecife de coral muy profundo del mar Mediterráneo. Su familia de espíritus del mar le había enseñado que la superficie era peligrosa y llena de misterios. Pero todas las noches, Marco nadaba hasta las rocas y observaba las estrellas desde debajo del agua, brillando como diamantes a través de las olas. "¿Cómo será el mundo de arriba?", se preguntaba cada vez que las veía.',
+        emoji: '🌊🌟',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 2,
+        text: 'Un día, una red de pescar cayó desde un bote y atrapó una cesta de frutas. Marco nadó curioso hasta ella. Al asomarse a la superficie, vio a una niña de ojos verdes intentando recuperar su cesta desde la orilla. "¡Hola!", gritó ella sin asustarse. "¡Soy Lucía! ¿Eres un duende del mar?". Marco, sorprendido de que no le tuviera miedo, respondió tímidamente: "Soy Marco. ¿Cómo se llama eso amarillo que tienes ahí?". "¡Un limón!", dijo ella riéndose.',
+        emoji: '🎣👧',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 3,
+        text: 'Lucía iba cada tarde a la orilla a enseñar a Marco cosas del mundo de arriba: el sabor del pan recién hecho, el olor de los pinos, la sensación del viento en la cara. Marco le escuchaba con los ojos muy abiertos, fascinado por todo. A cambio, él le describía el fondo del mar: las ciudades de coral, los peces de colores imposibles y los jardines de anémonas que bailaban con la corriente.',
+        emoji: '🌅🐟',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 4,
+        text: 'Cierto día, Marco se atrevió a salir del agua completamente por primera vez. Al tocar tierra, sus aletas se convirtieron en pies y pudo caminar. ¡Era exactamente como imaginaba! Lucía le enseñó a montar en bici por el camino del puerto, y los dos se rieron tanto que las lágrimas les corrían por las mejillas. "¡El mundo de arriba es maravilloso!", exclamó Marco.',
+        emoji: '🚲😄',
+        bgColor: '#fff3e0'
+      },
+      {
+        pageNum: 5,
+        text: 'Pero llegó el momento de que Marco volviera al mar. Su familia le echaba de menos. Lucía le miró con tristeza. "¿Volverás?", preguntó. Marco sonrió y le tendió un pequeño caracol brillante. "Cuando lo pongas en tu oído y escuches el mar, estaré pensando en ti. Y volveré cada luna llena, te lo prometo."',
+        emoji: '🐚🌙',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 6,
+        text: 'Desde entonces, cada luna llena, Marco y Lucía se encontraban en las rocas al atardecer. Él le traía perlas y algas brillantes; ella le traía pan, naranjas y libros de aventuras. Los dos habían aprendido algo importante: el mundo es mucho más grande y hermoso cuando tienes un amigo que te muestra lo que no conoces.',
+        emoji: '🌕🤝',
+        bgColor: '#e8eaf6'
+      }
+    ],
+    vocabulary: [
+      { word: 'arrecife', emoji: '🪸', hint: 'Estructura rocosa bajo el mar donde viven muchos peces y corales de colores' },
+      { word: 'superficie', emoji: '🌊', hint: 'La parte de arriba del agua, donde está el sol y el aire' },
+      { word: 'anémonas', emoji: '🌸', hint: 'Plantas del mar que parecen flores y se mueven suavemente con el agua' },
+      { word: 'fascinado', emoji: '😲', hint: 'Cuando algo te parece tan increíble que no puedes apartar los ojos' },
+      { word: 'caracol', emoji: '🐚', hint: 'Animal marino con una concha en espiral que guarda el sonido del mar' },
+      { word: 'promesa', emoji: '🤝', hint: 'Cuando dices que harás algo y te comprometes a cumplirlo siempre' }
+    ]
+  },
+
+  // ── inspired by Tinker Bell ────────────────────────────────────
+  {
+    id: 'alita-jardin-dormido',
+    title: 'Alita y el Jardín Dormido',
+    theme: 'nature',
+    difficulty: 'beginner',
+    ageMin: 5,
+    ageMax: 8,
+    coverEmoji: '🧚🌸',
+    coverColor: '#8E24AA',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'En el Valle de las Flores vivían las hadas de la naturaleza. Cada una tenía un don especial: Fulgora hacía brillar los relámpagos, Brisa controlaba el viento y Roca movía las piedras. Pero Alita, la más pequeña, solo podía hacer una cosa: tocar una semilla y que brotara una planta. "¡Qué poder tan aburrido!", se quejaba mientras veía a sus amigas hacer cosas espectaculares.',
+        emoji: '🧚✨',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 2,
+        text: 'Un invierno, un viento helado y malvado llamado el Viento Gris llegó al valle. Con su aliento frío, heló todas las plantas del jardín mágico hasta convertirlas en estatuas de hielo. Las flores se pusieron blancas, los árboles se quedaron sin hojas y los pájaros huyeron. El jardín, que siempre había sido el corazón de la vida de las hadas, estaba muerto.',
+        emoji: '❄️🌑',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 3,
+        text: 'Fulgora lanzó rayos contra el Viento Gris, pero rebotaron. Brisa intentó empujarlo, pero era demasiado fuerte. Roca levantó una pared de piedra, pero el viento se coló por las grietas. Ninguna de ellas pudo vencer al frío. Las hadas se reunieron tristes alrededor del jardín helado. "¿Qué hacemos ahora?", se preguntaban.',
+        emoji: '⚡💨',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 4,
+        text: 'Alita se agachó junto a una pequeña semilla que había caído al suelo antes del frío. La tomó entre sus manos y la sostuvo con ternura. Cerró los ojos y pensó en todo el calor que sentía: el calor del sol en verano, el calor de un abrazo, el calor de la amistad. Poco a poco, sus manos empezaron a brillar con una luz dorada.',
+        emoji: '🌱💛',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 5,
+        text: 'La semilla tembló, se abrió y echó un brote verde diminuto. Luego otro. Y otro. Como una ola verde que salía desde Alita hacia todas las esquinas del jardín, las plantas fueron despertando una a una. Los árboles recuperaron sus hojas, las flores volvieron a abrirse, y los pájaros regresaron cantando desde los árboles más lejanos.',
+        emoji: '🌿🐦',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 6,
+        text: 'El Viento Gris, viendo que la vida era más fuerte que su frío, se alejó derrotado. Las hadas miraron a Alita con admiración. "¡Has salvado el jardín!", dijo Fulgora. Alita sonrió tímidamente. "Cada poder tiene su momento", le dijo su amiga Brisa con cariño. "El tuyo era el más importante de todos: dar vida."',
+        emoji: '🌺🧚',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'don', emoji: '🎁', hint: 'Talento especial que solo tú tienes y que te hace único' },
+      { word: 'brote', emoji: '🌱', hint: 'La primera parte verde y pequeña que sale de una semilla al nacer' },
+      { word: 'ternura', emoji: '💛', hint: 'Cuidar algo o a alguien con mucho cariño y suavidad' },
+      { word: 'grietas', emoji: '🪨', hint: 'Aberturas pequeñas que se forman en la piedra o en la pared' },
+      { word: 'derrotado', emoji: '🏳️', hint: 'Cuando alguien ha perdido y ya no puede seguir luchando' },
+      { word: 'diminuto', emoji: '🔬', hint: 'Muy muy pequeño, casi tan pequeño que apenas se puede ver' }
+    ]
+  },
+
+  // ── inspired by The Good Dinosaur ─────────────────────────────
+  {
+    id: 'bruno-nino-selva',
+    title: 'Bruno y el Niño de la Selva',
+    theme: 'animals',
+    difficulty: 'beginner',
+    ageMin: 5,
+    ageMax: 7,
+    coverEmoji: '🦕👦',
+    coverColor: '#2E7D32',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Bruno era el dinosaurio más tímido de toda la manada. Sus hermanos rugían muy fuerte, cruzaban ríos rápidos y escalaban rocas enormes. Pero Bruno siempre se quedaba detrás, temblando. "¡Ven, Bruno!", le llamaban, pero él se escondía detrás de los helechos gigantes. "Tengo miedo", admitía en voz muy bajita.',
+        emoji: '🦕😰',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 2,
+        text: 'Un día, una tormenta enorme separó a Bruno de su familia. Cuando la lluvia paró, estaba solo en un bosque desconocido. Bruno lloró un poco, luego respiró hondo. "Tengo que ser valiente", se dijo. Entonces escuchó un ruido entre los arbustos y vio aparecer una criatura muy pequeña, cubierta de barro, con dos patas y sin pelo. Era un niño humano, también perdido.',
+        emoji: '⛈️👦',
+        bgColor: '#fff3e0'
+      },
+      {
+        pageNum: 3,
+        text: 'Al principio los dos se miraron con desconfianza. Bruno gruñó. El niño se escondió detrás de un tronco. Pero cuando el niño se cayó al intentar cruzar un arroyo y Bruno le ayudó con su cola, los dos se dieron cuenta de que eran amigos. El niño le llamó "Dino" y Bruno al niño le llamó "Pequeño". No hablaban el mismo idioma, pero se entendían perfectamente.',
+        emoji: '🤝🌿',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 4,
+        text: 'Juntos enfrentaron muchos peligros: cruzaron un río de piedras resbaladizas, subieron una colina llena de barro y espantaron a un grupo de pájaros enormes que querían robarles la comida. Cada vez que Bruno tenía miedo, miraba a Pequeño. Y cada vez que Pequeño tenía miedo, miraba a Bruno. Y los dos seguían adelante.',
+        emoji: '🦕🏔️',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 5,
+        text: 'Después de tres días de camino, Bruno reconoció una montaña con forma de volcán: ¡era la montaña de su manada! Y cerca de allí, Pequeño vio las huellas de su propio pueblo en el barro. Llegaron a una bifurcación en el camino. Los dos amigos se miraron, sabiendo que tenían que separarse.',
+        emoji: '🌋🛤️',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 6,
+        text: 'Bruno puso su nariz contra la frente de Pequeño, como hacían los dinosaurios cuando se querían mucho. El niño le abrazó tan fuerte como pudo. Luego cada uno se fue por su camino. Bruno volvió con su manada mucho más valiente que antes. Había aprendido que el miedo no desaparece, pero los amigos te dan el valor que necesitas para seguir.',
+        emoji: '💚🦕',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'manada', emoji: '🦕', hint: 'Grupo de animales del mismo tipo que viven y viajan juntos' },
+      { word: 'helechos', emoji: '🌿', hint: 'Plantas verdes de hojas grandes que crecen en los bosques húmedos' },
+      { word: 'desconfianza', emoji: '🤨', hint: 'Cuando no sabes si puedes fiarte de alguien que no conoces' },
+      { word: 'arroyo', emoji: '💧', hint: 'Río muy pequeño y poco profundo que corre entre las piedras' },
+      { word: 'bifurcación', emoji: '🛤️', hint: 'Lugar donde un camino se divide en dos direcciones diferentes' },
+      { word: 'valiente', emoji: '💪', hint: 'Que hace las cosas aunque tenga miedo, porque sabe que es lo correcto' }
+    ]
+  },
+
+  // ── inspired by Toy Story ──────────────────────────────────────
+  {
+    id: 'teodoro-robot-cohete',
+    title: 'Teodoro y el Robot Cohete',
+    theme: 'friendship',
+    difficulty: 'beginner',
+    ageMin: 5,
+    ageMax: 8,
+    coverEmoji: '🧸🚀',
+    coverColor: '#FF7043',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Teodoro era un oso de peluche marrón con un lazo rojo al cuello. Llevaba años siendo el juguete favorito de Diego: dormían juntos, viajaban juntos y siempre se sentaban en el mismo lado de la cama. "Soy el juguete número uno", pensaba Teodoro muy orgulloso. Pero un día de cumpleaños, todo cambió.',
+        emoji: '🧸❤️',
+        bgColor: '#fff3e0'
+      },
+      {
+        pageNum: 2,
+        text: 'Diego llegó corriendo al cuarto con una caja enorme. Dentro había un robot plateado con luces de colores, ruedas a motor y una voz que decía: "¡Yo soy Cohete, explorador del espacio!". Diego lo puso en el lugar preferido de Teodoro: la almohada. Teodoro cayó al suelo rodando y terminó debajo de la cama, en la oscuridad.',
+        emoji: '🤖🚀',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 3,
+        text: '"Ese robot no es especial", pensó Teodoro enfadado. "No sabe los cuentos de Diego, ni conoce su canción favorita, ni sabe cuándo necesita un abrazo". Pero Cohete brillaba mucho y hacía muchos ruidos, y Diego solo hablaba de él. Teodoro decidió que tenía que hacer algo para recuperar su lugar.',
+        emoji: '😤🧸',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 4,
+        text: 'Una noche, Teodoro intentó esconder a Cohete detrás del armario. Pero Cohete se despertó y, en vez de enfadarse, dijo algo inesperado: "¿Por qué me escondes? ¿Hice algo malo?". Teodoro se quedó quieto. "Diego me quería a mí antes de que llegaras", contestó. Cohete parpadeó sus luces suavemente. "Entonces debes saber muchas cosas de él que yo no sé. ¿Me las enseñas?".',
+        emoji: '🤖💬',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 5,
+        text: 'A partir de esa noche, Teodoro le enseñó a Cohete los secretos de Diego: que le daba miedo la oscuridad, que le gustaba que le contaran cuentos dos veces, y que siempre quería a su oso cuando estaba enfermo. Cohete escuchaba con atención y encendía sus luces suavemente para no asustar. Los dos juguetes empezaron a trabajar juntos.',
+        emoji: '🧸🤖',
+        bgColor: '#f1f8e9'
+      },
+      {
+        pageNum: 6,
+        text: 'Diego pronto se dio cuenta de que tenía dos juguetes favoritos: uno para los abrazos y los susurros, y otro para las aventuras y las luces. "¡Sois el mejor equipo del mundo!", les dijo. Y Teodoro comprendió que el amor no se divide: se multiplica. Cuantos más amigos tienes, más feliz eres.',
+        emoji: '❤️🌟',
+        bgColor: '#fff8e1'
+      }
+    ],
+    vocabulary: [
+      { word: 'peluche', emoji: '🧸', hint: 'Juguete de tela suave relleno de algodón, muy bueno para abrazar' },
+      { word: 'almohada', emoji: '🛏️', hint: 'Cojín blando donde apoyamos la cabeza para dormir' },
+      { word: 'orgulloso', emoji: '😊', hint: 'Sentirse muy bien con algo que has hecho o con quién eres' },
+      { word: 'inesperado', emoji: '😲', hint: 'Algo que pasa de repente y no esperabas que ocurriera' },
+      { word: 'susurros', emoji: '🤫', hint: 'Palabras dichas en voz muy baja, casi sin sonido, al oído' },
+      { word: 'multiplica', emoji: '✖️', hint: 'Cuando algo crece y se hace más grande en vez de hacerse más pequeño' }
+    ]
+  },
+
+  // ── inspired by Encanto ───────────────────────────────────────
+  {
+    id: 'casa-de-los-dones',
+    title: 'La Casa de los Dones',
+    theme: 'culture',
+    difficulty: 'intermediate',
+    ageMin: 7,
+    ageMax: 10,
+    coverEmoji: '🏡✨',
+    coverColor: '#F57F17',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'En un pueblo rodeado de montañas verdes vivía la familia Montoya en una casa mágica. La abuela Petra la había construido con amor y magia muchos años atrás, y desde entonces cada nieto al cumplir cinco años recibía un don especial. Tomás podía sanar a los enfermos con sus manos, Elena hacía crecer flores con su voz, y Rodrigo era tan fuerte que movía rocas enormes.',
+        emoji: '🏡🌈',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 2,
+        text: 'Rosa era la más pequeña de todos y pronto cumpliría cinco años. La noche de su cumpleaños, toda la familia se reunió en la sala iluminada con velas de colores. La abuela Petra le tendió la mano y Rosa cerró los ojos esperando sentir la magia. Pero no pasó nada. La sala quedó en silencio.',
+        emoji: '🕯️😔',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 3,
+        text: 'Los días siguientes fueron difíciles para Rosa. "¿Por qué a mí no me llegó ningún don?", le preguntó una tarde a su abuela. La abuela Petra le acarició el pelo y dijo: "A veces los dones más grandes tardan más en aparecer. Sigue mirando con los ojos del corazón."',
+        emoji: '👵💛',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 4,
+        text: 'Rosa empezó a observar a su familia con cuidado. Notó que Tomás se cansaba de curar y nadie le preguntaba cómo estaba. Vio que Elena cantaba sola y nunca tenía con quién compartir sus canciones. Se dio cuenta de que Rodrigo cargaba con demasiado peso y nunca pedía ayuda. Entonces Rosa hizo algo sencillo: fue a hablar con cada uno de ellos.',
+        emoji: '👀❤️',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 5,
+        text: 'Organizó una cena donde Tomás pudo descansar y ser cuidado por una vez. Cantó junto a Elena y le dijo que su voz era la más bonita del mundo. Ayudó a Rodrigo a pedir ayuda a los demás en vez de cargar solo. La casa Montoya, que había empezado a agrietarse por las tensiones de la familia, fue sanando poco a poco.',
+        emoji: '🍽️🎶',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 6,
+        text: 'La abuela Petra observó todo y sonrió. Una mañana, llamó a Rosa y señaló la casa: las paredes brillaban y las grietas habían desaparecido. "Tu don es el más raro y el más poderoso", dijo. "Tú ves a las personas de verdad y las haces sentir queridas." Rosa miró a su familia reunida y comprendió que ese era el mejor don del mundo.',
+        emoji: '✨🏡',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'don', emoji: '🎁', hint: 'Talento mágico especial que una persona tiene desde que nace' },
+      { word: 'tensiones', emoji: '😬', hint: 'Cuando hay problemas y disgustos entre personas que se quieren' },
+      { word: 'agrietarse', emoji: '🪨', hint: 'Cuando algo empieza a romperse por pequeñas grietas o fisuras' },
+      { word: 'sanando', emoji: '💚', hint: 'Cuando algo que estaba roto o enfermo va mejorando poco a poco' },
+      { word: 'observar', emoji: '🔍', hint: 'Mirar con mucha atención para entender lo que está pasando' },
+      { word: 'poderoso', emoji: '⭐', hint: 'Que tiene mucha fuerza o capacidad para hacer grandes cosas' }
+    ]
+  },
+
+  // ── inspired by Mulan ─────────────────────────────────────────
+  {
+    id: 'valentia-de-valentina',
+    title: 'La Valentía de Valentina',
+    theme: 'values',
+    difficulty: 'intermediate',
+    ageMin: 7,
+    ageMax: 10,
+    coverEmoji: '🏹🌸',
+    coverColor: '#C62828',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Valentina vivía en un pueblo de las montañas donde las tradiciones eran muy antiguas. Su abuelo Lucas, el mejor arquero del valle, se había puesto muy enfermo y necesitaba medicinas que solo vendían en la ciudad lejana. El único modo de conseguirlas era ganando el Gran Torneo de Arquería, donde siempre habían participado solo los hombres del pueblo.',
+        emoji: '🏹🏔️',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 2,
+        text: 'Valentina había aprendido a disparar flechas a escondidas, entrenando en el bosque con el arco de su abuelo. Una noche, mientras cuidaba a su abuelo, tomó una decisión: participaría en el torneo disfrazada de chico. Cortó su cabello, se puso la ropa de su primo mayor y se presentó con el nombre de "Valentín".',
+        emoji: '✂️🎭',
+        bgColor: '#fff3e0'
+      },
+      {
+        pageNum: 3,
+        text: 'El entrenamiento fue duro. Los otros participantes eran más grandes y fuertes. Pero Valentina tenía algo que ellos no: la precisión. Mientras los demás disparaban con fuerza, ella disparaba con calma y exactitud. Flecha tras flecha, fue superando cada prueba del torneo. Los otros competidores murmuraban: "¿Quién es ese chico tan tranquilo?".',
+        emoji: '🎯💪',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 4,
+        text: 'En la final, cuando Valentina ganó el último tiro con los ojos casi cerrados, el sombrero se le cayó y su cabello largo quedó al descubierto. El capitán del torneo la miró furioso. "¡Una chica no puede participar!". El público guardó silencio. Valentina no se movió. "Mis flechas son las mejores. ¿Importa quién las disparó?".',
+        emoji: '😤🏹',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 5,
+        text: 'Antes de que el capitán respondiera, llegó un mensajero: una riada amenazaba el puente del pueblo y nadie sabía cómo detenerla. Sin pensarlo dos veces, Valentina cargó su arco, apuntó a las cuerdas del puente viejo y disparó tres flechas perfectas que desviaron el curso del agua. El puente quedó intacto. El pueblo, salvo.',
+        emoji: '🌊🏹',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 6,
+        text: 'El capitán bajó la cabeza en silencio. Los vecinos vitorearon a Valentina. El pueblo cambió su regla ese día: desde entonces, en el Gran Torneo participaría quien tuviera talento y corazón, sin importar si era hombre o mujer. Y el abuelo Lucas, cuando recibió sus medicinas, sonrió con orgullo. "Sabía que podías", le dijo.',
+        emoji: '🌟👵',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'arquería', emoji: '🏹', hint: 'Deporte o arte de disparar flechas con un arco' },
+      { word: 'precisión', emoji: '🎯', hint: 'Hacer algo con mucho cuidado para que salga exactamente bien' },
+      { word: 'disfrazada', emoji: '🎭', hint: 'Cuando alguien se viste y se disfraza para parecer otra persona' },
+      { word: 'riada', emoji: '🌊', hint: 'Inundación cuando el río se desborda y el agua cubre todo' },
+      { word: 'vitorearon', emoji: '🎉', hint: 'Gritar con alegría para aplaudir a alguien por lo que hizo' },
+      { word: 'intacto', emoji: '✅', hint: 'Que no ha sufrido ningún daño y está completamente entero' }
+    ]
+  },
+
+  // ── inspired by Beauty and the Beast ─────────────────────────
+  {
+    id: 'clara-gigante-bosque',
+    title: 'Clara y el Gigante del Bosque',
+    theme: 'values',
+    difficulty: 'beginner',
+    ageMin: 6,
+    ageMax: 9,
+    coverEmoji: '🌹🏰',
+    coverColor: '#6A1B9A',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'En el pueblo de Villanueva, todos sabían que en el castillo del bosque vivía un gigante terrible llamado Bruto. Nadie se atrevía a acercarse: decían que tenía cuernos, que rugía como un trueno y que convertía en piedra a quien le mirara. Los niños le tenían mucho miedo y los mayores le habían declarado el enemigo del pueblo.',
+        emoji: '🏰😨',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 2,
+        text: 'Clara tenía doce años y una curiosidad más grande que su miedo. Un invierno, mientras buscaba leña en el bosque, una tormenta le sorprendió y se perdió entre los árboles. Cuando ya no podía más del frío, vio una luz entre los árboles. Era el castillo. Clara llamó a la puerta temblando. La puerta se abrió sola.',
+        emoji: '🌨️🚪',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 3,
+        text: 'Dentro del castillo hacía calor. Había una chimenea encendida y sobre la mesa una sopa caliente. Mientras comía, escuchó unos pasos enormes. Una sombra gigantesca apareció en la puerta. Clara cerró los ojos con fuerza. Pero en vez de un rugido, escuchó una voz grave pero suave: "¿Tienes frío? ¿Quieres más pan?".',
+        emoji: '🔥🍲',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 4,
+        text: 'Clara abrió un ojo. El gigante era enorme y arrugado, con cejas muy pobladas y manos como palas. Pero sus ojos eran mansos como los de un perro viejo. "¿Eres el monstruo terrible?", preguntó Clara sin poder evitarlo. El gigante suspiró. "Eso dicen. Pero solo soy Bernardo. Llevo veinte años solo aquí porque nadie se acerca."',
+        emoji: '👁️💬',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 5,
+        text: 'Clara empezó a visitar a Bernardo cada semana. Le llevaba pan del pueblo y él le contaba historias del bosque: el nombre de cada pájaro y dónde nacía el río en primavera. El pueblo se enteró de sus visitas y la llamaron loca. "¡Te va a hacer daño!", le advertían. Pero Clara seguía yendo.',
+        emoji: '🍞🌿',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 6,
+        text: 'Un día, el hijo del alcalde cayó en el lago helado del bosque. Todos gritaban sin saber qué hacer. Bernardo, que había escuchado los gritos desde su castillo, corrió y lo sacó del agua con sus enormes brazos. Los vecinos le miraron en silencio. Entonces el alcalde se acercó y le tendió la mano. "Gracias, Bernardo." Y desde ese día, el gigante del bosque ya no estaba solo.',
+        emoji: '🤝🏰',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'curiosidad', emoji: '🔍', hint: 'Ganas de conocer y descubrir cosas nuevas que no conoces' },
+      { word: 'chimenea', emoji: '🔥', hint: 'Lugar en la pared donde se hace fuego para calentar la casa' },
+      { word: 'mansos', emoji: '🐶', hint: 'Animales o personas que son tranquilos, suaves y no hacen daño' },
+      { word: 'arrugado', emoji: '👴', hint: 'Que tiene muchas arrugas en la cara por ser mayor o por haber vivido mucho' },
+      { word: 'advertían', emoji: '⚠️', hint: 'Decirle a alguien que tenga cuidado porque puede pasar algo malo' },
+      { word: 'apariencia', emoji: '🪞', hint: 'Cómo parece alguien por fuera, aunque por dentro sea diferente' }
+    ]
+  },
+
+  // ── inspired by Frozen ────────────────────────────────────────
+  {
+    id: 'nieva-corazon-de-hielo',
+    title: 'Nieva y el Corazón de Hielo',
+    theme: 'friendship',
+    difficulty: 'beginner',
+    ageMin: 6,
+    ageMax: 9,
+    coverEmoji: '❄️☀️',
+    coverColor: '#0277BD',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Las hermanas Nieva y Sol vivían en el reino del Valle Dorado. Nieva tenía el poder de crear hielo y nieve con sus manos, y desde pequeña aprendió a ocultarlo por miedo a hacer daño. Sol, su hermana pequeña, era alegre y cálida como el sol de primavera. Las dos se querían muchísimo, pero Nieva siempre llevaba los guantes puestos, incluso en verano.',
+        emoji: '❄️🌸',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 2,
+        text: 'El día de la gran fiesta del reino, Nieva bailaba feliz con Sol cuando tropezó. En un instante, un rayo de hielo salió de su mano y congeló el suelo del salón. La gente gritó. Nieva, asustada y avergonzada, echó a correr hacia las montañas del norte. Mientras huía, sin querer, fue congelando todo el valle: los campos, los ríos, los jardines.',
+        emoji: '❄️😱',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 3,
+        text: 'Sol se despertó al día siguiente en un mundo de hielo. Los vecinos estaban asustados y culpaban a Nieva. Pero Sol no dudó ni un segundo: se abrigó bien y empezó a caminar hacia las montañas. "Mi hermana no es mala", les dijo a todos. "Solo tiene miedo."',
+        emoji: '☀️🏔️',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 4,
+        text: 'El viaje fue muy duro. Había nieve hasta las rodillas y el viento cortaba como cuchillos. Sol resbaló, se cayó y se levantó mil veces. Por la noche, el frío le calaba los huesos. Pero cada vez que pensaba en rendirse, pensaba en Nieva sola en la montaña creyendo que era un monstruo, y seguía adelante.',
+        emoji: '🌨️💪',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 5,
+        text: 'Cuando Sol encontró a Nieva en su palacio de hielo, Nieva retrocedió asustada. "¡No te acerques! ¡Te haré daño!". Sol siguió avanzando. "No me importa el frío. Me importas tú." Nieva lloró: sus lágrimas se congelaban antes de caer. "No puedo controlar mi poder. Tengo miedo de mí misma."',
+        emoji: '💙😢',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 6,
+        text: 'Sol la abrazó con todas sus fuerzas. "Yo te quiero con poderes y sin ellos. Con guantes y sin guantes. Siempre." En ese momento, algo cálido brotó del corazón de Nieva y derritió el hielo de todo el valle. Juntas bajaron de la montaña de la mano. Nieva aprendió que no tenía que esconder lo que era: con amor, hasta el hielo puede ser hermoso.',
+        emoji: '🌅❤️',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'ocultar', emoji: '🙈', hint: 'Esconder algo para que los demás no lo vean o no lo sepan' },
+      { word: 'avergonzada', emoji: '😳', hint: 'Sentir mucha vergüenza por algo que ha pasado delante de todos' },
+      { word: 'congelando', emoji: '❄️', hint: 'Cuando el agua se vuelve hielo porque hace mucho frío' },
+      { word: 'calaba', emoji: '🌧️', hint: 'Cuando el frío o la lluvia pasa a través de la ropa y llega al cuerpo' },
+      { word: 'retrocedió', emoji: '⬅️', hint: 'Moverse hacia atrás, alejarse de algo o de alguien por miedo' },
+      { word: 'derritió', emoji: '💧', hint: 'Cuando el hielo se calienta y vuelve a convertirse en agua' }
+    ]
+  },
+
+  // ── inspired by Monsters, Inc. ────────────────────────────────
+  {
+    id: 'grunon-nina-sin-miedo',
+    title: 'Gruñón y la Niña sin Miedo',
+    theme: 'friendship',
+    difficulty: 'beginner',
+    ageMin: 5,
+    ageMax: 7,
+    coverEmoji: '👾😂',
+    coverColor: '#37474F',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'En el País de los Monstruos, todos los monstruos tenían un trabajo muy importante: ir cada noche al mundo de los niños y asustarles para recoger su energía. El más temido de todos era Gruñón: enorme, peludo, con tres ojos amarillos y una boca llena de dientes torcidos. Gruñón era el campeón del susto. O eso creía él.',
+        emoji: '👾🏆',
+        bgColor: '#eceff1'
+      },
+      {
+        pageNum: 2,
+        text: 'Una noche, Gruñón abrió la puerta del armario de una niña llamada Ana. Se irguió en toda su altura, abrió los brazos y rugió con toda su fuerza: "¡BUAAAAH!". Hubo un silencio. Luego Ana encendió la luz de la mesilla, le miró de arriba abajo y dijo: "¿Y tú quién eres?". Y se rio.',
+        emoji: '😂💡',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 3,
+        text: 'Gruñón volvió al País de los Monstruos completamente desconcertado. ¡Nadie le había reído jamás! Al día siguiente volvió y rugió más fuerte. Ana aplaudió y dijo: "¡Qué divertido!". Al tercer día, sin querer, Gruñón tropezó con un juguete y cayó de bruces al suelo. Ana soltó una carcajada enorme. Y algo extraño pasó: esa risa llenó a Gruñón de una energía que nunca antes había sentido.',
+        emoji: '🤣⚡',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 4,
+        text: 'Gruñón empezó a visitar a Ana a propósito para hacerla reír. Aprendió a hacer muecas, a fingir que se caía y a sacar tres lenguas a la vez. Ana siempre esperaba su visita con ilusión. Pero el jefe de los monstruos se enteró: "¡Los monstruos deben asustar, no hacer reír!". Gruñón fue castigado.',
+        emoji: '😝🚫',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 5,
+        text: 'Sin las visitas de Gruñón, Ana se puso triste. Y algo muy raro pasó: las risas que Gruñón guardaba en su frasco especial brillaban más que todos los sustos juntos. Los otros monstruos notaron que Gruñón tenía más energía que nunca. "¿Cómo lo haces?", le preguntaron. Gruñón les contó su secreto.',
+        emoji: '✨🫙',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 6,
+        text: 'El jefe de los monstruos observó los frascos brillantes y quedó impresionado. Convocó una asamblea: "Hemos estado asustando durante siglos, pero la risa es más poderosa que el miedo." Desde ese día, los monstruos cambiaron de trabajo y fueron a hacer reír a los niños. Y Gruñón, el antiguo campeón del susto, se convirtió en el payaso más gracioso de los dos mundos.',
+        emoji: '🎉👾',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'desconcertado', emoji: '😕', hint: 'Muy confuso porque algo no pasó como esperabas' },
+      { word: 'carcajada', emoji: '😂', hint: 'Risa muy fuerte y ruidosa que sale de repente' },
+      { word: 'muecas', emoji: '😜', hint: 'Gestos graciosos que se hacen con la cara para hacer reír' },
+      { word: 'asamblea', emoji: '👥', hint: 'Reunión de muchas personas para hablar y tomar decisiones importantes' },
+      { word: 'frasco', emoji: '🫙', hint: 'Recipiente de cristal pequeño con tapa para guardar cosas' },
+      { word: 'convocó', emoji: '📢', hint: 'Llamar a un grupo de personas para una reunión importante' }
+    ]
+  },
+
+  // ── inspired by Dumbo ─────────────────────────────────────────
+  {
+    id: 'orejon-elefante-valiente',
+    title: 'Orejón, el Elefante Valiente',
+    theme: 'animals',
+    difficulty: 'beginner',
+    ageMin: 5,
+    ageMax: 7,
+    coverEmoji: '🐘✨',
+    coverColor: '#5C6BC0',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'En el Gran Circo del Sol vivía Orejón, un elefantito bebé con las orejas más grandes que nadie había visto jamás. Cuando nació, todos pensaron que era un error: sus orejas llegaban casi al suelo y le tapaban los ojos. Los otros animales del circo se reían de él. "¡Parece que lleva dos paraguas en la cabeza!", decían las cebras. Orejón escondía la cara debajo de su trompa de vergüenza.',
+        emoji: '🐘😔',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 2,
+        text: 'El domador intentó enseñar a Orejón los trucos del circo, pero sus orejas lo dificultaban todo. Cuando intentaba dar volteretas, las orejas se enredaban. Cuando quería saltar por los aros, perdía el equilibrio. "Este elefante nunca será una estrella", suspiraba el domador. Orejón se fue a dormir esa noche más triste que nunca.',
+        emoji: '🎪😢',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 3,
+        text: 'Su única amiga era Ratona, un ratón pequeño que vivía en la jaula de heno. "Tus orejas son especiales, Orejón", le decía siempre. "Algún día entenderás para qué sirven." Pero Orejón no la creía. Una noche, mientras todos dormían, él abrió sus grandes orejas al viento que entraba por la carpa y sintió algo extraño: su cuerpo se levantó del suelo unos centímetros.',
+        emoji: '🐭💛',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 4,
+        text: 'Orejón practicó en secreto cada noche, mientras Ratona le animaba desde el suelo. Poco a poco aprendió a controlar sus orejas como alas: con orejas abiertas subía, con orejas cerradas bajaba, y echando una más que la otra giraba. En pocos días ya volaba por toda la carpa sin hacer ruido, como una enorme mariposa gris.',
+        emoji: '🐘✈️',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 5,
+        text: 'Una noche de función, un cortocircuito provocó un incendio en la carpa. El fuego se extendió rápido y los animales estaban atrapados dentro. Los bomberos no llegaban. Entonces Orejón desplegó sus enormes orejas, salió volando por el techo y comenzó a abanicar con tanta fuerza que sofocó las llamas. Luego sacó a cada animal en volandas, uno a uno.',
+        emoji: '🔥🐘',
+        bgColor: '#fff3e0'
+      },
+      {
+        pageNum: 6,
+        text: 'El público, que había huido corriendo, volvió al ver volar al elefante. Aplaudieron y aplaudieron hasta quedarse sin fuerza. Las cebras que se habían reído de él bajaron la cabeza avergonzadas. Orejón aterrizó suavemente y abrazó a Ratona. "Tenías razón", le dijo. Desde esa noche, Orejón fue la mayor estrella del Gran Circo del Sol, y sus orejas, su mayor tesoro.',
+        emoji: '🌟🐘',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'volteretas', emoji: '🤸', hint: 'Piruetas en las que el cuerpo da vueltas completas por el aire' },
+      { word: 'equilibrio', emoji: '⚖️', hint: 'Mantenerse estable sin caerse, con el peso bien repartido' },
+      { word: 'cortocircuito', emoji: '⚡', hint: 'Fallo en el sistema eléctrico que puede causar chispas o incendio' },
+      { word: 'desplegó', emoji: '🦅', hint: 'Abrir algo que estaba doblado o recogido, extenderlo por completo' },
+      { word: 'sofocó', emoji: '🧯', hint: 'Apagar un fuego quitándole el aire que necesita para arder' },
+      { word: 'volandas', emoji: '🛫', hint: 'Llevar a alguien levantado en el aire, sin tocar el suelo' }
+    ]
+  },
+
+  // ── inspired by Lilo & Stitch ─────────────────────────────────
+  {
+    id: 'amigo-extrano-paloma',
+    title: 'El Amigo Extraño de Paloma',
+    theme: 'friendship',
+    difficulty: 'beginner',
+    ageMin: 6,
+    ageMax: 9,
+    coverEmoji: '💙🌺',
+    coverColor: '#00838F',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Paloma tenía nueve años y vivía con su hermana mayor Carla en una casita cerca del mar. Sus padres habían fallecido cuando era pequeña, y las dos hermanas se cuidaban la una a la otra. Paloma era alegre pero a veces muy solitaria: en el colegio los otros niños la encontraban "demasiado rara" porque coleccionaba conchas de colores y hablaba con las olas.',
+        emoji: '🌊👧',
+        bgColor: '#e0f7fa'
+      },
+      {
+        pageNum: 2,
+        text: 'Un día, en el jardín trasero, Paloma encontró algo que nunca había visto: una criatura pequeña, azul, con seis patas, dos antenas y unos ojos enormes y redondos. Estaba temblando entre las flores. Paloma se agachó despacio. "¿Estás perdido?", le preguntó. La criatura la miró fijamente y luego se ocultó detrás de una maceta. "Yo también me siento así a veces", dijo Paloma.',
+        emoji: '💙🌸',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 3,
+        text: 'La criatura, a quien Paloma llamó Azul, era muy traviesa al principio: rompió dos floreros, asustó al gato del vecino y deshizo la colada. Carla estaba desesperada. "¡Tenemos que devolverlo a donde sea que haya venido!". Pero Paloma abrazaba a Azul fuerte y decía: "Nosotras somos su familia ahora. Y la familia no abandona."',
+        emoji: '💙🏠',
+        bgColor: '#fff3e0'
+      },
+      {
+        pageNum: 4,
+        text: 'Paloma fue enseñando a Azul poco a poco: cómo comer con cuchara, cómo no asustar a la gente, cómo pedir perdón cuando algo salía mal. Azul aprendía rápido y empezó a hacer cosas buenas: arregló el grifo que goteaba, encontró las llaves perdidas de Carla y hacía reír a Paloma cuando estaba triste.',
+        emoji: '🔧😄',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 5,
+        text: 'Un día llegaron unos hombres de uniforme en una furgoneta. "La criatura es peligrosa", dijeron. "Hay que llevársela para estudiarla." Paloma se puso delante de Azul. "No se lo llevan. Es mi amigo y no ha hecho nada malo." Azul la miró y, por primera vez, pronunció una palabra: "Pa-lo-ma."',
+        emoji: '💙🛡️',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 6,
+        text: 'El jefe de los hombres, al ver la escena, bajó la cabeza. "No todos los seres extraños son peligrosos", murmuró. Dejaron ir a Azul. Esa noche, las tres —Paloma, Carla y Azul— cenaron juntas en la pequeña mesa de la cocina. Y Paloma entendió lo que siempre había sabido: la familia no se elige por cómo eres por fuera, sino por cómo te tratas por dentro.',
+        emoji: '🏠❤️',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'antenas', emoji: '📡', hint: 'Órganos largos que algunos animales tienen en la cabeza para sentir el mundo' },
+      { word: 'traviesa', emoji: '😈', hint: 'Que hace travesuras y cosas que no debe, aunque sin mala intención' },
+      { word: 'desesperada', emoji: '😩', hint: 'Cuando alguien no sabe qué hacer y está muy angustiada y preocupada' },
+      { word: 'colada', emoji: '👕', hint: 'La ropa lavada que se cuelga al sol para que se seque' },
+      { word: 'grifo', emoji: '🚿', hint: 'Aparato de metal en el lavabo o la cocina por donde sale el agua' },
+      { word: 'pronunció', emoji: '🗣️', hint: 'Cuando alguien dice una palabra claramente por primera vez' }
+    ]
+  },
+
+  // ── inspired by Ratatouille ───────────────────────────────────
+  {
+    id: 'remi-raton-chef',
+    title: 'Remi, el Ratón Chef',
+    theme: 'culture',
+    difficulty: 'intermediate',
+    ageMin: 7,
+    ageMax: 10,
+    coverEmoji: '🐭🍽️',
+    coverColor: '#E53935',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Remi era un ratón muy especial que vivía en las paredes del restaurante más famoso de Madrid. Mientras los demás ratones solo pensaban en robar queso y escapar de las ratoneras, Remi pasaba horas espiando la cocina, memorizando olores, aprendiendo qué especias van con qué ingredientes y soñando con crear un plato que dejara sin palabras a quien lo probara.',
+        emoji: '🐭👨‍🍳',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 2,
+        text: 'Un día, el ayudante de cocina nuevo, un chico torpísimo llamado Nico, dejó que se le quemara la sopa del chef. En un segundo de locura, Remi saltó a la olla y la arregló añadiendo una hoja de laurel y una pizca de pimentón. Nico no vio al ratón pero sí probó la sopa: era perfecta. "¿Cómo lo hice?", se preguntó asombrado.',
+        emoji: '🍲✨',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 3,
+        text: 'Remi tuvo una idea increíble: se escondería bajo el gorro de Nico y le guiaría tirando de su pelo para mover sus manos. Al principio fue un desastre: Nico se movía como un muñeco de madera. Pero poco a poco aprendieron a comunicarse: un tirón a la derecha significaba "añade sal", dos tirones rápidos significaban "¡aparta del fuego ya!".',
+        emoji: '🎩🤝',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 4,
+        text: 'Juntos crearon platos asombrosos. El cocido de Remi se convirtió en el más famoso de Madrid. Los clientes pedían mesa con semanas de antelación. El chef del restaurante, don Aurelio, no entendía cómo un chico tan torpe cocinaba tan bien. Sospechaba algo, pero no sabía qué.',
+        emoji: '🍛🏆',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 5,
+        text: 'Un día, don Aurelio encontró a Remi en la cocina. En vez de gritar, se agachó y le miró a los ojos. Le ofreció una cucharita de su mejor salsa. Remi la probó, pensó un momento, y corrió a la despensa a buscar tomillo seco. La mezcla resultante era sublime. Don Aurelio se quedó callado un largo rato. "Este ratón cocina mejor que yo", murmuró.',
+        emoji: '🧑‍🍳🐭',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 6,
+        text: 'Don Aurelio tomó una decisión valiente: presentó a Remi a los clientes como el "chef secreto" del restaurante. Algunos se fueron escandalizados. Pero los que se quedaron y probaron su cocina no volvieron a ir a ningún otro sitio. Remi aprendió que los sueños más imposibles no son los más locos: son los más emocionantes de perseguir.',
+        emoji: '🌟🐭',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'ratoneras', emoji: '🪤', hint: 'Trampas que se ponen en las casas para atrapar ratones' },
+      { word: 'pimentón', emoji: '🌶️', hint: 'Especia de color rojo que se hace con pimientos secos y molidos' },
+      { word: 'antelación', emoji: '📅', hint: 'Con tiempo antes de que algo pase, reservando con anticipación' },
+      { word: 'despensa', emoji: '🏪', hint: 'Cuarto o armario de la cocina donde se guardan los alimentos' },
+      { word: 'sublime', emoji: '🌟', hint: 'Algo tan bueno y tan bonito que es casi perfecto e imposible de mejorar' },
+      { word: 'escandalizados', emoji: '😱', hint: 'Muy sorprendidos y disgustados por algo que les parece muy fuera de lo normal' }
+    ]
+  },
+
+  // ── inspired by Pinocchio ─────────────────────────────────────
+  {
+    id: 'pablito-marioneta-madera',
+    title: 'Pablito, la Marioneta de Madera',
+    theme: 'values',
+    difficulty: 'beginner',
+    ageMin: 5,
+    ageMax: 8,
+    coverEmoji: '🪆❤️',
+    coverColor: '#FBC02D',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'El abuelo Pepe era un carpintero muy hábil que vivía solo en su taller lleno de serrín y madera. Un día talló la figura de un niño de madera al que llamó Pablito. Era tan bonito que el abuelo Pepe le dijo en voz alta: "¡Cómo me gustaría que fueras de verdad!". Esa noche, cuando el taller quedó a oscuras, Pablito parpadeó, se rascó la nariz y se bajó solo de la estantería.',
+        emoji: '🪵🌟',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 2,
+        text: 'El abuelo Pepe casi se cayó de la silla del susto, pero enseguida abrazó a Pablito. Pablito miraba todo con unos ojos enormes de madera pintada, tocaba las cosas y hacía preguntas sin parar. El abuelo Pepe le prometió enseñarle todo sobre el mundo. "Pero lo más importante de todo", le dijo, "es ser honesto siempre."',
+        emoji: '🤗📖',
+        bgColor: '#e8f5e9'
+      },
+      {
+        pageNum: 3,
+        text: 'Un día, Pablito rompió sin querer el jarrón favorito del abuelo. Cuando el abuelo lo preguntó, el miedo hizo que Pablito dijera: "No fui yo, fue el gato". En ese momento, su nariz de madera creció tres centímetros. Pablito se tocó la nariz asombrado. El abuelo le miró serio. "Tu nariz nunca engañará, Pablito. Solo crece cuando dices mentiras."',
+        emoji: '👃😳',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 4,
+        text: 'Pablito aprendió la lección de la nariz, pero era difícil ser honesto siempre. Cuando su amiga Lara le preguntó si le gustaba su dibujo (que era bastante feo), dijo "sí" por no hacerle daño, y su nariz creció un poco. Cuando el tendero le dio mal el cambio y Pablito no dijo nada, su nariz creció otro poco más. Cada pequeña mentira dejaba su huella.',
+        emoji: '👃📏',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 5,
+        text: 'Un día, Pablito vio a unos niños burlarse de un niño pequeño que llevaba gafas. Nadie decía nada. Pablito se plantó delante: "Eso no está bien. Y lo digo aunque sea difícil." Su nariz no se movió. Al contrario: por primera vez sintió que algo cálido le llenaba el pecho, justo donde debería estar el corazón.',
+        emoji: '🦸💛',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 6,
+        text: 'Aquella noche, el abuelo Pepe encontró a Pablito dormido con una pequeña luz brillando en su pecho de madera. A la mañana siguiente, Pablito se despertó sintiéndose diferente: más ligero, más real. "¿Qué me ha pasado?", preguntó. El abuelo sonrió. "La honestidad y la valentía de decir la verdad te han dado lo que más querías: un corazón de verdad."',
+        emoji: '❤️🌟',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'talló', emoji: '🪵', hint: 'Dar forma a la madera cortando y moldeando con herramientas especiales' },
+      { word: 'serrín', emoji: '🌫️', hint: 'Polvo fino de madera que queda cuando se corta o se sierra madera' },
+      { word: 'honesto', emoji: '🤝', hint: 'Que dice siempre la verdad aunque a veces sea difícil hacerlo' },
+      { word: 'burlarse', emoji: '😤', hint: 'Reírse de alguien de manera cruel para hacerle sentir mal' },
+      { word: 'huella', emoji: '👣', hint: 'Marca que deja algo o alguien cuando pasa, que no desaparece fácilmente' },
+      { word: 'plantó', emoji: '🦸', hint: 'Ponerse firme delante de alguien para defenderlo o defender algo justo' }
+    ]
+  },
+
+  // ── inspired by Inside Out ────────────────────────────────────
+  {
+    id: 'emociones-de-lucia',
+    title: 'Las Emociones de Lucía',
+    theme: 'values',
+    difficulty: 'intermediate',
+    ageMin: 7,
+    ageMax: 10,
+    coverEmoji: '😊😢',
+    coverColor: '#FF8F00',
+    author: 'CuentoMágico',
+    pages: [
+      {
+        pageNum: 1,
+        text: 'Lucía tenía once años y siempre había sido feliz en su pueblo: tenía amigas de toda la vida, su equipo de fútbol favorito y un árbol especial en el jardín donde trepaba a pensar. Pero un día su familia se mudó a una ciudad grande y gris que Lucía no había elegido. Dentro de su cabeza, sin que ella lo supiera, sus emociones se pusieron muy nerviosas.',
+        emoji: '📦😟',
+        bgColor: '#fff8e1'
+      },
+      {
+        pageNum: 2,
+        text: 'Las emociones de Lucía eran personajes que vivían en su mente: Alegría, una chica dorada que siempre saltaba; Tristeza, una figura azul y lenta; Miedo, que se asustaba de todo; Furia, que se ponía roja fácilmente; y Asco, que arrugaba la nariz ante lo nuevo. Cuando Lucía llegó a la nueva ciudad, Alegría intentó convencer a todos de que todo iba bien. Pero Tristeza seguía tocando los recuerdos con sus dedos.',
+        emoji: '😊😢😨',
+        bgColor: '#e8eaf6'
+      },
+      {
+        pageNum: 3,
+        text: 'El primer día de colegio fue horrible. Nadie sabía el nombre de Lucía, nadie quería jugar con ella y se perdió por los pasillos tres veces. Cuando llegó a casa, Alegría y Tristeza tuvieron una pelea tan grande que las dos se cayeron juntas al fondo de la memoria más profunda. Sin Alegría, Lucía no podía sonreír. Sin Tristeza, no podía pedir ayuda.',
+        emoji: '🏫😞',
+        bgColor: '#fce4ec'
+      },
+      {
+        pageNum: 4,
+        text: 'Los días siguientes Lucía estuvo como apagada: no hablaba mucho, no comía bien y por la noche miraba fotos de sus amigas antiguas. Sus padres se preocupaban pero no sabían qué hacer. Mientras tanto, en lo profundo de su mente, Alegría y Tristeza recorrían los pasillos de sus recuerdos intentando encontrar el camino de vuelta.',
+        emoji: '📸💭',
+        bgColor: '#e3f2fd'
+      },
+      {
+        pageNum: 5,
+        text: 'En ese viaje, Alegría descubrió algo importante: los mejores recuerdos de Lucía no eran solo alegres. Eran especiales porque antes habían sido tristes: el día que ganaron el campeonato fue maravilloso porque habían perdido muchas veces antes. El árbol favorito lo quería tanto porque una vez se había caído de él y llorado. "Necesito a Tristeza", entendió Alegría.',
+        emoji: '💛💙',
+        bgColor: '#f3e5f5'
+      },
+      {
+        pageNum: 6,
+        text: 'Juntas volvieron. Y Lucía, por primera vez desde la mudanza, se sentó con su madre y lloró. Le contó cuánto echaba de menos su vida anterior. Su madre la abrazó fuerte. "Puedes estar triste por lo que perdiste y emocionada por lo que viene. Las dos cosas a la vez." Al día siguiente, Lucía entró al colegio, buscó a una niña que también estaba sola, y le dijo: "Hola. Yo también soy nueva. ¿Jugamos?".',
+        emoji: '🌈👧',
+        bgColor: '#f1f8e9'
+      }
+    ],
+    vocabulary: [
+      { word: 'mudanza', emoji: '📦', hint: 'Cuando una familia cambia de casa y se lleva todas sus cosas' },
+      { word: 'emociones', emoji: '💛', hint: 'Lo que sientes por dentro: alegría, tristeza, miedo, enfado o amor' },
+      { word: 'recuerdos', emoji: '📸', hint: 'Imágenes y momentos del pasado que guardamos en la memoria' },
+      { word: 'memoria', emoji: '🧠', hint: 'La capacidad de recordar cosas que han pasado en nuestra vida' },
+      { word: 'campeonato', emoji: '🏆', hint: 'Competición final donde se decide quién es el mejor de todos' },
+      { word: 'echaba de menos', emoji: '💔', hint: 'Cuando extrañas a alguien o algo que ya no está contigo' }
+    ]
   }
 ];
 
