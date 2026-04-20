@@ -1043,7 +1043,74 @@ function showWordTooltip(span, vocab) {
   tooltip.classList.remove('hidden');
 
   clearTimeout(_tooltipTimer);
-  _tooltipTimer = setTimeout(() => tooltip.classList.add('hidden'), 5000);
+  _tooltipTimer = setTimeout(() => tooltip.classList.add('hidden'), 6000);
+}
+
+/* ─── RAE DICTIONARY ────────────────────────────────────────── */
+
+const RAE_CACHE_KEY = 'cm-rae-cache';
+
+function _raeCache() {
+  try { return JSON.parse(localStorage.getItem(RAE_CACHE_KEY) || '{}'); }
+  catch(e) { return {}; }
+}
+
+function _raeCacheSet(word, def) {
+  try {
+    const c = _raeCache(); c[word] = def;
+    localStorage.setItem(RAE_CACHE_KEY, JSON.stringify(c));
+  } catch(e) {}
+}
+
+function _parseRaeHtml(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const items = doc.querySelectorAll('ol > li');
+  if (!items.length) return null;
+
+  const li = items[0].cloneNode(true);
+  // Remove grammar labels and meta elements
+  li.querySelectorAll('abbr, .n_acep, .tipo, .d_amp, header').forEach(el => el.remove());
+
+  let text = li.textContent.replace(/\s+/g, ' ').trim()
+                           .replace(/^\d+[\.\s]+/, '').trim();
+  if (!text) return null;
+
+  text = text.charAt(0).toUpperCase() + text.slice(1);
+
+  // Keep first sentence only
+  const stop = text.search(/[.;]/);
+  if (stop > 10 && stop < 140) text = text.slice(0, stop + 1);
+  else if (text.length > 160) text = text.slice(0, 157) + '…';
+
+  return text;
+}
+
+async function fetchRaeDef(word) {
+  const w = word.toLowerCase();
+  const cached = _raeCache()[w];
+  if (cached !== undefined) return cached; // null means "looked up, not found"
+
+  const proxy = 'https://corsproxy.io/?';
+  try {
+    const searchUrl = proxy + encodeURIComponent(`https://dle.rae.es/data/search?w=${encodeURIComponent(w)}`);
+    const sResp = await fetch(searchUrl, { signal: AbortSignal.timeout(7000) });
+    if (!sResp.ok) { _raeCacheSet(w, null); return null; }
+
+    const sData = await sResp.json();
+    if (!sData.res?.length) { _raeCacheSet(w, null); return null; }
+
+    const id = sData.res[0].id;
+    const defUrl = proxy + encodeURIComponent(`https://dle.rae.es/data/fetch?id=${id}`);
+    const dResp = await fetch(defUrl, { signal: AbortSignal.timeout(7000) });
+    if (!dResp.ok) { _raeCacheSet(w, null); return null; }
+
+    const def = _parseRaeHtml(await dResp.text());
+    _raeCacheSet(w, def);
+    return def;
+  } catch(e) {
+    console.warn('RAE lookup:', e.message);
+    return null; // don't cache network errors — allow retry
+  }
 }
 
 /* ─── SECTION 6: READER ────────────────────────────────────── */
@@ -1077,28 +1144,57 @@ const Reader = {
     const container = document.getElementById('page-text');
     container.innerHTML = this.buildWordSpans(page.text);
 
-    // Attach word listeners: single-tap speaks word, double-tap speaks meaning
-    // Using click timing instead of dblclick — works on both touch and mouse
+    // Single-tap: speak word pronunciation
+    // Double-tap: look up definition (story vocab → RAE.es → SHARED_VOCAB fallback)
     container.querySelectorAll('.word-span').forEach(span => {
       let tapTimer = null;
-      span.addEventListener('click', (e) => {
+      span.addEventListener('click', async () => {
         if (tapTimer) {
-          // Second tap within 300ms → speak meaning
           clearTimeout(tapTimer);
           tapTimer = null;
+
           const w = span.dataset.word.toLowerCase();
-          const vocab =
-            (state.currentStory.vocabulary || []).find(v => v.word.toLowerCase() === w) ||
-            SHARED_VOCAB[w] && { word: span.dataset.word, ...SHARED_VOCAB[w] };
-          if (vocab) {
-            TTS.speakWord(vocab.hint);
-            showWordTooltip(span, vocab);
-          } else {
-            TTS.speakWord(span.dataset.word);
-            showWordTooltip(span, { word: span.dataset.word, emoji: '📖', hint: span.dataset.word });
+
+          // Priority 1: story vocabulary (hand-crafted, kid-friendly)
+          const storyVocab = (state.currentStory.vocabulary || [])
+            .find(v => v.word.toLowerCase() === w);
+          if (storyVocab) {
+            TTS.speakWord(storyVocab.hint);
+            showWordTooltip(span, storyVocab);
+            return;
           }
+
+          // Priority 2: localStorage RAE cache (instant, previously fetched)
+          const raeCache = _raeCache();
+          if (raeCache[w]) {
+            TTS.speakWord(raeCache[w]);
+            showWordTooltip(span, { word: span.dataset.word, emoji: '📖', hint: raeCache[w] });
+            return;
+          }
+
+          // Show loading state immediately while we fetch
+          showWordTooltip(span, { word: span.dataset.word, emoji: '🔍', hint: 'Buscando en el diccionario…' });
+
+          // Fetch from RAE.es
+          const raeDef = await fetchRaeDef(span.dataset.word);
+          if (raeDef) {
+            TTS.speakWord(raeDef);
+            showWordTooltip(span, { word: span.dataset.word, emoji: '📖', hint: raeDef });
+            return;
+          }
+
+          // Fallback: SHARED_VOCAB
+          const shared = SHARED_VOCAB[w];
+          if (shared) {
+            TTS.speakWord(shared.hint);
+            showWordTooltip(span, { word: span.dataset.word, ...shared });
+            return;
+          }
+
+          // Last resort: show the word itself
+          TTS.speakWord(span.dataset.word);
+          showWordTooltip(span, { word: span.dataset.word, emoji: '📖', hint: span.dataset.word });
         } else {
-          // First tap — wait to see if double-tap follows
           tapTimer = setTimeout(() => {
             tapTimer = null;
             TTS.speakWord(span.dataset.word);
