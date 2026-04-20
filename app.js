@@ -946,6 +946,14 @@ const Reader = {
           if (vocab) {
             TTS.speakWord(vocab.hint);
             showWordTooltip(span, vocab);
+          } else {
+            // No vocabulary entry — speak the word and show it in the tooltip
+            TTS.speakWord(span.dataset.word);
+            showWordTooltip(span, {
+              word: span.dataset.word,
+              emoji: '🔊',
+              hint: '¡Escucha cómo suena esta palabra!'
+            });
           }
         } else {
           // First tap — wait to see if double-tap follows
