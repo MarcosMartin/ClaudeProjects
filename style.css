@@ -338,15 +338,17 @@ a { color: inherit; text-decoration: none; }
 .word-span.speaking {
   background: var(--accent);
   color: var(--text);
-  font-weight: 800;
   border-radius: 6px;
+  outline: 2px solid var(--primary);
+  /* No font-weight change — bold shifts glyph widths and moves surrounding text */
 }
 
 /* Font size variants */
-.font-small  { --font-size: 1rem; }
-.font-medium { --font-size: 1.15rem; }
-.font-large  { --font-size: 1.35rem; }
-.font-xlarge { --font-size: 1.6rem; }
+.font-small   { --font-size: 1rem; }
+.font-medium  { --font-size: 1.15rem; }
+.font-large   { --font-size: 1.35rem; }
+.font-xlarge  { --font-size: 1.6rem; }
+.font-xxlarge { --font-size: 2rem; }
 
 /* ── Reader Controls ── */
 #reader-controls {

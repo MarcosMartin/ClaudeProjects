@@ -1673,14 +1673,27 @@ const TTS = {
   /* ── Web Speech API fallback ── */
 
   _webSpeak(text, spans) {
-    // 50 ms delay avoids Chrome/Edge bug where speak() after cancel() is ignored
+    // 100ms delay — Chrome/Edge ignore speak() called right after cancel()
     setTimeout(() => {
       if (!state.speaking && spans) return;
+      // Chrome fix: ensure synthesis is not paused before speaking
+      window.speechSynthesis.resume();
       const utt = new SpeechSynthesisUtterance(text);
       utt.lang = 'es-ES';
       utt.rate = Math.max(0.1, state.ttsRate * 0.9);
       utt.pitch = 1.0; utt.volume = 1.0;
-      if (this.voice) utt.voice = this.voice;
+      // Only assign voice if it is actually Spanish — wrong voice = wrong accent
+      if (this.voice && this.voice.lang && this.voice.lang.startsWith('es')) {
+        utt.voice = this.voice;
+      }
+
+      // Chrome keepalive: Chrome silently pauses synthesis on long texts.
+      // Poking pause+resume every 14 s keeps it alive.
+      const keepAlive = setInterval(() => {
+        if (!window.speechSynthesis.speaking) { clearInterval(keepAlive); return; }
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }, 14000);
 
       utt.onboundary = (e) => {
         if (e.name !== 'word' || !spans) return;
@@ -1689,12 +1702,13 @@ const TTS = {
           parseInt(sp.dataset.start) >= e.charIndex &&
           parseInt(sp.dataset.start) < e.charIndex + (e.charLength || 20)
         );
-        if (t) { t.classList.add('speaking'); t.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+        if (t) t.classList.add('speaking');
+        // scrollIntoView removed — caused text to jump while reading
       };
-      utt.onend = () => this._finish();
-      utt.onerror = (e) => { console.error('Web Speech error:', e.error); this._finish(); };
+      utt.onend   = () => { clearInterval(keepAlive); this._finish(); };
+      utt.onerror = (e) => { clearInterval(keepAlive); console.error('Web Speech error:', e.error); this._finish(); };
       window.speechSynthesis.speak(utt);
-    }, 50);
+    }, 100);
   },
 
   /* ── Shared helpers ── */
@@ -1939,6 +1953,33 @@ async function fetchRaeDef(word) {
   }
 }
 
+/* ─── ENGLISH TRANSLATION FALLBACK ─────────────────────────── */
+
+const EN_CACHE_KEY = 'cm-en-cache';
+
+async function fetchEnTranslation(word) {
+  const w = word.toLowerCase();
+  try {
+    const cache = JSON.parse(localStorage.getItem(EN_CACHE_KEY) || '{}');
+    if (cache[w] !== undefined) return cache[w];
+  } catch(e) {}
+  try {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(w)}&langpair=es|en`;
+    const resp = await fetch(url, { signal: AbortSignal.timeout(5000) });
+    if (!resp.ok) return null;
+    const data = await resp.json();
+    const t = data.responseData?.translatedText;
+    if (!t || t.toLowerCase() === w) return null;
+    const result = t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
+    try {
+      const cache = JSON.parse(localStorage.getItem(EN_CACHE_KEY) || '{}');
+      cache[w] = result;
+      localStorage.setItem(EN_CACHE_KEY, JSON.stringify(cache));
+    } catch(e) {}
+    return result;
+  } catch(e) { return null; }
+}
+
 /* ─── SECTION 6: READER ────────────────────────────────────── */
 
 const Reader = {
@@ -2017,9 +2058,14 @@ const Reader = {
             return;
           }
 
-          // Last resort: show the word itself
+          // Last resort: translate to English via MyMemory
+          const enTranslation = await fetchEnTranslation(span.dataset.word);
           TTS.speakWord(span.dataset.word);
-          showWordTooltip(span, { word: span.dataset.word, emoji: '📖', hint: span.dataset.word });
+          if (enTranslation) {
+            showWordTooltip(span, { word: span.dataset.word, emoji: '🇬🇧', hint: `En inglés: "${enTranslation}"` });
+          } else {
+            showWordTooltip(span, { word: span.dataset.word, emoji: '📖', hint: span.dataset.word });
+          }
         } else {
           tapTimer = setTimeout(() => {
             tapTimer = null;
@@ -2390,8 +2436,8 @@ function attachEventListeners() {
     clearTimeout(_tooltipTimer);
   });
 
-  // Font size toggle (cycles small → medium → large → xlarge → small)
-  const fontSizes = ['small', 'medium', 'large', 'xlarge'];
+  // Font size toggle (cycles small → medium → large → xlarge → xxlarge → small)
+  const fontSizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
   document.getElementById('btn-font').addEventListener('click', () => {
     const idx = fontSizes.indexOf(state.fontSize);
     state.fontSize = fontSizes[(idx + 1) % fontSizes.length];
