@@ -1324,7 +1324,7 @@ const ALPHABET = [
   { letter:'V', lower:'v', name:'uve',         word:'vaca',     emoji:'🐄', color:'#4ECDC4' },
   { letter:'W', lower:'w', name:'doble uve',   word:'wafle',    emoji:'🧇', color:'#A29BFE' },
   { letter:'X', lower:'x', name:'equis',       word:'xilófono', emoji:'🎵', color:'#FFE66D' },
-  { letter:'Y', lower:'y', name:'ye',          word:'yoyo',     emoji:'🪀', color:'#55EFC4' },
+  { letter:'Y', lower:'y', name:'i griega',   word:'yoyo',     emoji:'🪀', color:'#55EFC4' },
   { letter:'Z', lower:'z', name:'zeta',        word:'zapato',   emoji:'👟', color:'#FD79A8' },
 ];
 
@@ -2559,7 +2559,7 @@ const Learn = {
       card.addEventListener('click', () => {
         grid.querySelectorAll('.number-card').forEach(c => c.classList.remove('active'));
         card.classList.add('active');
-        TTS.speakWord(`${NUMBERS[i].num}... ${NUMBERS[i].word}`);
+        TTS.speakWord(NUMBERS[i].word);
       })
     );
   },
@@ -2572,12 +2572,12 @@ const Learn = {
       ? `${item.letter}  ${item.lower}  ·  ${item.word} ${item.emoji}`
       : `${item.num}  ·  ${item.word} ${item.emoji}`;
     this._clear();
-    TTS.speakWord(mode === 'abc' ? `${item.name}... ${item.word}` : `${item.num}... ${item.word}`);
+    TTS.speakWord(mode === 'abc' ? `${item.name}... ${item.word}` : item.word);
   },
 
   _speakCurrent() {
     const item = this._wMode === 'abc' ? ALPHABET[this._wIdx] : NUMBERS[this._wIdx];
-    TTS.speakWord(this._wMode === 'abc' ? `${item.name}... ${item.word}` : `${item.num}... ${item.word}`);
+    TTS.speakWord(this._wMode === 'abc' ? `${item.name}... ${item.word}` : item.word);
   },
 
   _initCanvas() {
