@@ -266,6 +266,10 @@
         <span class="nav-icon">✨</span>
         <span class="nav-label">Crear</span>
       </button>
+      <button class="nav-btn" data-view="learn" aria-label="Aprender ABC y números">
+        <span class="nav-icon">🔤</span>
+        <span class="nav-label">Aprender</span>
+      </button>
       <button class="nav-btn" data-view="importer" aria-label="Importar cuento">
         <span class="nav-icon">📥</span>
         <span class="nav-label">Importar</span>
@@ -283,6 +287,47 @@
         <button id="btn-finish-story" class="btn-primary btn-large">📚 Ver más cuentos</button>
       </div>
     </div>
+
+    <!-- ═══ VIEW: LEARN (ABC + 123 + Writing) ═══ -->
+    <main id="view-learn" class="view hidden">
+      <div class="view-inner">
+        <div class="learn-tabs">
+          <button class="learn-tab active" data-tab="abc">🔤 ABC</button>
+          <button class="learn-tab" data-tab="numbers">🔢 123</button>
+          <button class="learn-tab" data-tab="writing">✏️ Escribir</button>
+        </div>
+
+        <div id="tab-abc" class="tab-panel">
+          <div id="alphabet-grid" class="alphabet-grid"></div>
+        </div>
+
+        <div id="tab-numbers" class="tab-panel hidden">
+          <div id="numbers-grid" class="numbers-grid"></div>
+        </div>
+
+        <div id="tab-writing" class="tab-panel hidden">
+          <div class="writing-info">
+            <span id="writing-display">A  a  ·  abeja 🐝</span>
+          </div>
+          <div class="writing-nav">
+            <button id="btn-write-prev" class="btn-icon" aria-label="Anterior">&#9664;</button>
+            <div class="writing-mode-toggle">
+              <button class="write-mode-btn active" data-mode="abc">ABC</button>
+              <button class="write-mode-btn" data-mode="numbers">123</button>
+            </div>
+            <button id="btn-write-next" class="btn-icon" aria-label="Siguiente">&#9654;</button>
+          </div>
+          <div class="writing-area">
+            <div id="guide-letter" class="guide-letter">A</div>
+            <canvas id="writing-canvas"></canvas>
+          </div>
+          <div class="writing-actions">
+            <button id="btn-listen-letter" class="btn-secondary">🔊 Escuchar</button>
+            <button id="btn-clear-canvas" class="btn-secondary">🗑️ Borrar</button>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <!-- ═══ WORD MEANING TOOLTIP ═══ -->
     <div id="word-tooltip" class="word-tooltip hidden" role="tooltip">

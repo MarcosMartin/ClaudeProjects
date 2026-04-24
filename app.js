@@ -1296,6 +1296,62 @@ const BUILTIN_STORIES = [
   }
 ];
 
+/* ─── ALPHABET DATA ────────────────────────────────────────── */
+
+const ALPHABET = [
+  { letter:'A', lower:'a', name:'a',          word:'abeja',    emoji:'🐝', color:'#FF6B6B' },
+  { letter:'B', lower:'b', name:'be',          word:'barco',    emoji:'⛵', color:'#4ECDC4' },
+  { letter:'C', lower:'c', name:'ce',          word:'casa',     emoji:'🏠', color:'#FFE66D' },
+  { letter:'D', lower:'d', name:'de',          word:'delfín',   emoji:'🐬', color:'#A29BFE' },
+  { letter:'E', lower:'e', name:'e',           word:'estrella', emoji:'⭐', color:'#55EFC4' },
+  { letter:'F', lower:'f', name:'efe',         word:'fresa',    emoji:'🍓', color:'#FD79A8' },
+  { letter:'G', lower:'g', name:'ge',          word:'gato',     emoji:'🐱', color:'#FDCB6E' },
+  { letter:'H', lower:'h', name:'hache',       word:'helado',   emoji:'🍦', color:'#74B9FF' },
+  { letter:'I', lower:'i', name:'i',           word:'iglú',     emoji:'🏔️', color:'#A29BFE' },
+  { letter:'J', lower:'j', name:'jota',        word:'jirafa',   emoji:'🦒', color:'#FF6B6B' },
+  { letter:'K', lower:'k', name:'ka',          word:'koala',    emoji:'🐨', color:'#55EFC4' },
+  { letter:'L', lower:'l', name:'ele',         word:'luna',     emoji:'🌙', color:'#FDCB6E' },
+  { letter:'M', lower:'m', name:'eme',         word:'mariposa', emoji:'🦋', color:'#FD79A8' },
+  { letter:'N', lower:'n', name:'ene',         word:'naranja',  emoji:'🍊', color:'#4ECDC4' },
+  { letter:'Ñ', lower:'ñ', name:'eñe',         word:'ñu',       emoji:'🦬', color:'#FF6B6B' },
+  { letter:'O', lower:'o', name:'o',           word:'oso',      emoji:'🐻', color:'#A29BFE' },
+  { letter:'P', lower:'p', name:'pe',          word:'pato',     emoji:'🦆', color:'#FFE66D' },
+  { letter:'Q', lower:'q', name:'cu',          word:'queso',    emoji:'🧀', color:'#74B9FF' },
+  { letter:'R', lower:'r', name:'erre',        word:'rana',     emoji:'🐸', color:'#55EFC4' },
+  { letter:'S', lower:'s', name:'ese',         word:'sol',      emoji:'☀️', color:'#FD79A8' },
+  { letter:'T', lower:'t', name:'te',          word:'tren',     emoji:'🚂', color:'#FDCB6E' },
+  { letter:'U', lower:'u', name:'u',           word:'uva',      emoji:'🍇', color:'#FF6B6B' },
+  { letter:'V', lower:'v', name:'uve',         word:'vaca',     emoji:'🐄', color:'#4ECDC4' },
+  { letter:'W', lower:'w', name:'doble uve',   word:'wafle',    emoji:'🧇', color:'#A29BFE' },
+  { letter:'X', lower:'x', name:'equis',       word:'xilófono', emoji:'🎵', color:'#FFE66D' },
+  { letter:'Y', lower:'y', name:'ye',          word:'yoyo',     emoji:'🪀', color:'#55EFC4' },
+  { letter:'Z', lower:'z', name:'zeta',        word:'zapato',   emoji:'👟', color:'#FD79A8' },
+];
+
+const NUMBERS = [
+  { num:'0',  word:'cero',        emoji:'⭕' },
+  { num:'1',  word:'uno',         emoji:'☝️' },
+  { num:'2',  word:'dos',         emoji:'✌️' },
+  { num:'3',  word:'tres',        emoji:'🤟' },
+  { num:'4',  word:'cuatro',      emoji:'🍀' },
+  { num:'5',  word:'cinco',       emoji:'🖐️' },
+  { num:'6',  word:'seis',        emoji:'🎲' },
+  { num:'7',  word:'siete',       emoji:'🌈' },
+  { num:'8',  word:'ocho',        emoji:'🕷️' },
+  { num:'9',  word:'nueve',       emoji:'🎱' },
+  { num:'10', word:'diez',        emoji:'🔟' },
+  { num:'11', word:'once',        emoji:'⚽' },
+  { num:'12', word:'doce',        emoji:'🕛' },
+  { num:'13', word:'trece',       emoji:'🌻' },
+  { num:'14', word:'catorce',     emoji:'💝' },
+  { num:'15', word:'quince',      emoji:'⭐' },
+  { num:'16', word:'dieciséis',   emoji:'🎯' },
+  { num:'17', word:'diecisiete',  emoji:'🌟' },
+  { num:'18', word:'dieciocho',   emoji:'🦋' },
+  { num:'19', word:'diecinueve',  emoji:'🌺' },
+  { num:'20', word:'veinte',      emoji:'🎉' },
+];
+
 /* ─── SHARED VOCABULARY (fallback for any story word) ─────── */
 
 const SHARED_VOCAB = {
@@ -2412,15 +2468,180 @@ const Importer = {
   }
 };
 
-/* ─── SECTION 9: EVENT LISTENERS ───────────────────────────── */
+/* ─── SECTION 9: LEARN MODULE ──────────────────────────────── */
+
+const Learn = {
+  _ready:    false,
+  _wMode:    'abc',  // 'abc' | 'numbers'
+  _wIdx:     0,
+  _drawing:  false,
+  _lastX:    0,
+  _lastY:    0,
+  _strokeColor: '#4ECDC4',
+  _canvas:   null,
+  _ctx:      null,
+
+  init() {
+    // Resize canvas every time the tab becomes visible
+    this._resizeCanvas();
+    if (this._ready) return;
+    this._ready = true;
+
+    this._renderAlphabet();
+    this._renderNumbers();
+    this._initCanvas();
+    this._setItem(0, 'abc');
+
+    // Learn sub-tabs
+    document.querySelectorAll('.learn-tab').forEach(btn =>
+      btn.addEventListener('click', () => this._switchTab(btn.dataset.tab))
+    );
+
+    // Writing mode toggle (ABC / 123)
+    document.querySelectorAll('.write-mode-btn').forEach(btn =>
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.write-mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this._wMode = btn.dataset.mode;
+        this._wIdx  = 0;
+        this._setItem(0, this._wMode);
+      })
+    );
+
+    document.getElementById('btn-write-prev').addEventListener('click', () => {
+      const len = (this._wMode === 'abc' ? ALPHABET : NUMBERS).length;
+      this._wIdx = (this._wIdx - 1 + len) % len;
+      this._setItem(this._wIdx, this._wMode);
+    });
+    document.getElementById('btn-write-next').addEventListener('click', () => {
+      const len = (this._wMode === 'abc' ? ALPHABET : NUMBERS).length;
+      this._wIdx = (this._wIdx + 1) % len;
+      this._setItem(this._wIdx, this._wMode);
+    });
+
+    document.getElementById('btn-listen-letter').addEventListener('click', () => this._speakCurrent());
+    document.getElementById('btn-clear-canvas').addEventListener('click', () => this._clear());
+  },
+
+  _switchTab(tab) {
+    document.querySelectorAll('.learn-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('hidden', p.id !== `tab-${tab}`));
+    if (tab === 'writing') this._resizeCanvas();
+  },
+
+  _renderAlphabet() {
+    const grid = document.getElementById('alphabet-grid');
+    grid.innerHTML = ALPHABET.map((it, i) => `
+      <button class="letter-card" style="--lc:${it.color}" data-i="${i}" aria-label="${it.name}, ${it.word}">
+        <span class="lc-upper">${it.letter}</span>
+        <span class="lc-lower">${it.lower}</span>
+        <span class="lc-emoji">${it.emoji}</span>
+        <span class="lc-word">${it.word}</span>
+      </button>`).join('');
+    grid.querySelectorAll('.letter-card').forEach((card, i) =>
+      card.addEventListener('click', () => {
+        grid.querySelectorAll('.letter-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        TTS.speakWord(`${ALPHABET[i].name}... ${ALPHABET[i].word}`);
+      })
+    );
+  },
+
+  _renderNumbers() {
+    const grid = document.getElementById('numbers-grid');
+    grid.innerHTML = NUMBERS.map((it, i) => `
+      <button class="number-card" data-i="${i}" aria-label="${it.word}">
+        <span class="nc-digit">${it.num}</span>
+        <span class="nc-emoji">${it.emoji}</span>
+        <span class="nc-word">${it.word}</span>
+      </button>`).join('');
+    grid.querySelectorAll('.number-card').forEach((card, i) =>
+      card.addEventListener('click', () => {
+        grid.querySelectorAll('.number-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        TTS.speakWord(`${NUMBERS[i].num}... ${NUMBERS[i].word}`);
+      })
+    );
+  },
+
+  _setItem(idx, mode) {
+    const item = mode === 'abc' ? ALPHABET[idx] : NUMBERS[idx];
+    this._strokeColor = mode === 'abc' ? item.color : '#4ECDC4';
+    document.getElementById('guide-letter').textContent = mode === 'abc' ? item.letter : item.num;
+    document.getElementById('writing-display').textContent = mode === 'abc'
+      ? `${item.letter}  ${item.lower}  ·  ${item.word} ${item.emoji}`
+      : `${item.num}  ·  ${item.word} ${item.emoji}`;
+    this._clear();
+    TTS.speakWord(mode === 'abc' ? `${item.name}... ${item.word}` : `${item.num}... ${item.word}`);
+  },
+
+  _speakCurrent() {
+    const item = this._wMode === 'abc' ? ALPHABET[this._wIdx] : NUMBERS[this._wIdx];
+    TTS.speakWord(this._wMode === 'abc' ? `${item.name}... ${item.word}` : `${item.num}... ${item.word}`);
+  },
+
+  _initCanvas() {
+    this._canvas = document.getElementById('writing-canvas');
+    this._ctx    = this._canvas.getContext('2d');
+    this._resizeCanvas();
+
+    const pos = (e) => {
+      const r = this._canvas.getBoundingClientRect();
+      const src = e.touches ? e.touches[0] : e;
+      return [src.clientX - r.left, src.clientY - r.top];
+    };
+    const down = (e) => { e.preventDefault(); [this._lastX, this._lastY] = pos(e); this._drawing = true; };
+    const move = (e) => { e.preventDefault(); if (!this._drawing) return; const [x,y] = pos(e); this._stroke(x, y); };
+    const up   = ()  => { this._drawing = false; };
+
+    this._canvas.addEventListener('mousedown',  down);
+    this._canvas.addEventListener('mousemove',  move);
+    this._canvas.addEventListener('mouseup',    up);
+    this._canvas.addEventListener('mouseleave', up);
+    this._canvas.addEventListener('touchstart', down, { passive: false });
+    this._canvas.addEventListener('touchmove',  move, { passive: false });
+    this._canvas.addEventListener('touchend',   up);
+  },
+
+  _stroke(x, y) {
+    const ctx = this._ctx;
+    ctx.beginPath();
+    ctx.moveTo(this._lastX, this._lastY);
+    ctx.lineTo(x, y);
+    ctx.strokeStyle = this._strokeColor;
+    ctx.lineWidth   = 10;
+    ctx.lineCap     = 'round';
+    ctx.lineJoin    = 'round';
+    ctx.stroke();
+    this._lastX = x; this._lastY = y;
+  },
+
+  _clear() {
+    if (this._ctx) this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
+  },
+
+  _resizeCanvas() {
+    if (!this._canvas) {
+      this._canvas = document.getElementById('writing-canvas');
+      if (!this._canvas) return;
+      this._ctx = this._canvas.getContext('2d');
+    }
+    const r = this._canvas.parentElement.getBoundingClientRect();
+    this._canvas.width  = r.width  || 300;
+    this._canvas.height = r.height || 250;
+  }
+};
+
+/* ─── SECTION 10: EVENT LISTENERS ──────────────────────────── */
 
 function attachEventListeners() {
   // Bottom nav
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       UI.showView(btn.dataset.view);
-      if (btn.dataset.view === 'library') UI.renderLibrary();
+      if (btn.dataset.view === 'library')  UI.renderLibrary();
       if (btn.dataset.view === 'importer') Importer.renderImportedList();
+      if (btn.dataset.view === 'learn')    Learn.init();
     });
   });
 
