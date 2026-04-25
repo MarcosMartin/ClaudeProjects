@@ -1352,6 +1352,123 @@ const NUMBERS = [
   { num:'20', word:'veinte',      emoji:'🎉' },
 ];
 
+/* ─── FRENCH FIRST 100 WORDS ────────────────────────────────── */
+
+const FRENCH_WORDS = [
+  // Animaux — 10
+  { word:'un chat',          emoji:'🐱', category:'Animaux'    },
+  { word:'un chien',         emoji:'🐶', category:'Animaux'    },
+  { word:'un lapin',         emoji:'🐰', category:'Animaux'    },
+  { word:'un oiseau',        emoji:'🐦', category:'Animaux'    },
+  { word:'un poisson',       emoji:'🐟', category:'Animaux'    },
+  { word:'un cheval',        emoji:'🐴', category:'Animaux'    },
+  { word:'une vache',        emoji:'🐄', category:'Animaux'    },
+  { word:'un cochon',        emoji:'🐷', category:'Animaux'    },
+  { word:'une grenouille',   emoji:'🐸', category:'Animaux'    },
+  { word:'un canard',        emoji:'🦆', category:'Animaux'    },
+  // Transport — 8
+  { word:'un train',         emoji:'🚂', category:'Transport'  },
+  { word:'un bateau',        emoji:'⛵', category:'Transport'  },
+  { word:'une voiture',      emoji:'🚗', category:'Transport'  },
+  { word:'un avion',         emoji:'✈️', category:'Transport'  },
+  { word:'un vélo',          emoji:'🚲', category:'Transport'  },
+  { word:'un bus',           emoji:'🚌', category:'Transport'  },
+  { word:'un camion',        emoji:'🚛', category:'Transport'  },
+  { word:'une fusée',        emoji:'🚀', category:'Transport'  },
+  // Nourriture — 12
+  { word:'une pomme',        emoji:'🍎', category:'Nourriture' },
+  { word:'une banane',       emoji:'🍌', category:'Nourriture' },
+  { word:'un gâteau',        emoji:'🎂', category:'Nourriture' },
+  { word:'du pain',          emoji:'🍞', category:'Nourriture' },
+  { word:'du lait',          emoji:'🥛', category:'Nourriture' },
+  { word:'un œuf',           emoji:'🥚', category:'Nourriture' },
+  { word:'une carotte',      emoji:'🥕', category:'Nourriture' },
+  { word:'une fraise',       emoji:'🍓', category:'Nourriture' },
+  { word:'une orange',       emoji:'🍊', category:'Nourriture' },
+  { word:'du fromage',       emoji:'🧀', category:'Nourriture' },
+  { word:'du chocolat',      emoji:'🍫', category:'Nourriture' },
+  { word:'une glace',        emoji:'🍦', category:'Nourriture' },
+  // Vêtements — 8
+  { word:'un manteau',       emoji:'🧥', category:'Vêtements'  },
+  { word:'un chapeau',       emoji:'🎩', category:'Vêtements'  },
+  { word:'des chaussures',   emoji:'👟', category:'Vêtements'  },
+  { word:'un pantalon',      emoji:'👖', category:'Vêtements'  },
+  { word:'une robe',         emoji:'👗', category:'Vêtements'  },
+  { word:'un t-shirt',       emoji:'👕', category:'Vêtements'  },
+  { word:'des chaussettes',  emoji:'🧦', category:'Vêtements'  },
+  { word:'un pull',          emoji:'🧶', category:'Vêtements'  },
+  // Couleurs — 10
+  { word:'rouge',            emoji:'🔴', category:'Couleurs'   },
+  { word:'bleu',             emoji:'🔵', category:'Couleurs'   },
+  { word:'vert',             emoji:'🟢', category:'Couleurs'   },
+  { word:'jaune',            emoji:'🟡', category:'Couleurs'   },
+  { word:'orange',           emoji:'🟠', category:'Couleurs'   },
+  { word:'violet',           emoji:'🟣', category:'Couleurs'   },
+  { word:'rose',             emoji:'🩷', category:'Couleurs'   },
+  { word:'blanc',            emoji:'⬜', category:'Couleurs'   },
+  { word:'noir',             emoji:'⬛', category:'Couleurs'   },
+  { word:'marron',           emoji:'🟫', category:'Couleurs'   },
+  // Corps — 8
+  { word:'la tête',          emoji:'🧠', category:'Corps'      },
+  { word:'les yeux',         emoji:'👀', category:'Corps'      },
+  { word:'le nez',           emoji:'👃', category:'Corps'      },
+  { word:'la bouche',        emoji:'👄', category:'Corps'      },
+  { word:'les oreilles',     emoji:'👂', category:'Corps'      },
+  { word:'les mains',        emoji:'🙌', category:'Corps'      },
+  { word:'les pieds',        emoji:'🦶', category:'Corps'      },
+  { word:'le cœur',          emoji:'❤️', category:'Corps'      },
+  // Maison — 10
+  { word:'une maison',       emoji:'🏠', category:'Maison'     },
+  { word:'une porte',        emoji:'🚪', category:'Maison'     },
+  { word:'une fenêtre',      emoji:'🪟', category:'Maison'     },
+  { word:'un lit',           emoji:'🛏️', category:'Maison'     },
+  { word:'une chaise',       emoji:'🪑', category:'Maison'     },
+  { word:'une table',        emoji:'🍽️', category:'Maison'     },
+  { word:'une lampe',        emoji:'💡', category:'Maison'     },
+  { word:'un livre',         emoji:'📚', category:'Maison'     },
+  { word:'un téléphone',     emoji:'📱', category:'Maison'     },
+  { word:'une télévision',   emoji:'📺', category:'Maison'     },
+  // Nature — 8
+  { word:'le soleil',        emoji:'☀️', category:'Nature'     },
+  { word:'la lune',          emoji:'🌙', category:'Nature'     },
+  { word:'une étoile',       emoji:'⭐', category:'Nature'     },
+  { word:'la pluie',         emoji:'🌧️', category:'Nature'     },
+  { word:'un arbre',         emoji:'🌳', category:'Nature'     },
+  { word:'une fleur',        emoji:'🌸', category:'Nature'     },
+  { word:'la mer',           emoji:'🌊', category:'Nature'     },
+  { word:'une montagne',     emoji:'⛰️', category:'Nature'     },
+  // Jouets — 8
+  { word:'un ballon',        emoji:'🎈', category:'Jouets'     },
+  { word:'une poupée',       emoji:'🪆', category:'Jouets'     },
+  { word:'un ours',          emoji:'🧸', category:'Jouets'     },
+  { word:'des crayons',      emoji:'🖍️', category:'Jouets'     },
+  { word:'un puzzle',        emoji:'🧩', category:'Jouets'     },
+  { word:'des cubes',        emoji:'🧱', category:'Jouets'     },
+  { word:'un cerf-volant',   emoji:'🪁', category:'Jouets'     },
+  { word:'une balle',        emoji:'⚽', category:'Jouets'     },
+  // École — 6
+  { word:'une école',        emoji:'🏫', category:'École'      },
+  { word:'un crayon',        emoji:'✏️', category:'École'      },
+  { word:'un cahier',        emoji:'📓', category:'École'      },
+  { word:'une règle',        emoji:'📏', category:'École'      },
+  { word:'des ciseaux',      emoji:'✂️', category:'École'      },
+  { word:'un cartable',      emoji:'🎒', category:'École'      },
+  // Formes — 6
+  { word:'un cercle',        emoji:'⭕', category:'Formes'     },
+  { word:'un carré',         emoji:'🟦', category:'Formes'     },
+  { word:'un triangle',      emoji:'🔺', category:'Formes'     },
+  { word:'un rectangle',     emoji:'▬',  category:'Formes'     },
+  { word:'un ovale',         emoji:'🥚', category:'Formes'     },
+  { word:'un losange',       emoji:'🔷', category:'Formes'     },
+  // Famille — 6
+  { word:'maman',            emoji:'👩', category:'Famille'    },
+  { word:'papa',             emoji:'👨', category:'Famille'    },
+  { word:'un bébé',          emoji:'👶', category:'Famille'    },
+  { word:'un ami',           emoji:'🤝', category:'Famille'    },
+  { word:'une famille',      emoji:'👨‍👩‍👧‍👦', category:'Famille'    },
+  { word:'grand-mère',       emoji:'👵', category:'Famille'    },
+];
+
 /* ─── SHARED VOCABULARY (fallback for any story word) ─────── */
 
 const SHARED_VOCAB = {
@@ -1619,6 +1736,22 @@ const TTS = {
       catch(e) { console.warn('Azure word TTS:', e.message); }
     }
     this._webSpeak(word, null);
+  },
+
+  speakFrench(word) {
+    this.stop();
+    this._ensureCtx();
+    setTimeout(() => {
+      window.speechSynthesis.resume();
+      const utt = new SpeechSynthesisUtterance(word);
+      utt.lang = 'fr-FR';
+      utt.rate = 0.85; utt.pitch = 1.0; utt.volume = 1.0;
+      const frVoice = window.speechSynthesis.getVoices().find(v => v.lang.startsWith('fr'));
+      if (frVoice) utt.voice = frVoice;
+      utt.onend   = () => this._finish();
+      utt.onerror = (e) => { console.error('French TTS:', e.error); this._finish(); };
+      window.speechSynthesis.speak(utt);
+    }, 100);
   },
 
   async readPage(text, spans) {
@@ -2471,15 +2604,16 @@ const Importer = {
 /* ─── SECTION 9: LEARN MODULE ──────────────────────────────── */
 
 const Learn = {
-  _ready:    false,
-  _wMode:    'abc',  // 'abc' | 'numbers'
-  _wIdx:     0,
-  _drawing:  false,
-  _lastX:    0,
-  _lastY:    0,
+  _ready:      false,
+  _wMode:      'abc',  // 'abc' | 'numbers'
+  _wIdx:       0,
+  _frenchCat:  'all',
+  _drawing:    false,
+  _lastX:      0,
+  _lastY:      0,
   _strokeColor: '#4ECDC4',
-  _canvas:   null,
-  _ctx:      null,
+  _canvas:     null,
+  _ctx:        null,
 
   init() {
     // Resize canvas every time the tab becomes visible
@@ -2489,6 +2623,7 @@ const Learn = {
 
     this._renderAlphabet();
     this._renderNumbers();
+    this._initFrench();
     this._initCanvas();
     this._setItem(0, 'abc');
 
@@ -2560,6 +2695,35 @@ const Learn = {
         grid.querySelectorAll('.number-card').forEach(c => c.classList.remove('active'));
         card.classList.add('active');
         TTS.speakWord(NUMBERS[i].word);
+      })
+    );
+  },
+
+  _initFrench() {
+    this._renderFrench('all');
+    document.querySelectorAll('.french-cat').forEach(btn =>
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.french-cat').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this._frenchCat = btn.dataset.cat;
+        this._renderFrench(btn.dataset.cat);
+      })
+    );
+  },
+
+  _renderFrench(cat) {
+    const grid = document.getElementById('french-grid');
+    const words = cat === 'all' ? FRENCH_WORDS : FRENCH_WORDS.filter(w => w.category === cat);
+    grid.innerHTML = words.map(it => `
+      <button class="french-card" aria-label="${it.word}">
+        <span class="fc-emoji">${it.emoji}</span>
+        <span class="fc-word">${it.word}</span>
+      </button>`).join('');
+    grid.querySelectorAll('.french-card').forEach((card, i) =>
+      card.addEventListener('click', () => {
+        grid.querySelectorAll('.french-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        TTS.speakFrench(words[i].word);
       })
     );
   },

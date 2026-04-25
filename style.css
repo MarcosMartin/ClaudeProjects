@@ -962,6 +962,60 @@ blockquote {
 .nc-emoji { font-size: 1.3rem; line-height: 1.4; }
 .nc-word  { font-size: 0.78rem; font-weight: 800; color: var(--text-soft); }
 
+/* French words tab */
+.french-filter-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 2px 0 10px;
+}
+.french-filter-scroll::-webkit-scrollbar { display: none; }
+.french-cat {
+  flex-shrink: 0;
+  padding: 6px 13px;
+  border-radius: 50px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  background: var(--card-bg);
+  color: var(--text-soft);
+  border: 2px solid var(--border);
+  white-space: nowrap;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.french-cat.active {
+  background: #3D5A99;
+  color: #fff;
+  border-color: #3D5A99;
+}
+.french-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.french-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 8px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.13s, box-shadow 0.13s, border-color 0.13s;
+}
+.french-card:active,
+.french-card.active {
+  transform: scale(0.93);
+  border-color: #3D5A99;
+  box-shadow: 0 0 0 3px rgba(61, 90, 153, 0.25);
+}
+.fc-emoji { font-size: 2.2rem; line-height: 1; }
+.fc-word  { font-size: 0.8rem; font-weight: 800; color: var(--text); text-align: center; line-height: 1.3; }
+
 /* Writing tab */
 .writing-info {
   text-align: center;
