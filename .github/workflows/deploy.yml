@@ -1,1 +1,75 @@
-bmFtZTogRGVwbG95IGFwcHMgdG8gR2l0SHViIFBhZ2VzCgpvbjoKICBwdXNoOgogICAgYnJhbmNoZXM6IFttYWluXQogICAgcGF0aHM6CiAgICAgIC0gJ1ByaW1lcm9Db2xlZ2lvLyoqJwogICAgICAtICcuZ2l0aHViL3dvcmtmbG93cy9kZXBsb3kueW1sJwogIHdvcmtmbG93X2Rpc3BhdGNoOgoKcGVybWlzc2lvbnM6CiAgY29udGVudHM6IHJlYWQKICBwYWdlczogd3JpdGUKICBpZC10b2tlbjogd3JpdGUKCmNvbmN1cnJlbmN5OgogIGdyb3VwOiBwYWdlcwogIGNhbmNlbC1pbi1wcm9ncmVzczogdHJ1ZQoKam9iczoKICBidWlsZDoKICAgIG5hbWU6IEJ1aWxkCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSBuYW1lOiBDaGVja291dCBtYWluCiAgICAgICAgdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBwYXRoOiBtYWluLXJlcG8KCiAgICAgIC0gbmFtZTogQ2hlY2tvdXQgQ3VlbnRvcyBNYWdpY29zCiAgICAgICAgdXNlczogYWN0aW9ucy9jaGVja291dEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICByZWY6IGNsYXVkZS9zcGFuaXNoLWtpZHMtcmVhZGluZy1hcHAtdHRkMU8KICAgICAgICAgIHBhdGg6IGN1ZW50b3MtcmVwbwoKICAgICAgLSBuYW1lOiBTZXR1cCBOb2RlLmpzCiAgICAgICAgdXNlczogYWN0aW9ucy9zZXR1cC1ub2RlQHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIG5vZGUtdmVyc2lvbjogMjAKICAgICAgICAgIGNhY2hlOiBucG0KICAgICAgICAgIGNhY2hlLWRlcGVuZGVuY3ktcGF0aDogbWFpbi1yZXBvL1ByaW1lcm9Db2xlZ2lvL3BhY2thZ2UtbG9jay5qc29uCgogICAgICAtIG5hbWU6IEluc3RhbGwgZGVwZW5kZW5jaWVzCiAgICAgICAgd29ya2luZy1kaXJlY3Rvcnk6IG1haW4tcmVwby9QcmltZXJvQ29sZWdpbwogICAgICAgIHJ1bjogbnBtIGNpCgogICAgICAtIG5hbWU6IEJ1aWxkIFByaW1lcm9Db2xlZ2lvCiAgICAgICAgd29ya2luZy1kaXJlY3Rvcnk6IG1haW4tcmVwby9QcmltZXJvQ29sZWdpbwogICAgICAgIHJ1bjogbnBtIHJ1biBidWlsZAoKICAgICAgLSBuYW1lOiBQcmVwYXJlIGRlcGxveSBmb2xkZXIKICAgICAgICBydW46IHwKICAgICAgICAgIG1rZGlyIC1wIGRlcGxveS9wcmltZXJvCiAgICAgICAgICBjcCAtciBtYWluLXJlcG8vUHJpbWVyb0NvbGVnaW8vZGlzdC8uIGRlcGxveS9wcmltZXJvLwogICAgICAgICAgY3AgY3VlbnRvcy1yZXBvL2luZGV4Lmh0bWwgY3VlbnRvcy1yZXBvL2FwcC5qcyBjdWVudG9zLXJlcG8vc3R5bGUuY3NzIGRlcGxveS8KCiAgICAgIC0gbmFtZTogU2V0dXAgUGFnZXMKICAgICAgICB1c2VzOiBhY3Rpb25zL2NvbmZpZ3VyZS1wYWdlc0B2NAoKICAgICAgLSBuYW1lOiBVcGxvYWQgYXJ0aWZhY3QKICAgICAgICB1c2VzOiBhY3Rpb25zL3VwbG9hZC1wYWdlcy1hcnRpZmFjdEB2MwogICAgICAgIHdpdGg6CiAgICAgICAgICBwYXRoOiBkZXBsb3kKCiAgZGVwbG95OgogICAgbmFtZTogRGVwbG95CiAgICBuZWVkczogYnVpbGQKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIGVudmlyb25tZW50OgogICAgICBuYW1lOiBnaXRodWItcGFnZXMKICAgICAgdXJsOiAke3sgc3RlcHMuZGVwbG95bWVudC5vdXRwdXRzLnBhZ2VfdXJsIH19CiAgICBzdGVwczoKICAgICAgLSBuYW1lOiBEZXBsb3kgdG8gR2l0SHViIFBhZ2VzCiAgICAgICAgaWQ6IGRlcGxveW1lbnQKICAgICAgICB1c2VzOiBhY3Rpb25zL2RlcGxveS1wYWdlc0B2NAo=
+name: Deploy apps to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'PrimeroColegio/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          path: main-repo
+
+      - name: Checkout Cuentos Magicos
+        uses: actions/checkout@v4
+        with:
+          ref: claude/spanish-kids-reading-app-ttd1O
+          path: cuentos-repo
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: main-repo/PrimeroColegio/package-lock.json
+
+      - name: Install dependencies
+        working-directory: main-repo/PrimeroColegio
+        run: npm ci
+
+      - name: Build PrimeroColegio
+        working-directory: main-repo/PrimeroColegio
+        run: npm run build
+
+      - name: Prepare deploy folder
+        run: |
+          mkdir -p deploy/primero
+          cp -r main-repo/PrimeroColegio/dist/. deploy/primero/
+          cp cuentos-repo/index.html cuentos-repo/app.js cuentos-repo/style.css deploy/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: deploy
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
