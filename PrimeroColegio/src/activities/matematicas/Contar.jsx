@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import QuizBase from '../../components/QuizBase.jsx'
 
-// Build "count these objects" questions dynamically
-const EMOJIS = ['🍎', '⭐', '🐟', '🌸', '🎈', '🦋', '🍕', '🐾', '⚽', '🌟', '🍦', '🐥']
-
 function makeOptions(correct) {
   const opts = new Set([correct])
   while (opts.size < 4) {

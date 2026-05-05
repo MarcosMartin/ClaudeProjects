@@ -99,7 +99,6 @@ export default function QuizBase({ questions, onComplete, onBack, theme = 'blue'
 
   return (
     <div className="p-4 flex flex-col gap-4 max-w-lg mx-auto">
-      {/* Progress */}
       <div className="flex justify-between items-center text-sm text-gray-500 font-bold">
         <span>Pregunta {current + 1} de {questions.length}</span>
         <span className="flex items-center gap-1">{score} <span className="text-base">⭐</span></span>
@@ -111,7 +110,6 @@ export default function QuizBase({ questions, onComplete, onBack, theme = 'blue'
         />
       </div>
 
-      {/* Question card */}
       <div
         className={`bg-white rounded-2xl p-5 shadow-md text-center border-4 transition-all duration-200 ${
           feedback === 'correct'   ? 'border-green-400 bg-green-50'  :
@@ -130,7 +128,6 @@ export default function QuizBase({ questions, onComplete, onBack, theme = 'blue'
         )}
       </div>
 
-      {/* Options */}
       <div className={`grid gap-3 ${q.options.length <= 2 ? 'grid-cols-2' : q.options.length === 4 ? 'grid-cols-2' : 'grid-cols-1'}`}>
         {q.options.map((option) => {
           const isSelected = selected === option

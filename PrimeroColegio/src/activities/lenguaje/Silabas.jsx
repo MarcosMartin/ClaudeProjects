@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-// Each question: show an image + answer word, syllables are displayed shuffled,
-// player taps syllables in order to build the word.
 const EXERCISES = [
   { image: '🌙', word: 'LUNA',      syllables: ['LU', 'NA'],         definition: 'Aparece de noche en el cielo' },
   { image: '🪑', word: 'MESA',      syllables: ['ME', 'SA'],         definition: 'Mueble donde comemos' },
@@ -51,7 +49,6 @@ function SilabasExercise({ exercise, onNext, isLast, score, total }) {
         <span>{score} ⭐</span>
       </div>
 
-      {/* Word display */}
       <div
         className={`bg-white rounded-2xl p-5 shadow-md text-center border-4 transition-all ${
           feedback === 'correct'   ? 'border-green-400 bg-green-50'  :
@@ -68,7 +65,6 @@ function SilabasExercise({ exercise, onNext, isLast, score, total }) {
         )}
       </div>
 
-      {/* Chosen syllables */}
       <div className="min-h-16 bg-white rounded-2xl border-4 border-dashed border-blue-200 flex items-center justify-center gap-2 p-3">
         {chosen.length === 0
           ? <span className="text-gray-400 font-bold">Toca las sílabas en orden...</span>
@@ -80,7 +76,6 @@ function SilabasExercise({ exercise, onNext, isLast, score, total }) {
         }
       </div>
 
-      {/* Available syllables */}
       <div className="flex gap-3 flex-wrap justify-center">
         {available.map((syl, idx) => (
           <button

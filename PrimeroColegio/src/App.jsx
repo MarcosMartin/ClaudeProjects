@@ -75,7 +75,8 @@ function App() {
         subject={subject}
         activity={activity}
         onComplete={handleActivityComplete}
-        onBack={() => setView('subject')}
+        onBack={() => setView('subject')
+      }
       />
     )
   }
