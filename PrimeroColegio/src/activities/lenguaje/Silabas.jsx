@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { speak } from '../../utils/speech.js'
 
 // Each question: show an image + answer word, syllables are displayed shuffled,
 // player taps syllables in order to build the word.
@@ -24,6 +25,11 @@ function SilabasExercise({ exercise, onNext, isLast, score, total }) {
   const [available, setAvailable] = useState(() => shuffle(exercise.syllables))
   const [feedback, setFeedback] = useState(null)
 
+  useEffect(() => {
+    const timer = setTimeout(() => speak(exercise.definition), 400)
+    return () => clearTimeout(timer)
+  }, [exercise])
+
   const handlePick = (syl, idx) => {
     if (feedback) return
     const newChosen = [...chosen, syl]
@@ -34,6 +40,9 @@ function SilabasExercise({ exercise, onNext, isLast, score, total }) {
     if (newChosen.length === exercise.syllables.length) {
       const correct = newChosen.join('') === exercise.word
       setFeedback(correct ? 'correct' : 'incorrect')
+      setTimeout(() => {
+        speak(correct ? '¡Correcto!' : `Era: ${exercise.word}`)
+      }, 100)
       setTimeout(() => onNext(correct), 1600)
     }
   }
@@ -60,7 +69,10 @@ function SilabasExercise({ exercise, onNext, isLast, score, total }) {
         }`}
       >
         <div className="text-7xl mb-2">{exercise.image}</div>
-        <p className="text-gray-500 font-semibold text-base">{exercise.definition}</p>
+        <div className="flex items-center justify-center gap-2">
+          <p className="text-gray-500 font-semibold text-base">{exercise.definition}</p>
+          <button onClick={() => speak(exercise.definition)} className="text-xl hover:scale-110 active:scale-95 transition-all" title="Escuchar pista" aria-label="Repetir pista">🔊</button>
+        </div>
         {feedback && (
           <p className={`text-xl font-black mt-2 ${feedback === 'correct' ? 'text-green-600' : 'text-red-600'}`}>
             {feedback === 'correct' ? '¡Correcto! 🎉' : `❌ Era: ${exercise.word}`}
@@ -109,6 +121,11 @@ function SilabasExercise({ exercise, onNext, isLast, score, total }) {
 
 function ResultsPanel({ correct, total, onRetry, onBack }) {
   const stars = correct === total ? 3 : correct >= Math.ceil(total * 0.7) ? 2 : correct >= Math.ceil(total * 0.4) ? 1 : 0
+
+  useEffect(() => {
+    speak(stars === 3 ? '¡PERFECTO!' : stars >= 2 ? '¡Muy bien!' : '¡Sigue practicando!')
+  }, [])
+
   return (
     <div className="p-6 flex flex-col items-center gap-5 text-center">
       <div className="text-7xl mt-4">{stars === 3 ? '🏆' : stars === 2 ? '🌟' : '👍'}</div>

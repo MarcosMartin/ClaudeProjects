@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { speak } from '../utils/speech.js'
 
 const THEMES = {
   blue:   { bar: 'bg-blue-500',   optHover: 'hover:bg-blue-50 hover:border-blue-400' },
@@ -7,8 +8,8 @@ const THEMES = {
 }
 
 const PRAISE = [
-  '¡Muy bien! 🎉', '¡Genial! 🌟', '¡Correcto! 👏',
-  '¡Estupendo! 🎊', '¡Perfecto! ⭐', '¡Fantástico! 🏆',
+  '¡Muy bien!', '¡Genial!', '¡Correcto!',
+  '¡Estupendo!', '¡Perfecto!', '¡Fantástico!',
 ]
 
 function ResultsPanel({ correct, total, onRetry, onBack }) {
@@ -21,6 +22,11 @@ function ResultsPanel({ correct, total, onRetry, onBack }) {
     { min: 0,   text: '¡Vamos a practicar más! 📚' },
   ]
   const msg = messages.find(m => pct >= m.min).text
+
+  useEffect(() => {
+    const plainMsg = msg.replace(/[^\w\s¡!¿?áéíóúüñÁÉÍÓÚÜÑ]/g, '').trim()
+    speak(plainMsg)
+  }, [])
 
   return (
     <div className="p-6 flex flex-col items-center gap-5 text-center animate-pop-in">
@@ -65,6 +71,14 @@ export default function QuizBase({ questions, onComplete, onBack, theme = 'blue'
   const q = questions[current]
   const progress = ((current) / questions.length) * 100
 
+  // Speak the question text when the current question changes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      speak(q.question)
+    }, 400)
+    return () => clearTimeout(timer)
+  }, [current])
+
   const handleSelect = (option) => {
     if (selected !== null || done) return
     const correct = option === q.answer
@@ -72,6 +86,13 @@ export default function QuizBase({ questions, onComplete, onBack, theme = 'blue'
     setSelected(option)
     setFeedback(correct ? 'correct' : 'incorrect')
     if (correct) setScore(newScore)
+
+    // Speak feedback
+    if (correct) {
+      speak(PRAISE[praiseIdx])
+    } else {
+      speak(`La respuesta correcta es ${q.answer}`)
+    }
 
     setTimeout(() => {
       if (current + 1 >= questions.length) {
@@ -121,11 +142,21 @@ export default function QuizBase({ questions, onComplete, onBack, theme = 'blue'
       >
         {q.image && <div className="text-7xl mb-3 leading-none">{q.image}</div>}
         {q.word  && <div className="text-4xl font-black text-gray-800 mb-2 tracking-widest">{q.word}</div>}
-        <p className="text-xl font-black text-gray-700 leading-snug">{q.question}</p>
+        <div className="flex items-center justify-center gap-2">
+          <p className="text-xl font-black text-gray-700 leading-snug">{q.question}</p>
+          <button
+            onClick={() => speak(q.question)}
+            className="text-2xl hover:scale-110 active:scale-95 transition-all"
+            title="Escuchar pregunta"
+            aria-label="Repetir pregunta"
+          >
+            🔊
+          </button>
+        </div>
 
         {feedback && (
           <div className={`mt-3 text-xl font-black ${feedback === 'correct' ? 'text-green-600' : 'text-red-600'}`}>
-            {feedback === 'correct' ? PRAISE[praiseIdx] : `❌ Respuesta: ${q.answer}`}
+            {feedback === 'correct' ? `${PRAISE[praiseIdx]} 🎉` : `❌ Respuesta: ${q.answer}`}
           </div>
         )}
       </div>
