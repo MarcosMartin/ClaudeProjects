@@ -53,7 +53,6 @@ function SumaExercise({ exercise, onAnswer, current, total, score }) {
           'border-transparent'
         }`}
       >
-        {/* Visual representation */}
         <div className="flex items-center justify-center gap-3 mb-4 flex-wrap">
           <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-2 text-2xl leading-tight">
             {emoji.repeat(a)}

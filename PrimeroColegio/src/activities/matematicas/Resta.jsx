@@ -39,7 +39,6 @@ function RestaExercise({ exercise, onAnswer, current, total, score }) {
     setTimeout(() => onAnswer(correct), 1500)
   }
 
-  // Render crossed-out emojis for the removed items
   const renderEmojis = () => {
     const items = []
     for (let i = 0; i < a && i < 15; i++) {
@@ -80,7 +79,6 @@ function RestaExercise({ exercise, onAnswer, current, total, score }) {
         <p className="text-gray-400 font-semibold text-sm mt-1">
           {a <= 15 ? `Tenemos ${a} y quitamos ${b}` : ''}
         </p>
-
         {feedback && (
           <p className={`text-xl font-black mt-2 ${feedback === 'correct' ? 'text-green-600' : 'text-red-600'}`}>
             {feedback === 'correct' ? '¡Correcto! 🎉' : `❌ Era: ${answer}`}
